@@ -1,7 +1,7 @@
 export default {
 
     name: "genre",
-    type: "object",
+    type: "document",
     title: "Genre",
 
     fields: [
