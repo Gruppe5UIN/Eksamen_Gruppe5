@@ -8,7 +8,7 @@ export default {
         {
             name: "title",
             type: "string",
-            title: "Tittel"
+            title: "Title"
 
         },
         {
