@@ -16,16 +16,15 @@ export default {
             type: "slug",
             title: "Slug",
             options: {
-                options: {
-                    source: 'title',
-                    slugify: input => input
-                                         .toLowerCase()
-                                         .replace(/\s+/g, '-')
-                                         .slice(0, 150)
+              
+                source: 'title',
+                slugify: input => input
+                            .toLowerCase()
+                            .replace(/\s+/g, '-')
+                            .slice(0, 150)
         
-                }
+                
             }
-
         },
         {
             name: "apiId",

@@ -8,21 +8,19 @@ export default {
         {
             name: "title",
             type: "string",
-            title: "Tittel"
+            title: "Title"
         },
         {
             name: "slug",
             type: "slug",
             title: "Slug",
             options: {
-                options: {
-                    source: 'title',
-                    slugify: input => input
-                                         .toLowerCase()
-                                         .replace(/\s+/g, '-')
-                                         .slice(0, 150)
-        
-                }
+                source: 'title',
+                slugify: input => input
+                            .toLowerCase()
+                            .replace(/\s+/g, '-')
+                            .slice(0, 150)
+            
             }
         }
     ]
