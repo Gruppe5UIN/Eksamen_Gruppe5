@@ -11,6 +11,11 @@ export default {
             title: "Title"
         },
         {
+            name: "apiId",
+            type: "number",
+            title: "Api Id"
+        },
+        {
             name: "slug",
             type: "slug",
             title: "Slug",
