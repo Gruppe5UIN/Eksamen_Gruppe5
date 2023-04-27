@@ -17,14 +17,9 @@ export default {
             name: "email",
             title: "E-mail",
             type: "string",
-            validation: (Rule) => Rule.custom((value) => {
-                const validationResult = email().validate(value);
-                if (validationResult.valid) {
-                  return true;
-                } else {
-                  return validationResult.message;
-                }
-              }),
+            //Hvordan skal vi validere at det er email?
+            //Får ikke email() fra sanity til å fungere
+            //validation: (Rule) => Rule.custom((value) => {
            
         },
 

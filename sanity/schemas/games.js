@@ -27,7 +27,10 @@ export default {
             name: "genres",
             title: "List of genres", 
             type: "array",
-            of: [{type: 'genre'}]
+            of: [{type: 'reference',
+            to: [{type: 'genre'}]
+        }],
+            
         },
 
         {

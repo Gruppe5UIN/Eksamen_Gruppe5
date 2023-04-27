@@ -7,9 +7,10 @@ export default {
 
     fields: [
         {
-            name: "gameApiId",
-            type: "number",
-            title: "Game Api Id"
+            name: "game",
+            type: "reference",
+            to: [{type: "game"}],
+            title: "Game reference"
 
         },
         {
