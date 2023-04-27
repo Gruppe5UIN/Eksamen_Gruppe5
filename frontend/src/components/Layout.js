@@ -3,7 +3,7 @@ import Nav from "./Nav";
 
 export default function Layout() {
   return (
-    <div className="main-container">
+    <div>
       <header>
         <h1>MAC's Gamehub</h1>
         <Nav />
