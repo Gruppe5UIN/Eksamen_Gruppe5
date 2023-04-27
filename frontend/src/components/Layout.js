@@ -1,5 +1,6 @@
 import React from "react";
 import Nav from "./Nav";
+import { Outlet } from "react-router-dom";
 
 export default function Layout() {
   return (
@@ -8,7 +9,9 @@ export default function Layout() {
         <h1>MAC's Gamehub</h1>
         <Nav />
       </header>
-      <main>{children}</main>
+      <main>
+        <Outlet />
+      </main>
       <footer>
         <p>&copy; Gruppe 5</p>
         <p>
