@@ -11,21 +11,7 @@ export default {
             title: "Title"
 
         },
-        {
-            name: "slug",
-            type: "slug",
-            title: "Slug",
-            options: {
-              
-                source: 'title',
-                slugify: input => input
-                            .toLowerCase()
-                            .replace(/\s+/g, '-')
-                            .slice(0, 150)
-        
-                
-            }
-        },
+
         {
             name: "apiId",
             type: "number",
@@ -33,16 +19,33 @@ export default {
 
         },
         {
-            name: "gameTime",
+            name: "playtime",
             type: "number",
             title: "Hours played", 
         },
         {
-            name: "genre",
+            name: "genres",
             title: "List of genres", 
             type: "array",
             of: [{type: 'genre'}]
-        }
+        },
 
-    ]
+        {
+            name: "slug",
+            type: "slug",
+            title: "Slug",
+            options: {     
+                source: 'title',
+                slugify: input => input
+                            .toLowerCase()
+                            .replace(/\s+/g, '-')
+                            .slice(0, 150)   
+            }
+        },
+    ],
+
+    //Setter inn en random verdi på playtime
+    initialValue: {
+        playtime: Math.floor(Math.random() * 100),
+      }
 }
