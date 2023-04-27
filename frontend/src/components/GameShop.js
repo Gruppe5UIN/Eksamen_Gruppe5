@@ -1,9 +1,12 @@
 import React from "react";
+import GameCard from "./GameCard";
 
 export default function GameShop({ games }) {
   return (
-    <div>
-      {/* TO BE CHANGED INTO <GAMECARD/> INSTEAD!*/}
+    <>
+      <GameCard />
+      {/* AN EXAMPLE OF HOW GAMECARD COULD LOOK:
+      
       <section>
         <h2>Gameshop</h2>
         <button>Visit shop</button>
@@ -24,6 +27,7 @@ export default function GameShop({ games }) {
           </article>
         ))}
       </section>
-    </div>
+      */}
+    </>
   );
 }
