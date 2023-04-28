@@ -29,8 +29,15 @@ export default {
             type: "array",
             of: [{type: 'favourite'}]
       
-        }
-
+        },
+        {
+            name: "myGames",
+            title: "My Games",
+            type: "array",
+            of: [{type: "reference",
+            to: [{type: "game"}]
+        }]
+    }
 
     ]
 }
