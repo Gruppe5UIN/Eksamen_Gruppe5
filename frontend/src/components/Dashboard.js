@@ -12,6 +12,9 @@ export default function Dashboard({ games }) {
       <section>
         <MyGames />
         <MyFavourites />
+        <button type="button" class="btn btn-outline-secondary">
+          Bootstrap test button
+        </button>
       </section>
     </>
   );
