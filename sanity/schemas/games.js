@@ -14,7 +14,7 @@ export default {
 
         {
             name: "apiId",
-            type: "number",
+            type: "string",
             title: "Rawg-id",
 
         },
@@ -31,6 +31,13 @@ export default {
             to: [{type: 'genre'}]
         }],
             
+        },
+
+        {
+            title: 'Image URL',
+            name: 'imageUrl',
+            type: 'array',
+            of: [{type: 'url'}]
         },
 
         {
