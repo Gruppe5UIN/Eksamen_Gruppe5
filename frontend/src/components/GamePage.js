@@ -1,14 +1,15 @@
 import React from "react";
 import { useState, useEffect } from "react";
-//import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 //navigere bakover onClick={()=>navigate(-1)
 
 //komponent for presentasjon av et spill
-export default function GamePage() {
+export default function GamePage({name}) {
   
   //hente spill basert på slug eller id?
-  //const { slug } = useParams();
+  const { slug } = useParams();
+  console.log(slug)
   //navigasjon for å gå tilbake et steg
   //const navigate = useNavigate();
  
@@ -23,7 +24,6 @@ export default function GamePage() {
     const data = await response.json();
     setGames(data.results);
 }
-
 /*
 {games.map((game, index) => (
                 <h1 key="index">{game.name}</h1>
@@ -36,23 +36,30 @@ useEffect(() => {
   getGames()
 },[]);
 
-console.log(games)
+console.log(games[0]?.name)
 
   return (
     <article className="gamepage">
-      <figure className="gameimage">
-        <img src="" alt="" className="main-image"/>
-        <img src="" alt="" className="miniatyr"/>
-        <img src="" alt="" className="miniatyr"/>
-        <img src="" alt="" className="miniatyr"/>
+      <figure className="image-frame">
+          <img className="gameimage" src="https://placekitten.com/850/500" alt=""></img>
+          <img className="miniatyr" src="https://placekitten.com/270/100" alt=""></img>
+          <img className="miniatyr" src="https://placekitten.com/270/100" alt=""></img>
+          <img className="miniatyr" src="https://placekitten.com/270/100" alt=""></img>
       </figure>
       <section className="textarea">
-        <header>
-          <h1>{games[0]?.name}</h1>
-          <p>icon</p>
-          <p>icon2</p>
+        <header className="gamepage-header">
+          <h2>{name}</h2>
+          <div className="rating">
+            rate rate
+          </div>
+          <div>
+            heart
+          </div>
+          
         </header>
         <p className="plot">
+          flkjøvgkjbnkgvjk vgjhknlk
+          gvhjkjk hkjlk hjlkj hjvkj 
 
         </p>
      
@@ -60,6 +67,7 @@ console.log(games)
 
       </table>
       <section className="tags">
+        ta tag tag
       </section>
 
       </section>

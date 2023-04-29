@@ -36,3 +36,77 @@
     transform: rotate(360deg);
   }
 }
+
+/*Vise tydelig link*/
+/*breakpoint på begge*/
+.gamecard{
+  border: 2px teal solid;
+  max-width: 400px;
+  width: 100%;
+  display: flex;
+  margin: 1rem;
+  overflow: hidden;
+}
+.gamecard-text{
+  padding: 1rem;
+}
+
+.gamecard-image{
+  max-width: 200px;
+  width: 100%;
+  object-fit: cover;
+  object-position: 100% 25%;
+}
+
+.gamepage{
+  border: 2px solid black;
+  max-width: 1600px;
+  margin: 0 auto;
+  display: flex;
+}
+
+.image-frame{
+  box-sizing: border-box;
+  max-width: 1000px;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.1rem;
+  margin: 0;
+}
+.gameimage{
+  object-fit: cover;
+  /*object-position: 100% 25%;*/
+}
+.main-image{
+  border: 2px solid black;
+  width: 100%;
+  min-height: 500px;
+}
+
+
+.textarea{
+  max-width: 700px;
+  width: 100%;
+  background-color: rgb(198, 244, 229);
+  margin: 1rem;
+  padding: 1rem;
+  overflow: hidden;
+}
+
+
+.gamepage-header{
+  background-color: rgb(86, 126, 113);
+  padding: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  
+}
+
+.gamepage-header h2{
+  font-size: 2rem;
+}
+
+

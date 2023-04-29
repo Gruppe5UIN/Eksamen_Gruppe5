@@ -5,6 +5,7 @@ export default function GameShop({ games }) {
   return (
     <>
       <GameCard />
+      <GameCard/>
       {/* AN EXAMPLE OF HOW GAMECARD COULD LOOK:
       
       <section>
