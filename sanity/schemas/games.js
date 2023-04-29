@@ -14,14 +14,14 @@ export default {
 
         {
             name: "apiId",
-            type: "string",
+            type: "number",
             title: "Rawg-id",
 
         },
         {
             name: "playtime",
             type: "number",
-            title: "Hours played", 
+            title: "Playtime", 
         },
         {
             name: "genres",
@@ -55,7 +55,7 @@ export default {
     ],
 
     //Setter inn en random verdi på playtime
-    initialValue: {
+    /*initialValue: {
         playtime: Math.floor(Math.random() * 100),
-      }
+      }*/
 }
