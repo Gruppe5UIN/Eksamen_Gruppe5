@@ -1,24 +1,24 @@
 import React from "react";
+import { GiDuration } from "react-icons/gi";
 
 
 export default function GameCard() {
 
   
   return (
-<>
-    {/*<Link to=>*/}
+
       <article className="gamecard">
-        <img className="gamecard-image" src="https://placekitten.com/200/150" alt=""></img>
+        <img className="gamecard-image" src="https://placekitten.com/150/100" alt=""></img>
+  
         <section className="gamecard-text">
-          <h3>Tittel</h3>
-          <p>Info</p>
-          <p>Spilltid med ikon</p>
+          <h3>Tittel kan være lang</h3>
+          <h4>Action</h4>
+          <section className="playtime">
+            <GiDuration className="duration-icon" size={24} alt="playtime"/>
+            <p>7</p>
+          </section>
         </section>
       </article>
-    {/*</Link>*/}
-   
-
-    </>
  
   )
 }

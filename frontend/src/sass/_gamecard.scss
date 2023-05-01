@@ -1,0 +1,52 @@
+.gamecard{
+    border: 1px teal solid;
+    max-height: 300px;
+    max-width: 400px;
+    width: 100%;
+    display: flex;
+    margin: 1rem;
+  }
+  
+  .playtime{
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+  
+  .playtime p{
+    margin: 0;
+    margin-left: 0.4rem;
+  }
+  
+  .gamecard-text{
+    margin: 1rem;
+  }
+  
+  .gamecard-text h3{
+    margin: 0.5rem 0;
+    font-weight: 200;
+    font-size: 1.5rem;
+  }
+  .gamecard-text h4{
+    margin: 0.5rem 0;
+  }
+  
+  .gamecard-image{
+    /*max-width: 200px;*/
+    object-fit: cover;
+    object-position: 100% 25%;
+  }
+
+  
+@media only screen and (max-width: 600px) {
+    .gamecard{
+      flex-wrap: wrap;
+      max-height: 100%;
+      margin: 1rem auto;
+    }
+    .gamecard-image{
+      max-width: 100%;
+      width: 100%;
+    }
+  }
+  
