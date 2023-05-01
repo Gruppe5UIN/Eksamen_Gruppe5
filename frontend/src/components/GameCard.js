@@ -3,7 +3,6 @@ import { GiDuration } from "react-icons/gi";
 
 
 export default function GameCard() {
-
   
   return (
 

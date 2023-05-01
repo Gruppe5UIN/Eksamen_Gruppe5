@@ -51,7 +51,7 @@ console.log(games[0]?.name)
       </figure>
       <section className="textarea">
         <header className="gamepage-header">
-          <h1>Tittel kan være lang</h1>
+          <h1>{games[0]?.name}</h1>
           <section className="game-details">
             <span className="rating">
               <p>4.7</p></span>
