@@ -29849,7 +29849,7 @@ progress {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  /*overflow: hidden;*/
+  overflow: hidden;
   gap: 1rem;
   margin: 0;
   padding: 0;
@@ -29862,9 +29862,14 @@ progress {
 
 .miniatures {
   display: flex;
-  gap: 1.6rem;
-  width: inherit;
-  justify-content: space-evenly;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.miniature {
+  object-fit: cover;
+  max-width: 250px;
+  width: 100%;
 }
 
 .textarea {
@@ -29881,7 +29886,6 @@ progress {
   flex-wrap: wrap;
   justify-content: space-between;
   margin-bottom: 1rem;
-  gap: 0.5rem;
 }
 
 .gamepage-header h1, .gamepage-header .h1 {
@@ -29897,16 +29901,20 @@ progress {
 
 .game-details {
   display: flex;
-  gap: 1rem;
+  gap: 2rem;
 }
 
 .rating {
-  border: 2px solid teal;
-  background-color: rgb(174, 212, 212);
-  color: teal;
+  border: 2px solid #008080;
+  background-color: #d5f0f0;
   padding: 0.3rem 0.5rem;
   border-radius: 10%;
-  display: inline;
+}
+
+.rating p {
+  color: #005C5C;
+  margin-bottom: 0;
+  font-weight: 500;
 }
 
 .favourite-icon {
@@ -29923,7 +29931,7 @@ progress {
 
 .tags {
   border: 2px solid teal;
-  border-radius: 5%;
+  border-radius: 10%;
   padding: 0.3rem 0.5rem;
   margin: 0.5rem;
 }
@@ -29937,10 +29945,21 @@ progress {
   border: none;
   outline: none;
   font-size: 1.8rem;
-  position: absolute;
-  bottom: 3rem;
+  margin-top: 3rem;
 }
 
+@media only screen and (max-width: 992px) {
+  .gamepage {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .miniatures {
+    justify-content: space-between;
+  }
+  .miniature {
+    max-width: 100%;
+  }
+}
 body {
   background-color: lightgray;
 }

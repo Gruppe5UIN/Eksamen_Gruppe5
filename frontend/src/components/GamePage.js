@@ -44,16 +44,17 @@ console.log(games[0]?.name)
       <figure className="image-frame">
           <img className="main-image" src="https://placekitten.com/845/500" alt=""></img>
           <section className="miniatures">
-            <img className="miniature" src="https://placekitten.com/270/100" alt=""></img>
-            <img className="miniature" src="https://placekitten.com/270/100" alt=""></img>
-            <img className="miniature" src="https://placekitten.com/270/100" alt=""></img>
+            <img className="miniature" src="https://placekitten.com/200/100" alt=""></img>
+            <img className="miniature" src="https://placekitten.com/200/100" alt=""></img>
+            <img className="miniature" src="https://placekitten.com/200/100" alt=""></img>
           </section>
       </figure>
       <section className="textarea">
         <header className="gamepage-header">
           <h1>Tittel kan være lang</h1>
           <section className="game-details">
-            <span className="rating">4.7</span>
+            <span className="rating">
+              <p>4.7</p></span>
             <GiHeartShield className="favourite-icon" size={42} alt="favourite"/> 
          </section>
         </header>

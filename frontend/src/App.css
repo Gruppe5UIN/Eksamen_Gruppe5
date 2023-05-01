@@ -36,24 +36,3 @@
     transform: rotate(360deg);
   }
 }
-
-h3{
-  margin: 0.3rem;
-  margin-left: 0;
-}
-
-
-
-
-@media only screen and (max-width: 600px) {
-  .gamecard{
-    flex-wrap: wrap;
-    max-height: 100%;
-  }
-  .gamecard-image{
-    max-width: 100%;
-    width: 100%;
-  }
-}
-
-
