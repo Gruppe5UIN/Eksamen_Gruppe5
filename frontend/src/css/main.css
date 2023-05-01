@@ -29788,6 +29788,7 @@ progress {
   width: 100%;
   display: flex;
   margin: 1rem;
+  background-color: white;
 }
 
 .playtime {
@@ -29799,6 +29800,10 @@ progress {
 .playtime p {
   margin: 0;
   margin-left: 0.4rem;
+}
+
+.duration-icon {
+  color: teal;
 }
 
 .gamecard-text {
@@ -29832,6 +29837,110 @@ progress {
     width: 100%;
   }
 }
+.gamepage {
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  background-color: white;
+}
+
+.image-frame {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  /*overflow: hidden;*/
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+.main-image {
+  width: 100%;
+  object-fit: cover;
+}
+
+.miniatures {
+  display: flex;
+  gap: 1.6rem;
+  width: inherit;
+  justify-content: space-evenly;
+}
+
+.textarea {
+  max-width: 700px;
+  width: 100%;
+  margin: 1rem 1rem 0 2rem;
+  padding: 1rem;
+  overflow: hidden;
+}
+
+.gamepage-header {
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  gap: 0.5rem;
+}
+
+.gamepage-header h1, .gamepage-header .h1 {
+  margin: 0;
+}
+
+.gamepage-header h2, .gamepage-header .h2 {
+  font-size: 2.5rem;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  margin-left: 1rem;
+}
+
+.game-details {
+  display: flex;
+  gap: 1rem;
+}
+
+.rating {
+  border: 2px solid teal;
+  background-color: rgb(174, 212, 212);
+  color: teal;
+  padding: 0.3rem 0.5rem;
+  border-radius: 10%;
+  display: inline;
+}
+
+.favourite-icon {
+  color: teal;
+}
+
+.plot {
+  margin: 2rem 0;
+}
+
+.tag-group {
+  margin-top: 3rem;
+}
+
+.tags {
+  border: 2px solid teal;
+  border-radius: 5%;
+  padding: 0.3rem 0.5rem;
+  margin: 0.5rem;
+}
+
+.buy-button {
+  margin: 0;
+  padding: 0.5rem 2rem;
+  color: white;
+  background-color: teal;
+  border-radius: 10%;
+  border: none;
+  outline: none;
+  font-size: 1.8rem;
+  position: absolute;
+  bottom: 3rem;
+}
+
 body {
   background-color: lightgray;
 }

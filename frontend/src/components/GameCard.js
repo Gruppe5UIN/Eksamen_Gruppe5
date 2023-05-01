@@ -14,7 +14,7 @@ export default function GameCard() {
           <h3>Tittel kan være lang</h3>
           <h4>Action</h4>
           <section className="playtime">
-            <GiDuration className="duration-icon" size={24} alt="playtime"/>
+            <GiDuration className="duration-icon" size={28} alt="playtime"/>
             <p>7</p>
           </section>
         </section>
