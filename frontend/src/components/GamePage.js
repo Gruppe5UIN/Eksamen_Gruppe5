@@ -4,7 +4,10 @@ import { GiHeartShield } from "react-icons/gi";
 //import { useParams } from "react-router-dom";
 
 //navigere bakover onClick={()=>navigate(-1)
-
+/*
+Utviklere (developers)
+//Kjøpsmuligheter (stores) - ?
+*/
 //komponent for presentasjon av et spill
 export default function GamePage({name}) {
   
@@ -16,6 +19,7 @@ export default function GamePage({name}) {
  
   //url for å hente bilder 
   //https://api.rawg.io/api/games/3498/screenshots?key=d2d5f79e22a6464d852e6cd6b671c8d7
+  //developers: https://api.rawg.io/api/developers?id=2306&key=d2d5f79e22a6464d852e6cd6b671c8d7
   
   const [games, setGames] = useState([]);
 
@@ -25,13 +29,6 @@ export default function GamePage({name}) {
     const data = await response.json();
     setGames(data.results);
 }
-/*
-{games.map((game, index) => (
-                <h1 key="index">{game.name}</h1>
-                             
-                  ))
-            }
-*/
 
 useEffect(() => {
   getGames()
@@ -76,6 +73,10 @@ console.log(games[0]?.name)
             <tr>
               <td>Publisher: </td>
               <td>EA Sports</td>
+            </tr>
+            <tr>
+              <td>Developers: </td>
+              <td>Sega, Ubisoft</td>
             </tr>
             <tr>
               <td>Platforms: </td>
