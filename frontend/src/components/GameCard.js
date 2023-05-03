@@ -5,7 +5,7 @@ import { GiDuration } from "react-icons/gi";
 //Skal ha en lenke basert på apiId videre til GamePage
 //Henter inn et spillobjekt som props
 //Sjanger må senere basereres på filtrering? På objektet er det en liste med sjangere
-//Se på hvordan vi velger bilde
+//Se på hvordan vi velger bilde. Bruker foreløpig kun første der det er en liste med flere
 export default function GameCard({game}) {
   const image = game?.short_screenshots[0]?.image
   const title = game?.name
