@@ -2,9 +2,10 @@ import React from "react";
 import GameCard from "./GameCard";
 
 export default function GameShop({ games }) {
+
   return (
     <>
-      <GameCard />
+      <GameCard game={games[0]}/>
       {/* AN EXAMPLE OF HOW GAMECARD COULD LOOK:
       
       <section>
