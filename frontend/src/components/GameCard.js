@@ -10,7 +10,7 @@ export default function GameCard({game}) {
   const image = game?.short_screenshots[0]?.image
   const title = game?.name
   const genre = game?.genres[0]?.name
-  const thisPlayTime = game?.playtime
+  const playTime = game?.playtime
   
   return (
 
@@ -22,7 +22,7 @@ export default function GameCard({game}) {
           <h4>{genre}</h4>
           <section className="playtime">
             <GiDuration className="duration-icon" size={28} alt="playtime"/>
-            <p>{thisPlayTime}</p>
+            <p>{playTime}</p>
           </section>
         </section>
       </article>
