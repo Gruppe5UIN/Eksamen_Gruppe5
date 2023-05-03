@@ -6,8 +6,11 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "bootstrap": "^5.3.0-alpha1",
+    "bootstrap-icons": "^1.10.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-icons": "^4.8.0",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
@@ -19,8 +22,8 @@
     "css:watch": "sass --watch src/sass/main.scss:src/css/main.css",
     "css:compile": "sass src/sass/main.scss:src/css/main.css",
     "css:prefix": "postcss --use autoprefixer -b \"last 4 versions\" src/css/main.css -o src/css/main.css",
-     "css:compress": "css-minify -f src/css/main.css -o src/css",
-     "css:build": "npm-run-all css:compile css:prefix css:compress"
+    "css:compress": "css-minify -f src/css/main.css -o src/css",
+    "css:build": "npm-run-all css:compile css:prefix css:compress"
   },
   "eslintConfig": {
     "extends": [
