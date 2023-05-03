@@ -6,7 +6,7 @@ export default function GameShop({ games }) {
 
   return (
     <> 
-      <GameCard game={games[0]}/>
+      <GameCard game={games[2]}/>
       {/* AN EXAMPLE OF HOW GAMECARD COULD LOOK:
       
       <section>
