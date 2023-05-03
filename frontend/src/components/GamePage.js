@@ -9,7 +9,7 @@ Utviklere (developers)
 //Kjøpsmuligheter (stores) - ?
 */
 //komponent for presentasjon av et spill
-export default function GamePage({name}) {
+export default function GamePage() {
   
   //hente spill basert på slug eller id?
   //const { slug } = useParams();
@@ -21,6 +21,7 @@ export default function GamePage({name}) {
   //https://api.rawg.io/api/games/3498/screenshots?key=d2d5f79e22a6464d852e6cd6b671c8d7
   //developers: https://api.rawg.io/api/developers?id=2306&key=d2d5f79e22a6464d852e6cd6b671c8d7
   
+
   const [games, setGames] = useState([]);
 
   const getGames = async() => {
@@ -34,16 +35,21 @@ useEffect(() => {
   getGames()
 },[]);
 
-console.log(games[0]?.name)
+console.log(games?.short_screenshots)
+const mainImage = games[0]?.short_screenshots[0].image;
+const miniature1 = games[0]?.short_screenshots[1].image;
+const miniature2 = games[0]?.short_screenshots[2].image;
+const miniature3 = games[0]?.short_screenshots[3].image;
+
 
   return (
     <article className="gamepage">
       <figure className="image-frame">
-          <img className="main-image" src="https://placekitten.com/845/500" alt=""></img>
+          <img className="main-image" src={mainImage} alt=""></img>
           <section className="miniatures">
-            <img className="miniature" src="https://placekitten.com/200/100" alt=""></img>
-            <img className="miniature" src="https://placekitten.com/200/100" alt=""></img>
-            <img className="miniature" src="https://placekitten.com/200/100" alt=""></img>
+            <img className="miniature" src={miniature1} alt=""></img>
+            <img className="miniature" src={miniature2} alt=""></img>
+            <img className="miniature" src={miniature3} alt=""></img>
           </section>
       </figure>
       <section className="textarea">
