@@ -28,7 +28,6 @@ useEffect(() => {
       <section>
         <MyGames />
         <MyFavourites />
-        <GamePage />
       </section>
     </>
   );
