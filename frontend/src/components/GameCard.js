@@ -27,7 +27,7 @@ export default function GameCard({game}) {
             <GiDuration className="duration-icon" size={28} alt="playtime"/>
             <p>{playTime}</p>
           </section>
-          {/*<Link to={game?.slug} class="btn btn-primary" role="button" data-bs-toggle="button">Toggle link</Link>*/}
+           <Link to={game?.slug}>Tittel</Link>
         </section>
       </article>
  
