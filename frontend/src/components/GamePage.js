@@ -39,15 +39,15 @@ useEffect(() => {
   getGame()
 },[]);
 
-//Bare en begynnelse på en funksjon på favoritt ikon
+//Bare en begynnelse på en funksjon på favoritt ikon - fortsett gjerne her
 const handleFavourite = (event) => {
   event.preventDefault()
   console.log(`${game?.name} er min favoritt`)
 }
 
-//Bilder kan ev også få et eget komponent, 
+//Bilder kan ev også få et eget komponent ?, 
 //særlig hvis vi vil ha en slider/bytte mellom hovedbilder og miniatyrer
-//bør ha en alt tekst som skiller det ettersom hvor de brukes? Eller?
+//bør ha en alt tekst som skiller de ulike bildene..har bare satt på et nummer nå
 const mainImage = game?.background_image;
 const miniature1 = game?.background_image_additional;
 const miniature2 = game?.background_image;
