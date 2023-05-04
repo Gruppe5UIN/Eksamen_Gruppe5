@@ -4,6 +4,7 @@ import "./css/main.css";
 import HomePage from "./pages/HomePage";
 import GamePage from './components/GamePage'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import MyGames from "./components/MyGames";
 
 function App() {
   // const [games, setGames] = useState([]);
@@ -21,7 +22,7 @@ function App() {
 
   // useEffect(() => {
   //   getGames();
- //  }, []);
+  //  }, []);
 
   // console.log(games);
 
@@ -30,7 +31,8 @@ function App() {
     <Router>
       <Routes>
         <Route index element={<HomePage />} />
-        <Route path=":slug" element={<GamePage/>}/>
+        <Route path=":slug" element={<GamePage />} />
+        <Route path="my-games" element={<MyGames />} />
       </Routes>
     </Router>
   );

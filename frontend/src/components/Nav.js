@@ -17,6 +17,9 @@ export default function Nav() {
           <a href="/about">My Library</a>
         </li>
         <li>
+          <a href="/my-games">My Games</a>
+        </li>
+        <li>
           <a href="/about">Welcome, Name</a>
         </li>
       </ul>
