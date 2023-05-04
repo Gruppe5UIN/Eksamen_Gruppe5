@@ -15,17 +15,18 @@ import GameTable from "./GameTable";
 //tags - wordCloud
 //favourite - må onClick legge til i favourites 
 //button - kjøpe eller innlogget (?)
-//slug er slug
 
 //Tar ut tag i eget komponent
 
-export default function GamePage({apiId}) {
+export default function GamePage() {
    const { slug } = useParams();
+   console.log({slug})
+  
  
   const [game, setGame] = useState();
   //const [images, setImages] = useState();
 
-  const url = `https://api.rawg.io/api/games/${apiId}?key=6ccebb406ca942cd8ddc8584b1da9a4f`;
+  const url = `https://api.rawg.io/api/games/${slug}?key=6ccebb406ca942cd8ddc8584b1da9a4f`;
   //const imageUrl = `https://api.rawg.io/api/games/${apiId}/screenshots?key=6ccebb406ca942cd8ddc8584b1da9a4f`
 
   const getGame = async() => {
@@ -37,6 +38,7 @@ export default function GamePage({apiId}) {
 
 useEffect(() => {
   getGame()
+// eslint-disable-next-line
 },[]);
 
 //Bare en begynnelse på en funksjon på favoritt ikon - fortsett gjerne her
