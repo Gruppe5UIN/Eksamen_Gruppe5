@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import "./App.css";
 import "./css/main.css";
 import Dashboard from "./components/Dashboard";
+import GamePage from "./components/GamePage";
 
 function App() {
   const [games, setGames] = useState([]);
@@ -10,7 +11,7 @@ function App() {
   //Will change to dynamic fetch later if needed
   const getGames = async () => {
     const response = await fetch(
-      `https://api.rawg.io/api/games?key=d2d5f79e22a6464d852e6cd6b671c8d7&ordering=-released&page_size=3&dates=2023-01-01,2023-04-27`
+      `https://api.rawg.io/api/games?key=6ccebb406ca942cd8ddc8584b1da9a4f&ordering=-released&page_size=3&dates=2023-01-01,2023-04-27`
     );
     const data = await response.json();
     setGames(data.results);
@@ -23,9 +24,12 @@ function App() {
   console.log(games);
 
   return (
+    <>
     <div>
       <Dashboard games={games} />
+      <GamePage apiId={2498}/>
     </div>
+    </>
   );
 }
 

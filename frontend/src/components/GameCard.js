@@ -1,5 +1,6 @@
 import React from "react";
 import { GiDuration } from "react-icons/gi";
+import {Link} from 'react-router-dom'
 
 //Komponent for forhåndsvisning av spill som kan brukes på forsiden av dashboard og på spillsidene
 //Skal ha en lenke basert på apiId videre til GamePage
@@ -11,7 +12,9 @@ export default function GameCard({game}) {
   const title = game?.name
   const genre = game?.genres[0]?.name
   const playTime = game?.playtime
+  const id = game?.id
   
+  console.log(id)
   return (
 
       <article className="gamecard">
@@ -24,6 +27,7 @@ export default function GameCard({game}) {
             <GiDuration className="duration-icon" size={28} alt="playtime"/>
             <p>{playTime}</p>
           </section>
+          {/*<Link to={game?.slug} class="btn btn-primary" role="button" data-bs-toggle="button">Toggle link</Link>*/}
         </section>
       </article>
  

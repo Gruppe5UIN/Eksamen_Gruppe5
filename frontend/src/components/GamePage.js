@@ -1,108 +1,83 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { GiHeartShield } from "react-icons/gi";
-//import { useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import GameTable from "./GameTable";
 
-//navigere bakover onClick={()=>navigate(-1)
-/*
-Utviklere (developers)
-//Kjøpsmuligheter (stores) - ?
-*/
-//komponent for presentasjon av et spill
-export default function GamePage({game}) {
 
-  //description - hente med id?
+
+//Komponent for presentasjon av et spill basert på apiId
+//Trenger hjelp til å få til en fetch fra to kilder: et game objekt og en liste med screenshots (bilder)
+
+//Dessuten forbedre koden som er, legge til feilhåndtering og utnytte useEffect bedre(?)
+
+//Skal ha funksjonalitet for:
+//tags - wordCloud
+//favourite - må onClick legge til i favourites 
+//button - kjøpe eller innlogget (?)
+//slug er slug
+
+//Tar ut tag i eget komponent
+
+export default function GamePage({apiId}) {
+   const { slug } = useParams();
  
+  const [game, setGame] = useState();
+  //const [images, setImages] = useState();
 
-  //hente spill basert på slug eller id?
-  //const { slug } = useParams();
-  //console.log(slug)
-  //navigasjon for å gå tilbake et steg
-  //const navigate = useNavigate();
- 
-  //url for å hente bilder 
-  //const plot = 'https://api.rawg.io/api/games/3498?key=d2d5f79e22a6464d852e6cd6b671c8d7'
+  const url = `https://api.rawg.io/api/games/${apiId}?key=6ccebb406ca942cd8ddc8584b1da9a4f`;
+  //const imageUrl = `https://api.rawg.io/api/games/${apiId}/screenshots?key=6ccebb406ca942cd8ddc8584b1da9a4f`
 
-  //console.log(plot?.description)
-  //developers: https://api.rawg.io/api/developers?id=2306&key=d2d5f79e22a6464d852e6cd6b671c8d7
- 
-  
+  const getGame = async() => {
 
-  const [thisGame, setThisGame] = useState([]);
-
-  const getThisGame = async() => {
-    const url = 'https://api.rawg.io/api/games/3498?key=d2d5f79e22a6464d852e6cd6b671c8d7';
     const response = await fetch(url);
     const data = await response.json();
-    setThisGame(data);
+    setGame(data);
 }
 
 useEffect(() => {
-  getThisGame()
+  getGame()
 },[]);
 
-console.log({thisGame})
-const genres = thisGame?.genres
-//mappe gjennom
-const mainImage = game?.short_screenshots[0].image;
-const miniature1 = game?.short_screenshots[1].image;
-const miniature2 = game?.short_screenshots[2].image;
-const miniature3 = game?.short_screenshots[3].image;
+//Bare en begynnelse på en funksjon på favoritt ikon
+const handleFavourite = (event) => {
+  event.preventDefault()
+  console.log(`${game?.name} er min favoritt`)
+}
 
+//Bilder kan ev også få et eget komponent, 
+//særlig hvis vi vil ha en slider/bytte mellom hovedbilder og miniatyrer
+//bør ha en alt tekst som skiller det ettersom hvor de brukes? Eller?
+const mainImage = game?.background_image;
+const miniature1 = game?.background_image_additional;
+const miniature2 = game?.background_image;
+const miniature3 = game?.background_image_additional;
 
   return (
     <article className="gamepage">
+    
       <figure className="image-frame">
-          <img className="main-image" src={mainImage} alt=""></img>
+          <img className="main-image" src={mainImage} alt={`${game?.name} num 1`}></img>
           <section className="miniatures">
-            <img className="miniature" style={{maxWidth: '250px'}} src={miniature1} alt=""></img>
-            <img className="miniature" style={{maxWidth: '250px'}} src={miniature2} alt=""></img>
-            <img className="miniature" style={{maxWidth: '250px'}} src={miniature3} alt=""></img>
+            <img className="miniature" style={{maxWidth: '250px'}} src={miniature1} alt={`${game?.name} num 2`}></img>
+            <img className="miniature" style={{maxWidth: '250px'}} src={miniature2} alt={`${game?.name} num 3`}></img>
+            <img className="miniature" style={{maxWidth: '250px'}} src={miniature3} alt={`${game?.name} num 4`}></img>
           </section>
       </figure>
+
       <section className="textarea">
         <header className="gamepage-header">
           <h1>{game?.name}</h1>
           <section className="game-details">
             <span className="rating">
               <p>{game?.rating}</p></span>
-            <GiHeartShield className="favourite-icon" size={42} alt="favourite"/> 
+            <GiHeartShield onClick={handleFavourite} className="favourite-icon" size={42} alt="favourite"/> 
          </section>
         </header>
         <p className="plot">
-        {thisGame.description_raw}
+        {game?.description_raw}
         </p>
-     
-        <table className="game-info">
-          <tbody>
-            <tr>
-              <td>Genres: </td>
-             
-              {genres?.map((genre, index) =>(
-                <td key={index}>
-                  {genre?.name}
-                </td>
-              ))}
-            </tr>
-            <tr>
-              <td>Published: </td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>Publisher: </td>
-              <td>EA Sports</td>
-            </tr>
-            <tr>
-              <td>Developers: </td>
-              <td>Sega, Ubisoft</td>
-            </tr>
-            <tr>
-              <td>Platforms: </td>
-              <td>Android, iOS</td>
-            </tr>
-          </tbody>
-
-        </table>
+        <GameTable game={game}/>
         <section className="tag-group">
           Tags: 
           <span className="tags">platformer</span>
