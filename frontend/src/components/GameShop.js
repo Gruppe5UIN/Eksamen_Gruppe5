@@ -1,10 +1,12 @@
 import React from "react";
 import GameCard from "./GameCard";
 
+//Cecilie: kun en test av game som props, bare å fjerne
 export default function GameShop({ games }) {
+
   return (
-    <>
-      <GameCard />
+    <> 
+      <GameCard game={games[2]}/>
       {/* AN EXAMPLE OF HOW GAMECARD COULD LOOK:
       
       <section>
