@@ -12,7 +12,7 @@ export default {
         },
         {
             name: "apiId",
-            type: "string",
+            type: 'number',
             title: "Api Id"
         },
         {
