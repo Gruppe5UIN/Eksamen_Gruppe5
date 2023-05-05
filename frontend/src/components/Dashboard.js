@@ -1,25 +1,19 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import GameCard from "./GameCard";
+import { Link } from "react-router-dom";
+import { getGames } from "../functions/Fetch";
 
 export default function Dashboard() {
   const [games, setGames] = useState([]);
   const count = 0;
 
-  //Dynamic queryParams to use in other components
-  const getGames = async (params) => {
-    const queryParams = new URLSearchParams(params).toString();
-    const response = await fetch(
-      `https://api.rawg.io/api/games?key=6ccebb406ca942cd8ddc8584b1da9a4f&${queryParams}&dates=2023-01-01,2023-05-01`
-    );
-    const data = await response.json();
-    setGames(data.results);
-  };
-
   useEffect(() => {
     getGames({
       ordering: "-released",
       page_size: 3,
+    }).then((results) => {
+      setGames(results);
     });
   }, []);
 
@@ -28,9 +22,13 @@ export default function Dashboard() {
       <section className="gs">
         <section className="gs-txt-box">
           <h2>Game Shop</h2>
-          <button class="btn btn-outline-primary" id="visitshop-btn">
+          <Link
+            to="/gameshop"
+            className="btn btn-outline-primary"
+            id="visitshop-btn"
+          >
             Visit gameshop
-          </button>
+          </Link>
         </section>
 
         <article className="gs-box">

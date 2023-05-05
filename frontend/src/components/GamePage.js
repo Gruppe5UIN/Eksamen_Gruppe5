@@ -103,7 +103,7 @@ export default function GamePage() {
           <span className="tags">jump</span>
           <span className="tags">stressful</span>
         </section>
-        <button class="btn btn-outline-primary">Buy</button>
+        <button className="btn btn-outline-primary">Buy</button>
       </section>
     </article>
   );
