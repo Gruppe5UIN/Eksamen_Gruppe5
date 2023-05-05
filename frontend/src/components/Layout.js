@@ -6,7 +6,6 @@ export default function Layout() {
   return (
     <div>
       <header>
-        <h1>MAC's Gamehub</h1>
         <Nav />
       </header>
       <main>
