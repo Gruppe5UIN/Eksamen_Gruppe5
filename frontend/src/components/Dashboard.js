@@ -28,7 +28,7 @@ export default function Dashboard() {
       <section className="gs">
         <section className="gs-txt-box">
           <h2>Game Shop</h2>
-          <button class="btn btn-outline-primary" id="visitshop-btn">
+          <button className="btn btn-outline-primary" id="visitshop-btn">
             Visit gameshop
           </button>
         </section>
