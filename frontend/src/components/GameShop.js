@@ -1,35 +1,32 @@
 import React from "react";
+import { getGames } from "../functions/Fetch";
 import GameCard from "./GameCard";
+import { useState, useEffect } from "react";
 
-//Cecilie: kun en test av game som props, bare å fjerne
-export default function GameShop({ games }) {
+export default function GameShop() {
+  const [games, setGames] = useState([]);
 
+  useEffect(() => {
+    getGames({
+      ordering: "-released",
+      page_size: 10,
+    }).then((results) => {
+      setGames(results);
+    });
+  }, []);
   return (
-    <> 
-      <GameCard game={games[2]}/>
-      {/* AN EXAMPLE OF HOW GAMECARD COULD LOOK:
-      
-      <section>
-        <h2>Gameshop</h2>
-        <button>Visit shop</button>
-        {games?.map((game, index) => (
-          <article key={index}>
-            <img
-              src={game.background_image}
-              alt={game.name}
-              style={{ maxWidth: "300px" }}
-            />
-            <h3>{game.name}</h3>
-            <ul>
-              {game.genres.map((genre, index) => (
-                <li key={index}>{genre.name}</li>
-              ))}
-            </ul>
-            <button>buy</button>
-          </article>
-        ))}
-      </section>
-      */}
-    </>
+    <section>
+      {games?.map((game, index) => (
+        <GameCard
+          key={index}
+          title={game?.name}
+          genre={game?.genres.map((genre, i) => (
+            <li key={i}>{genre?.name}</li>
+          ))}
+          text="Buy"
+          image={game?.background_image}
+        />
+      ))}
+    </section>
   );
 }
