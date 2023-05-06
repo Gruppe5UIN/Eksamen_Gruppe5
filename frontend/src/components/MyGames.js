@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Nav from "./Nav";
 import GameCard from "./GameCard";
 
 export default function MyGames() {

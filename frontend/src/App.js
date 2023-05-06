@@ -4,7 +4,8 @@ import "./css/main.css";
 import GamePage from "./components/GamePage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import GameShop from "./components/GameShop";
-import HomePage from "./pages/HomePage";
+import Layout from "./components/Layout";
+import Dashboard from "./components/Dashboard";
 import MyGames from "./components/MyGames";
 
 function App() {
@@ -12,10 +13,12 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route index element={<HomePage />} />
-        <Route path=":slug" element={<GamePage />} />
-        <Route path="/gameshop" element={<GameShop />} />
-        <Route path="my-games" element={<MyGames />} />
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Dashboard />} />
+          <Route path=":slug" element={<GamePage />} />
+          <Route path="/gameshop" element={<GameShop />} />
+          <Route path="/my-games" element={<MyGames />} />
+        </Route>
       </Routes>
     </Router>
 
