@@ -17,12 +17,13 @@ export const fetchGenreById = async (id) => {
 
 //Henter alle spill - returnerer et fullt objekt
 export const fetchAllGames = async () => {
-    const data = await client.fetch(`*[_type == 'game']`)
+    const data = await client.fetch(`*[_type == 'game']{apiId,"slug": slug.current,title,playtime,"image": imageUrl[0], genres[]->{title}}`)
     return data;
 
 }
+//*[_type == 'game']{apiId,"slug": slug.current,title,playtime,imageUrl[0], genres[]->{title}}
 
-//Henter et spill basert på id
+//Henter et spill basert på id - endre til slug?
 export const fetchGame = async (id) => {
     const data = await client.fetch(`*[_type == 'game' && apiId == $id]`,{id})
     return data;
@@ -39,6 +40,7 @@ export const fetchGamesByGenre = async (genre) => {
 
 //Teller antall spill 
 export const countGames = async () => {
-    const data = await client.fetch(`count(*[_type == 'game'])`)
+    const data = await client.fetch(`{"total": count(*[_type == 'game'])}`)
+    //const data = await client.fetch(`count(*[_type == 'game'])`)
     return data;
 }

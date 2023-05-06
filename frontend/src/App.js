@@ -19,7 +19,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Dashboard />} />
-          <Route path=":slug" element={<GamePage />} />
+          <Route path=":slug" element={<GamePage favourites={favourites} setFavourites={setFavourites}/>} />
           <Route path="/gameshop" element={<GameShop />} />
           <Route path="/my-games" element={<MyGames />} />
         </Route>
