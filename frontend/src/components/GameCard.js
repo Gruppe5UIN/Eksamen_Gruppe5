@@ -11,7 +11,7 @@ export default function GameCard({
   title,
   genre,
   image,
-  game,
+  slug,
   playTime,
   text,
 }) {
@@ -32,7 +32,7 @@ export default function GameCard({
           )}
         </section>
         <section className="button-section">
-          <Link to={game?.slug} className="btn btn-outline-secondary">
+          <Link to={slug} className="btn btn-outline-primary">
             Read more
           </Link>
           <button className="btn btn-outline-secondary">{text}</button>
