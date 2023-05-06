@@ -22,7 +22,15 @@ export const fetchAllGames = async () => {
 
 }
 
+//Henter et spill basert på id
+export const fetchGame = async (id) => {
+    const data = await client.fetch(`*[_type == 'game' && apiId == $id]`,{id})
+    return data;
+}
+
+
 //Henter spill som tilhører en sjanger 
+
 export const fetchGamesByGenre = async (genre) => {
     const data = await client.fetch(`*[_type=="game" && references(*[_type == "genre" && title == $genre]._id)]`,{genre})
     return data;
