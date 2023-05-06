@@ -5,6 +5,9 @@ import GamePage from "./components/GamePage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import GameShop from "./components/GameShop";
 import { useState } from "react";
+import Layout from "./components/Layout";
+import Dashboard from "./components/Dashboard";
+import MyGames from "./components/MyGames";
 
 function App() {
 
