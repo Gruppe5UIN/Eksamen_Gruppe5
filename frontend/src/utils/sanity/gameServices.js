@@ -1,5 +1,7 @@
 import { client } from "./client"
 
+//Komponent med metoder som henter data fra Sanity
+//Bør det legges inn errorhåndtering?
 
 //Henter alle sjangere - returnerer apiId og sjangernavn
 export const fetchAllGenres = async () =>{
@@ -15,7 +17,7 @@ export const fetchGenreById = async (id) => {
 
 //Henter alle spill - returnerer et fullt objekt
 export const fetchAllGames = async () => {
-    const data = await client.fetch(`*[_type == 'game]`)
+    const data = await client.fetch(`*[_type == 'game']`)
     return data;
 
 }
@@ -27,7 +29,8 @@ export const fetchGame = async (id) => {
 }
 
 
-//Henter spill som tilhører en sjanger
+//Henter spill som tilhører en sjanger 
+
 export const fetchGamesByGenre = async (genre) => {
     const data = await client.fetch(`*[_type=="game" && references(*[_type == "genre" && title == $genre]._id)]`,{genre})
     return data;
