@@ -4,6 +4,7 @@
  * Copyright 2011-2022 The Bootstrap Authors
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&family=Roboto:wght@300;400;500;700&family=Rubik:wght@400;600;700&display=swap");
 :root,
 [data-bs-theme=light] {
   --bs-blue: #0d6efd;
@@ -29782,48 +29783,32 @@ progress {
   }
 }
 .gamecard {
-  border: 1px teal solid;
-  max-height: 400px;
-  max-width: 600px;
-  display: flex;
-  flex-wrap: wrap;
-  margin: 0 auto;
-  background-color: white;
-}
-
-.playtime {
-  display: flex;
-  align-items: flex-start;
-  flex-wrap: wrap;
-}
-
-.playtime p {
-  margin: 0;
-  margin-left: 0.4rem;
-}
-
-.duration-icon {
-  color: teal;
-}
-
-.gamecard-text {
-  margin: 1rem;
-}
-
-.gamecard-text h3, .gamecard-text .h3 {
-  margin: 0.5rem 0;
-  font-weight: 200;
-  font-size: 1.5rem;
-}
-
-.gamecard-text h4, .gamecard-text .h4 {
-  margin: 0.5rem 0;
+  max-height: 100%;
+  width: 100%;
+  margin: 1rem auto;
 }
 
 .gamecard-image {
-  max-width: 200px;
-  object-fit: cover;
-  object-position: 100% 25%;
+  max-width: 100%;
+  width: 100%;
+}
+
+.gamecard-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+.gamecard-text h3, .gamecard-text .h3 {
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+}
+.gamecard-text h5, .gamecard-text .h5 {
+  font-size: 1em;
+}
+.gamecard-text ul {
+  list-style: none;
+  padding: 0;
 }
 
 .button-section {
@@ -29832,20 +29817,54 @@ progress {
   gap: 1rem;
 }
 
-@media only screen and (max-width: 837px) {
+@media only screen and (min-width: 837px) {
   .gamecard {
-    max-height: 100%;
-    width: 100%;
-    margin: 1rem auto;
+    max-height: 400px;
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    background-color: white;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  }
+  .playtime {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+  .playtime p {
+    margin: 0;
+    margin-left: 0.4rem;
+  }
+  .duration-icon {
+    color: teal;
+  }
+  .gamecard-text {
+    margin: 1rem;
+    padding: 1rem;
+  }
+  .gamecard-text h3, .gamecard-text .h3 {
+    margin: 0.5rem 0;
+    font-weight: 200;
+    font-size: 1.5rem;
+  }
+  .gamecard-text h4, .gamecard-text .h4 {
+    margin: 0.5rem 0;
+  }
+  .gamecard-image {
+    max-width: 200px;
+    object-fit: cover;
+    object-position: 100% 25%;
+  }
+}
+@media only screen and (min-width: 900px) {
+  .gamecard {
+    max-width: 500px;
+    max-height: none;
   }
   .gamecard-image {
     max-width: 100%;
-    width: 100%;
-  }
-  .gamecard-text {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+    height: auto;
   }
 }
 .gamepage {
@@ -29971,119 +29990,111 @@ progress {
     max-width: 100%;
   }
 }
-.gs-box {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
+body {
+  max-width: 95%;
+  margin: 0 auto;
 }
 
-.gs {
-  background-color: lightblue;
-  padding: 1rem;
-  margin-top: 1rem;
+header {
+  text-align: center;
 }
-
-nav {
-  display: flex;
-  gap: 1rem;
-  align-items: baseline;
-  justify-content: space-between;
-  background-color: black;
-  color: white;
-  padding-right: 4rem;
+header h1, header .h1 {
+  padding: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.3rem;
+  font-size: 2em;
+  color: #ff6100;
 }
-nav h1, nav .h1 {
-  padding: 4rem;
-}
-nav ul {
-  display: flex;
+header nav ul {
   list-style: none;
-  gap: 2rem;
+  display: block;
   padding: 0;
 }
-nav li a {
+header nav ul li {
+  background-color: white;
+  border: 1px solid #6c757d;
+  padding: 0.7rem;
+}
+header nav ul li a {
   text-decoration: none;
-  color: white;
+  color: black;
+}
+
+.gs, .mygames-box, .favourites-box {
+  padding: 0.5rem;
+  background-color: #ececec;
+  margin-bottom: 1rem;
 }
 
 .gs-txt-box {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  padding: 2rem;
+  text-align: center;
+  padding: 1.5rem;
+}
+.gs-txt-box h2, .gs-txt-box .h2 {
+  margin-bottom: 2rem;
 }
 
-@media only screen and (max-width: 837px) {
-  .gs-box {
-    flex-direction: column;
-    gap: 1rem;
-    flex-wrap: nowrap;
-  }
-  nav {
-    flex-direction: column;
-    gap: 1rem;
-    align-items: center;
-    justify-content: center;
-    background-color: black;
-    color: white;
-  }
-  nav h1, nav .h1 {
-    padding: 4rem;
-  }
-  nav ul {
-    display: flex;
-    list-style: none;
-    gap: 2rem;
-    padding: 0;
-  }
-  nav li a {
-    text-decoration: none;
-    color: white;
-  }
+#visitshop-btn {
+  width: 50%;
 }
-@media only screen and (max-width: 600px) {
-  .gs-box {
-    flex-direction: column;
-    gap: 1rem;
+
+@media only screen and (min-width: 837px) {
+  header {
+    height: 120px;
   }
-  h2, .h2 {
-    width: 100%;
-    text-align: center;
+  header nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
     padding: 1rem;
   }
-  nav {
-    flex-direction: column;
+  header nav ul {
+    display: flex;
     flex-wrap: wrap;
     align-content: center;
-    background-color: black;
-    color: white;
+    gap: 1rem;
   }
-  nav h1, nav .h1 {
-    text-align: center;
-    padding: 4rem;
-  }
-  nav ul {
-    display: block;
-    width: 100%;
-    text-align: center;
-    list-style: none;
-    padding: 0;
-  }
-  nav ul li {
-    padding: 1rem;
+  header nav ul li {
+    border: 1px solid #6c757d;
     background-color: white;
-    margin: 1rem;
   }
-  nav ul li a {
-    text-decoration: none;
+  header nav ul li a {
     color: black;
   }
+  .gs {
+    padding-top: 3rem;
+  }
+  .gs-box {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
   .gs-txt-box {
-    display: block;
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 3rem;
+  }
+  .gs-txt-box h2, .gs-txt-box .h2 {
+    font-size: 1.5em;
   }
   #visitshop-btn {
-    width: 100%;
+    width: auto;
   }
+}
+@media only screen and (min-width: 900px) {
+  .gs-box {
+    flex-direction: row;
+  }
+}
+.gameshop-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
 }
 
 /*# sourceMappingURL=main.css.map */

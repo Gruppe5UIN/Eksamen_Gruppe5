@@ -32,10 +32,10 @@ export default function GameCard({
           )}
         </section>
         <section className="button-section">
-          <Link to={game?.slug} className="btn btn-outline-primary">
+          <Link to={game?.slug} className="btn btn-outline-secondary">
             Read more
           </Link>
-          <button className="btn btn-outline-primary">{text}</button>
+          <button className="btn btn-outline-secondary">{text}</button>
         </section>
       </section>
     </article>
