@@ -55,7 +55,7 @@ export default function MyGames() {
 
   return (
     <div>
-      <h3>MY GAMES LIBRARY - {games.length} games</h3>
+      <h3 id="gs-first">My Games Library - {games.length} games</h3>
       <section className="page-container">
         {games.map((game) => (
           <GameCard

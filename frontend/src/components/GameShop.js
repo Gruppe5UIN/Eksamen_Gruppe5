@@ -15,18 +15,21 @@ export default function GameShop() {
     });
   }, []);
   return (
-    <section className="page-container">
-      {games?.map((game, index) => (
-        <GameCard
-          key={index}
-          title={game?.name}
-          genre={game?.genres.map((genre, i) => (
-            <li key={i}>{genre?.name}</li>
-          ))}
-          text="Buy"
-          image={game?.background_image}
-        />
-      ))}
-    </section>
+    <>
+      <h2 id="gs-first">Game Shop</h2>
+      <section className="page-container">
+        {games?.map((game, index) => (
+          <GameCard
+            key={index}
+            title={game?.name}
+            genre={game?.genres.map((genre, i) => (
+              <li key={i}>{genre?.name}</li>
+            ))}
+            text="Buy"
+            image={game?.background_image}
+          />
+        ))}
+      </section>
+    </>
   );
 }
