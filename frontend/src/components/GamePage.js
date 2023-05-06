@@ -9,6 +9,7 @@ import GameTable from "./GameTable";
 //Trenger error håndtering
 //Ligger en midlertidig print til console når man legger til/fjerner favoritt
 //Button funksjonalitet er ikke laget
+//Har tatt ut kun 5 tags da listen med tags var veldig lang
 export default function GamePage({favourites, setFavourites}) {
   const { slug } = useParams();
 
