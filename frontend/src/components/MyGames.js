@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Nav from "./Nav";
+import GameCard from "./GameCard";
 
 export default function MyGames() {
   const [games, setGames] = useState([]);
@@ -50,22 +51,23 @@ export default function MyGames() {
         ratings_count: 100,
         favorite: false,
       }
-    ]); 
+    ]);
   }
 
   return (
     <div>
       <div>
-        <h1>MY GAMES LIBRARY - { games.length } games</h1>
-        <div className="d-flex justify-content-center">
+        <h1>MY GAMES LIBRARY - {games.length} games</h1>
         {games.map((game) => (
-          <div className="px-4" key={game.id}>
-            <h2>{game.name}</h2>
-            <img src={game.background_image} alt={game.name} />
-            <button className="d-block">Remove From Favorite</button>
-          </div>
+          <GameCard
+            key={game.id}
+            title={game.name}
+            genre={game.name}
+            image={game.background_image}
+            slug={game.slug}
+            playTime={2}
+            text={"Text here"} />
         ))}
-        </div>
       </div>
     </div>
   );

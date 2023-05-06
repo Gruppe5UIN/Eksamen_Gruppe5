@@ -5,6 +5,7 @@ import GamePage from "./components/GamePage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import GameShop from "./components/GameShop";
 import HomePage from "./pages/HomePage";
+import MyGames from "./components/MyGames";
 
 function App() {
   //Cecilie: har satt inn GamePage her for å sjekke link/path. Bare å flytte/ordne
@@ -13,8 +14,8 @@ function App() {
       <Routes>
         <Route index element={<HomePage />} />
         <Route path=":slug" element={<GamePage />} />
-        <Route path="my-games" element={<MyGames />} />
         <Route path="/gameshop" element={<GameShop />} />
+        <Route path="my-games" element={<MyGames />} />
       </Routes>
     </Router>
 
