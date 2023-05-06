@@ -36,12 +36,12 @@ export default function Dashboard() {
             <GameCard
               key={index}
               image={game.background_image}
+              slug={game.slug}
               title={game.name}
               playTime={game.playtime}
               genre={game.genres.map((genre, index) => (
                 <li key={index}>{genre.name}</li>
               ))}
-              game={game}
               text="Buy"
             />
           ))}
