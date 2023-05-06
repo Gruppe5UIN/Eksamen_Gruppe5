@@ -49,14 +49,14 @@ export default function MyGames() {
         rating: 4.5,
         ratings_count: 100,
         favorite: false,
-      }
+      },
     ]);
-  }
+  };
 
   return (
     <div>
-      <div>
-        <h1>MY GAMES LIBRARY - {games.length} games</h1>
+      <h3>MY GAMES LIBRARY - {games.length} games</h3>
+      <section className="page-container">
         {games.map((game) => (
           <GameCard
             key={game.id}
@@ -65,9 +65,10 @@ export default function MyGames() {
             image={game.background_image}
             slug={game.slug}
             playTime={2}
-            text={"Text here"} />
+            text={"Text here"}
+          />
         ))}
-      </div>
+      </section>
     </div>
   );
 }

@@ -30087,7 +30087,7 @@ header nav ul li a {
     flex-direction: row;
   }
 }
-.gameshop-container {
+.page-container {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
