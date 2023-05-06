@@ -8,6 +8,7 @@ import GameTable from "./GameTable";
 //Henter inn favoritt state fra App.js
 //Trenger error håndtering
 //Ligger en midlertidig print til console når man legger til/fjerner favoritt
+//Button funksjonalitet er ikke laget
 export default function GamePage({favourites, setFavourites}) {
   const { slug } = useParams();
 
@@ -20,8 +21,7 @@ export default function GamePage({favourites, setFavourites}) {
     const data = await response.json();
     setGame(data);
   };
-
-  
+ 
   //Håndterer et klikk på favoritt ikon - legger til hvis den ikke er favoritt, fjerner hvis den allerede er favoritt
   //Er dette brukervennlig nok?
   const handleFavourite = (event) => {  
