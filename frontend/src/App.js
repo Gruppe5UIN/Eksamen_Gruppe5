@@ -4,11 +4,12 @@ import "./css/main.css";
 import GamePage from "./components/GamePage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import GameShop from "./components/GameShop";
-import Layout from "./components/Layout";
-import Dashboard from "./components/Dashboard";
-import MyGames from "./components/MyGames";
+import { useState } from "react";
 
 function App() {
+
+ const [favourites, setFavourites] = useState([]);
+
   //Cecilie: har satt inn GamePage her for å sjekke link/path. Bare å flytte/ordne
   return (
     <Router>
