@@ -24,10 +24,10 @@ export default function Dashboard() {
           <h2>Game Shop</h2>
           <Link
             to="/gameshop"
-            className="btn btn-outline-primary"
+            className="btn btn-outline-secondary"
             id="visitshop-btn"
           >
-            Visit gameshop
+            Visit shop
           </Link>
         </section>
 

@@ -35,7 +35,7 @@ export default function GameCard({
           <Link to={slug} className="btn btn-outline-primary">
             Read more
           </Link>
-          <button className="btn btn-outline-primary">{text}</button>
+          <button className="btn btn-outline-secondary">{text}</button>
         </section>
       </section>
     </article>

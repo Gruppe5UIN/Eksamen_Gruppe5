@@ -4,7 +4,7 @@ export default function Nav() {
   return (
     <header>
       <nav>
-        <h1>MACs GameHub</h1>
+        <h1>Game Haven</h1>
         <ul>
           <li>
             <a href="/">Home</a>

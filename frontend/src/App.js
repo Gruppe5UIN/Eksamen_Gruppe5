@@ -10,8 +10,7 @@ import Dashboard from "./components/Dashboard";
 import MyGames from "./components/MyGames";
 
 function App() {
-
- const [favourites, setFavourites] = useState([]);
+  const [favourites, setFavourites] = useState([]);
 
   //Cecilie: har satt inn GamePage her for å sjekke link/path. Bare å flytte/ordne
   return (
@@ -25,20 +24,6 @@ function App() {
         </Route>
       </Routes>
     </Router>
-
-    /* Forslag til bruk av Layout og dermed unngå komponentet HomePage: 
-
-    <Router>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Dashboard />} />
-          <Route path=":slug" element={<GamePage />} />
-          <Route path="/gameshop" element={<GameShop />} />
-        </Route>
-      </Routes>
-    </Router>
-
-    */
   );
 }
 
