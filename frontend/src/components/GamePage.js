@@ -1,7 +1,8 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { GiHeartShield } from "react-icons/gi";
+import { GiHeartShield, GiAbacus } from "react-icons/gi";
 import { useParams } from "react-router-dom";
+import {fetchGame} from '../utils/sanity/gameServices'
 import GameTable from "./GameTable";
 
 //Komponent for presentasjon av et spill basert på slug - som er unik og fungerer som id hos rawg
@@ -9,14 +10,14 @@ import GameTable from "./GameTable";
 //Legge til feilhåndtering 
 
 //Skal ha funksjonalitet for:
-//favourite - må onClick legge til i favourites - legge til i state
+//favourite - fjerne hvis i liste - css
 //button - kjøpe eller innlogget bruker...
 
-export default function GamePage() {
+export default function GamePage({favourites, setFavourites}) {
   const { slug } = useParams();
 
   const [game, setGame] = useState();
-  const [favourite, setFavourite] = useState([]);
+  const [usergame, setUsergame] = useState();
 
   const url = `https://api.rawg.io/api/games/${slug}?key=6ccebb406ca942cd8ddc8584b1da9a4f`;
 
@@ -26,20 +27,55 @@ export default function GamePage() {
     setGame(data);
   };
 
+ 
+
+  async function getUserGame(id) {
+        const data = await fetchGame(id)
+        setUsergame();
+    }
+  
+  //Kun hvis den ikke ligger der
+  //fjerne hvis den allerede er der
+  const handleFavourite = (event) => {
+      event.preventDefault();
+      if(favourites.length === 0){
+        console.log("første favoritt")
+      }
+     
+      /*
+      setFavourites(
+        favourites.filter(g =>
+          g.id !== game.id
+        ));
+        console.log(`${game?.name} er fjernet `)*/
+   
+        setFavourites( 
+        [ 
+          ...favourites, 
+          { id: game?.id, name: game?.name} 
+        ]
+      );
+  
+      console.log(`${game?.name} er min favoritt`);
+    
+  }
+
+
+  const handleDelete = (event) => {
+    event.preventDefault()
+    if(favourites.length > 0){
+       setFavourites(...favourites.filter((element, i) => element !== game))
+    }
+  }
 
   useEffect(() => {
     getGame() 
     // eslint-disable-next-line
   }, []);
 
-  //Bare en begynnelse på en funksjon på favoritt ikon - fortsett gjerne her
-  const handleFavourite = (event) => {
-    event.preventDefault();
-    console.log(`${game?.name} er min favoritt`);
-  };
 
-  //lazy loading images
   const mainImage = game?.background_image;
+  console.log(favourites)
 
   return (
     <article className="gamepage">
@@ -63,6 +99,12 @@ export default function GamePage() {
               size={42}
               alt="favourite"
             />
+        
+            <GiAbacus
+              onClick={handleDelete}
+              className="favourite-icon"
+              size={42}
+              alt="remove from favourite"/>
           </section>
         </header>
         <p className="plot">{game?.description_raw}</p>
@@ -74,7 +116,7 @@ export default function GamePage() {
         
           )}
         </section>
-        {/*<button className="btn btn-outline-primary">Buy</button>*/}
+        <button className="btn btn-outline-primary" >Buy</button>
       </section>
     </article>
   );
