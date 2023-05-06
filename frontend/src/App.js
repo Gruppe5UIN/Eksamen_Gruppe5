@@ -8,15 +8,19 @@ import HomePage from "./pages/HomePage";
 import { useState } from "react";
 
 function App() {
-
- const [favourites, setFavourites] = useState([]);
+  const [favourites, setFavourites] = useState([]);
 
   //Cecilie: har satt inn GamePage her for å sjekke link/path. Bare å flytte/ordne
   return (
     <Router>
       <Routes>
         <Route index element={<HomePage />} />
-        <Route path=":slug" element={<GamePage favourites={favourites} setFavourites={setFavourites} />} />
+        <Route
+          path=":slug"
+          element={
+            <GamePage favourites={favourites} setFavourites={setFavourites} />
+          }
+        />
         <Route path="/gameshop" element={<GameShop />} />
       </Routes>
     </Router>
