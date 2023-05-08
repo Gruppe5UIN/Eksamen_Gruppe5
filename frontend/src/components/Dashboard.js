@@ -1,9 +1,10 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import GameCard from "./GameCard";
 import { Link } from "react-router-dom";
 import { getGames } from "../functions/Fetch";
 import { fetchAllGames, countGames } from '../utils/sanity/gameServices'
+import MyGamesSection from "./dashboardComponents/MyGamesSection.js";
+import MyShopSection from "./dashboardComponents/MyShopSection";
 
 export default function Dashboard() {
   //state for spill fra Sanity
@@ -56,19 +57,7 @@ useEffect(() => {
         </section>
 
         <article className="gs-box">
-          {games.map((game, index) => (
-            <GameCard
-              key={index}
-              image={game.background_image}
-              slug={game.slug}
-              title={game.name}
-              playTime={game.playtime}
-              genre={game.genres.map((genre, index) => (
-                <li key={index}>{genre.name}</li>
-              ))}
-              text="Buy"
-            />
-          ))}
+          <MyShopSection games={games}/>
         </article>
       </section>
       <article>
@@ -76,21 +65,7 @@ useEffect(() => {
           <h3>
             My games library (<span>{numGames.total}</span> games)
           </h3>
-          <article>
-            {userGames.map((game, index) => (
-              <GameCard
-                key={index}
-                title={game.title}
-                genre={game.genres.map((genre, index) => (
-                  <li key={index}>{genre.title}</li>
-                ))}
-                image={game.image}
-                slug={game.slug}
-                playTime={game.playtime}
-                text="Play"
-            />))}
-          </article>
-          {/*Vise noen av spillene fra MyGames */}
+          <MyGamesSection userGames={userGames}/>
         </section>
         <section className="favourites-box">
           <h3>My Favourites</h3>
