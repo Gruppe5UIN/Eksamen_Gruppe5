@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import UserContext from "../context/UserContext";
-import { getFavoritesByUsername } from "../utils/sanity/gameServices";
+import { getFavoritesByUsername } from "../utils/sanity/userServices";
 import GameCard from "./GameCard";
 
 export default function MyFavourites() {

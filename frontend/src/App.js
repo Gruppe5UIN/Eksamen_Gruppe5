@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 import Layout from "./components/Layout";
 import Dashboard from "./components/Dashboard";
 import MyGames from "./components/MyGames";
-import { getUserByEmail } from "./utils/sanity/gameServices";
+import { getUserByEmail } from "./utils/sanity/userServices";
 import UserContext from "./context/UserContext";
 import Login from "./components/Login";
 
