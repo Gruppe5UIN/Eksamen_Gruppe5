@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { GiHeartShield } from "react-icons/gi";
 import { useParams } from "react-router-dom";
 import GameTable from "./GameTable";
+import { fetchGameBySlug } from "../utils/sanity/gameServices";
 
 //Komponent for presentasjon av et spill basert på slug som er unik og fungerer som id hos rawg
 //Henter inn favoritt state fra App.js
@@ -10,11 +11,28 @@ import GameTable from "./GameTable";
 //Ligger en midlertidig print til console når man legger til/fjerner favoritt
 //Button funksjonalitet er ikke laget
 //Har tatt ut kun 5 tags da listen med tags var veldig lang
+
+//Henter data fra Sanity med slug 
+//kan nå ev endre til å hente fra rawg api med id
 export default function GamePage({favourites, setFavourites}) {
   const { slug } = useParams();
 
   const [game, setGame] = useState();
+  const [userGame, setUserGame] = useState();
+ 
   
+  async function getUserGame() {
+    const data = await fetchGameBySlug(slug)
+    setUserGame(data[0]);
+}
+
+useEffect(() => {
+    
+  getUserGame(slug)
+    // eslint-disable-next-line
+},[])
+
+
   const url = `https://api.rawg.io/api/games/${slug}?key=6ccebb406ca942cd8ddc8584b1da9a4f`;
 
   const getGame = async () => {
@@ -23,6 +41,7 @@ export default function GamePage({favourites, setFavourites}) {
     setGame(data);
   };
  
+
   //Håndterer et klikk på favoritt ikon - legger til hvis den ikke er favoritt, fjerner hvis den allerede er favoritt
   //Er dette brukervennlig nok?
   const handleFavourite = (event) => {  
@@ -45,6 +64,7 @@ export default function GamePage({favourites, setFavourites}) {
 
   
   useEffect(() => {
+    
     getGame()
       // eslint-disable-next-line
   },[])
@@ -61,7 +81,7 @@ export default function GamePage({favourites, setFavourites}) {
 
       <section className="textarea">
         <header className="gamepage-header">
-          <h1>{game?.name}</h1>
+          <h1>{userGame?.title}</h1>
           <section className="game-details">
             {game?.rating ? 
             <span className="rating">
