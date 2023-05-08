@@ -13,7 +13,7 @@ import { fetchGameBySlug } from "../utils/sanity/gameServices";
 //Har tatt ut kun 5 tags da listen med tags var veldig lang
 
 //Henter data fra Sanity med slug 
-//kan nå ev endre til å hente fra rawg api med id
+//Endret til å hente fra api med apiId - slik det står i oppgaven
 export default function GamePage({favourites, setFavourites}) {
   const { slug } = useParams();
 
@@ -30,10 +30,12 @@ useEffect(() => {
     
   getUserGame(slug)
     // eslint-disable-next-line
-},[])
+},[slug])
 
+ const apiId = userGame.apiId;
 
-  const url = `https://api.rawg.io/api/games/${slug}?key=6ccebb406ca942cd8ddc8584b1da9a4f`;
+ //const url = `https://api.rawg.io/api/games/${slug}?key=6ccebb406ca942cd8ddc8584b1da9a4f`;
+ const url = `https://api.rawg.io/api/games/${apiId}?key=6ccebb406ca942cd8ddc8584b1da9a4f`;
 
   const getGame = async () => {
     const response = await fetch(url);
@@ -41,7 +43,7 @@ useEffect(() => {
     setGame(data);
   };
  
-
+  console.log(userGame)
   //Håndterer et klikk på favoritt ikon - legger til hvis den ikke er favoritt, fjerner hvis den allerede er favoritt
   //Er dette brukervennlig nok?
   const handleFavourite = (event) => {  
