@@ -62,3 +62,12 @@ export const getFavoritesByUsername = async (username) => {
         console.error(error);
     }
 };
+
+export const getGamesByUsername = async (username) => {
+    try {
+        const result = await client.fetch(`*[_type == "user" && username == $username][0].games[]->{..., game->{..., "username": $username}}`, { username });
+        return result;
+    } catch (error) {
+        console.error(error);
+    }
+};

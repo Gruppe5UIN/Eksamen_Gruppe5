@@ -4,7 +4,7 @@ import { getUserByEmail } from "../utils/sanity/gameServices";
 import { useNavigate } from "react-router-dom";
 
 export default function Login() {
-  const { user, setUser } = useContext(UserContext);
+  const { setUser } = useContext(UserContext);
   const [error, setError] = React.useState(null);
   const navigate = useNavigate();
 
