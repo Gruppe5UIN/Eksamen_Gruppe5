@@ -2,7 +2,7 @@
 //Eget komponent for info om spill som brukes i GamePage
 //Har skilt ut fordi GamePage ble for stor
 //Jeg tror table er korrekt i forhold til UU, men må styles så den passer listeformatet
-export default function GameTable({game}){
+export default function GameTable({game, userGame}){
 
 
 const publishers = game?.publishers?.map((pub, index)=>{
@@ -13,10 +13,10 @@ const publishers = game?.publishers?.map((pub, index)=>{
     )
   })
   
-  const genres = game?.genres?.map((genre, index)=>{
+  const genres = userGame?.genres?.map((genre, index)=>{
     return (
       <td key={index}>
-        {genre.name}
+        {genre.title}
       </td>
     )
   })
@@ -33,6 +33,12 @@ const publishers = game?.publishers?.map((pub, index)=>{
     )
   })
 
+
+ const stores = game?.stores?.map((store, index) => {
+    return(
+      <td key={index}>{store.store.name}</td>
+    )
+  })
     return (
         <table className="game-info">
           <tbody>
@@ -66,6 +72,13 @@ const publishers = game?.publishers?.map((pub, index)=>{
             <tr>
               <td>Platforms: </td>
               {platforms}
+            </tr> : ''}
+
+            
+            {game?.stores.length > 0 ?
+            <tr>
+              <td>Stores: </td>
+              {stores}
             </tr> : ''}
           </tbody>
 

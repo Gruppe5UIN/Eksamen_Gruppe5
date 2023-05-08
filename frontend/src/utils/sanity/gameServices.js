@@ -31,7 +31,7 @@ export const fetchGame = async (id) => {
 
 //Hente et spill med slug
 export const fetchGameBySlug = async (slug) => {
-    const data = await client.fetch(`*[_type == 'game' && slug.current == $slug]{apiId, title, "slug": slug.current}`,{slug})
+    const data = await client.fetch(`*[_type == 'game' && slug.current == $slug]{apiId, title, "slug": slug.current, genres[]->{title}}`,{slug})
     return data;
 }
 

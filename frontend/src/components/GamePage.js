@@ -13,7 +13,7 @@ import { fetchGameBySlug } from "../utils/sanity/gameServices";
 //Har tatt ut kun 5 tags da listen med tags var veldig lang
 
 //Henter data fra Sanity med slug 
-//Endret til å hente fra api med apiId - slik det står i oppgaven
+//Får et race eller noe lignende når jeg henter med apiId fra Sanity - må fikses hvis vi ikke skal bruke slug
 export default function GamePage({favourites, setFavourites}) {
   const { slug } = useParams();
 
@@ -32,10 +32,10 @@ useEffect(() => {
     // eslint-disable-next-line
 },[slug])
 
- const apiId = userGame.apiId;
+ //const apiId = userGame?.apiId;
 
- //const url = `https://api.rawg.io/api/games/${slug}?key=6ccebb406ca942cd8ddc8584b1da9a4f`;
- const url = `https://api.rawg.io/api/games/${apiId}?key=6ccebb406ca942cd8ddc8584b1da9a4f`;
+ const url = `https://api.rawg.io/api/games/${slug}?key=6ccebb406ca942cd8ddc8584b1da9a4f`;
+ //const url = `https://api.rawg.io/api/games/${apiId}?key=6ccebb406ca942cd8ddc8584b1da9a4f`;
 
   const getGame = async () => {
     const response = await fetch(url);
@@ -43,7 +43,6 @@ useEffect(() => {
     setGame(data);
   };
  
-  console.log(userGame)
   //Håndterer et klikk på favoritt ikon - legger til hvis den ikke er favoritt, fjerner hvis den allerede er favoritt
   //Er dette brukervennlig nok?
   const handleFavourite = (event) => {  
@@ -99,7 +98,7 @@ useEffect(() => {
         </header>
 
         <p className="plot">{game?.description_raw}</p>
-        <GameTable game={game} />
+        <GameTable game={game} userGame={userGame} />
         <section className="tag-group">
           {game?.tags.slice(0,5).map((tag, index)=>(
             <span className="tags" key={index}>{tag.name}</span>))}
