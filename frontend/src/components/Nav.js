@@ -23,10 +23,12 @@ export default function Nav() {
               <li>
                 <a href="/about">Welcome, {user.username}</a>
               </li>
-            </>) : (
+            </>
+          ) : (
             <li>
               <a href="/login">Login</a>
-            </li>)}
+            </li>
+          )}
         </ul>
       </nav>
     </header>

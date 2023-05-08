@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState, useContext, useNavigate } from "react";
 import GameCard from "./GameCard";
 import { getGamesByUsername } from "../utils/sanity/gameServices";
 import UserContext from "../context/UserContext";
@@ -7,14 +7,14 @@ export default function MyGames() {
   const { user } = useContext(UserContext);
   const [games, setGames] = useState([]);
 
-  const getGames2 = async (username) => {
+  const getGames = async (username) => {
     const games = await getGamesByUsername(username);
     return games;
   };
 
   useEffect(() => {
     if (user) {
-      getGames2(user.username)
+      getGames(user.username)
         .then((games) => {
           setGames(games);
         })
