@@ -5,7 +5,9 @@ import { useParams } from "react-router-dom";
 import GameTable from "./GameTable";
 import { fetchGameBySlug } from "../utils/sanity/gameServices";
 
-//Komponent for presentasjon av et spill basert på slug som er unik og fungerer som id hos rawg
+//Komponent for presentasjon av et spill 
+
+//basert på slug som er unik og fungerer som id hos rawg
 //Henter inn favoritt state fra App.js
 //Trenger error håndtering
 //Ligger en midlertidig print til console når man legger til/fjerner favoritt
