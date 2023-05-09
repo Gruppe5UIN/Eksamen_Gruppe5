@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext, useNavigate } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import GameCard from "./GameCard";
 import { getGamesByUsername } from "../utils/sanity/userServices";
 import UserContext from "../context/UserContext";
