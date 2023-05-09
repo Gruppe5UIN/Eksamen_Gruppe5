@@ -26,20 +26,19 @@ export default function MyGames() {
   }, [user]);
 
   return (
-    <div>
-      <div>
-        <h1>MY GAMES LIBRARY - {games.length} games</h1>
-        {games.map((game) => (
-          <GameCard
-            key={game._id}
-            title={game.title}
-            genre={game.genre}
-            image={game.imageUrl[0]}
-            slug={game.slug}
-            playTime={game.playTime}
-            text={"Text here"} />
-        ))}
-      </div>
-    </div>
+    <section className="page-container">
+      <h3 id="gs-first">My Games Library - {games.length} games</h3>
+      {games.map((game) => (
+        <GameCard
+          key={game._id}
+          title={game.title}
+          genre={game.genre}
+          image={game.imageUrl[0]}
+          slug={game.slug}
+          playTime={game.playTime}
+          text={"Text here"}
+        />
+      ))}
+    </section>
   );
 }

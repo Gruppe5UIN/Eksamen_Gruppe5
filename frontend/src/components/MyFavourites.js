@@ -26,16 +26,17 @@ export default function MyFavourites() {
   }, [user]);
 
   return (
-    <div>
+    <article className="gs-box">
       {favorites.map((favorite) => (
-        <GameCard 
-          key={favorite._id} 
+        <GameCard
+          key={favorite._id}
           title={favorite.title}
           image={favorite.imageUrl[0]}
           slug={favorite.slug}
           playTime={favorite.playTime}
-          text={"Test"} />
+          text={"Test"}
+        />
       ))}
-    </div>
+    </article>
   );
 }
