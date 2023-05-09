@@ -7,15 +7,15 @@ import { fetchGameBySlug } from "../../utils/sanity/gameServices";
 
 /*Komponent for presentasjon av et spill. Henter slug fra url og bruker denne i fetch fra rawg api og sanity.
   Slug er unik og fungerer som id hos rawg - den er lest inn fra rawg api hos Sanity slik at vi er garantert 100% lik
-  Men selv om både Sanity og rawg krever helt unike slugs er det en risiko hvis man slugify url i Sanity me studio 
+  Men selv om både Sanity og rawg krever helt unike slugs er det en risiko hvis man slugify url i Sanity studio 
   med en regex som ikke dekker hele spekteret av muligheter. 
   For eksempel er det en del paranteser rundt årstall i rawg api som med en standard slugify fra undervisning ikke ble fjernet.
   Henter inn favoritt state fra App.js
-
 */
-//Button funksjonalitet er ikke laget
+
+//Button funksjonalitet må lages
 //Trenger error håndtering
-//vil vi ha flere klikkbare bilder?
+//Vil vi ha flere klikkbare bilder? Kan hentes fra liste i Sanity og et kall til 'screenshots' etter slug/id hos rawg api
 //Får et race eller noe lignende når jeg henter med apiId fra Sanity - må fikses hvis vi ikke skal bruke slug
 export default function GamePage({favourites, setFavourites}) {
   const { slug } = useParams();
@@ -102,11 +102,9 @@ useEffect(() => {
         <p className="plot">{game?.description_raw}</p>
         <GameTable game={game} userGame={userGame} />
         <section className="tag-group">
-          {/*
-          {game?.tags.slice(0,5).map((tag, index)=>(
-            <span className="tags" key={index}>{tag.name}</span>))}
-          */}
+       
         </section>
+
         <button className="btn btn-outline-primary">Buy</button>
       </section>
     </article>
