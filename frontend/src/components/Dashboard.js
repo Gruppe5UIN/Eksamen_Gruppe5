@@ -1,9 +1,11 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import GameCard from "./GameCard";
 import { Link } from "react-router-dom";
 import { getGames } from "../functions/Fetch";
 import { fetchAllGames, countGames } from "../utils/sanity/gameServices";
+import MyFavourites from "./MyFavourites";
+import UserContext from "../context/UserContext";
 
 export default function Dashboard() {
   //state for spill fra Sanity
@@ -13,6 +15,8 @@ export default function Dashboard() {
 
   const [games, setGames] = useState([]);
   //const count = 0;
+
+  const { user } = useContext(UserContext);
 
   useEffect(() => {
     getGames({
@@ -71,50 +75,38 @@ export default function Dashboard() {
           ))}
         </article>
       </section>
-      <section className="gs">
-        <section className="gs-txt-box">
-          <h2>
-            My games library (<span>{numGames.total}</span> games)
-          </h2>
-          <Link
-            to="/my-games"
-            className="btn btn-outline-secondary"
-            id="visitshop-btn"
-          >
-            My Games
-          </Link>
-        </section>
-        <article className="gs-box">
-          {userGames.map((game, index) => (
-            <GameCard
-              key={index}
-              title={game.title}
-              genre={game.genres.map((genre, index) => (
-                <li key={index}>{genre.title}</li>
+      {user ? (
+        <article>
+          <section className="mygames-box">
+            <h3>
+              My games library (<span>{numGames.total}</span> games)
+            </h3>
+            <article>
+              {userGames.map((game, index) => (
+                <GameCard
+                  key={index}
+                  title={game.title}
+                  genre={game.genres.map((genre, index) => (
+                    <li key={index}>{genre.title}</li>
+                  ))}
+                  image={game.image}
+                  slug={game.slug}
+                  playTime={game.playtime}
+                  text="Play"
+                />
               ))}
-              image={game.image}
-              slug={game.slug}
-              playTime={game.playtime}
-              text="Play"
-            />
-          ))}
+            </article>
+            {/*Vise noen av spillene fra MyGames */}
+          </section>
+          <section className="favourites-box">
+            <h3>My Favourites</h3>
+            {/*Vise noen av spillene fra MyFavourites */}
+            <MyFavourites />
+          </section>
         </article>
-      </section>
-      <section className="gs">
-        <section className="gs-txt-box">
-          <h2>My favourites</h2>
-          <Link
-            to="/favourites"
-            className="btn btn-outline-secondary"
-            id="visitshop-btn"
-          >
-            My Favourites
-          </Link>
-        </section>
-        <article className="gs-box">
-          {/*Vise noen av spillene fra MyFavourites */}
-        </article>
-      </section>
+      ) : (
+        <></>
+      )}
     </>
   );
 }

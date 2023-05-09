@@ -1,13 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext, useNavigate } from "react";
 import GameCard from "./GameCard";
+import { getGamesByUsername } from "../utils/sanity/userServices";
+import UserContext from "../context/UserContext";
 
 export default function MyGames() {
+  const { user } = useContext(UserContext);
   const [games, setGames] = useState([]);
 
-  useEffect(() => {
-    getGames();
-  }, []);
+  const getGames = async (username) => {
+    const games = await getGamesByUsername(username);
+    return games;
+  };
 
+<<<<<<< HEAD
   const getGames = async () => {
     setGames([
       {
@@ -52,6 +57,20 @@ export default function MyGames() {
       },
     ]);
   };
+=======
+  useEffect(() => {
+    if (user) {
+      getGames(user.username)
+        .then((games) => {
+          setGames(games);
+        })
+        .catch((error) => {
+          console.error(error);
+          window.location.href = "/login";
+        });
+    }
+  }, [user]);
+>>>>>>> c99cfbb2a2a6ff066321938de3948e3a5e9ea1b0
 
   return (
     <div>
@@ -59,14 +78,19 @@ export default function MyGames() {
       <section className="page-container">
         {games.map((game) => (
           <GameCard
-            key={game.id}
-            title={game.name}
-            genre={game.name}
-            image={game.background_image}
+            key={game._id}
+            title={game.title}
+            genre={game.genre}
+            image={game.imageUrl[0]}
             slug={game.slug}
+<<<<<<< HEAD
             playTime={2}
             text={"Text here"}
           />
+=======
+            playTime={game.playTime}
+            text={"Text here"} />
+>>>>>>> c99cfbb2a2a6ff066321938de3948e3a5e9ea1b0
         ))}
       </section>
     </div>
