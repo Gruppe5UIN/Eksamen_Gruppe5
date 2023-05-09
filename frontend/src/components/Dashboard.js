@@ -4,6 +4,7 @@ import GameCard from "./GameCard";
 import { Link } from "react-router-dom";
 import { getGames } from "../functions/Fetch";
 import { fetchAllGames, countGames } from '../utils/sanity/gameServices'
+import MyFavourites from "./MyFavourites";
 
 export default function Dashboard() {
   //state for spill fra Sanity
@@ -95,6 +96,7 @@ useEffect(() => {
         <section className="favourites-box">
           <h3>My Favourites</h3>
           {/*Vise noen av spillene fra MyFavourites */}
+          <MyFavourites />
         </section>
       </article>
     </>
