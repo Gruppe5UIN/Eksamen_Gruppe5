@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import UserContext from "../context/UserContext";
+import { removeUserEmail } from "../helper/userHelper";
 
 export default function Nav() {
   const { user } = useContext(UserContext);
@@ -24,6 +25,9 @@ export default function Nav() {
               </li>
               <li>
                 <a href="#">Welcome, {user.username}</a>
+              </li>
+              <li>
+                <a onClick={removeUserEmail} href="/">Logout</a>
               </li>
             </>
           ) : (
