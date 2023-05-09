@@ -29,6 +29,12 @@ export const fetchGame = async (id) => {
     return data;
 }
 
+//Hente et spill med slug
+export const fetchGameBySlug = async (slug) => {
+    const data = await client.fetch(`*[_type == 'game' && slug.current == $slug]{apiId, title, "slug": slug.current, "images": imageUrl,genres[]->{title}}`,{slug})
+    return data;
+}
+
 
 //Henter spill som tilhører en sjanger 
 
