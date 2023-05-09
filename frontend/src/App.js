@@ -1,7 +1,7 @@
 //import { useState, useEffect } from "react";
 import "./App.css";
 import "./css/main.css";
-import GamePage from "./components/GamePage";
+import GamePage from "./components/gamepage/GamePage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import GameShop from "./components/GameShop";
 import { useState } from "react";
