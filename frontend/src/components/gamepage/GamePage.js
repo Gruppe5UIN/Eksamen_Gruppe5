@@ -18,6 +18,7 @@ import WordCloud from "./WordCloud";
 //Trenger error håndtering
 //Vil vi ha flere klikkbare bilder? Kan hentes fra liste i Sanity og et kall til 'screenshots' etter slug/id hos rawg api
 //Får et race eller noe lignende når jeg henter med apiId fra Sanity - må fikses hvis vi ikke skal bruke slug
+//også usikker WordCloud - faller ut iblant
 export default function GamePage({favourites, setFavourites}) {
   const { slug } = useParams();
 
