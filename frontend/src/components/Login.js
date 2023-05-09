@@ -1,7 +1,8 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import UserContext from "../context/UserContext";
 import { getUserByEmail } from "../utils/sanity/userServices";
 import { useNavigate } from "react-router-dom";
+import { getUserEmail } from "../helper/userHelper";
 
 export default function Login() {
   const { setUser } = useContext(UserContext);
@@ -25,6 +26,13 @@ export default function Login() {
       navigate("/");
     }
   };
+
+  useEffect(() => {
+    const email = getUserEmail();
+    if (email) {
+      window.location.href = "/";
+    }
+  }, []);
 
   return (
     <>

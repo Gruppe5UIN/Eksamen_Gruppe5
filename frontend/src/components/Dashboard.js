@@ -1,10 +1,11 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import GameCard from "./GameCard";
 import { Link } from "react-router-dom";
 import { getGames } from "../functions/Fetch";
 import { fetchAllGames, countGames } from '../utils/sanity/gameServices'
 import MyFavourites from "./MyFavourites";
+import UserContext from "../context/UserContext";
 
 export default function Dashboard() {
   //state for spill fra Sanity
@@ -15,6 +16,8 @@ export default function Dashboard() {
   const [games, setGames] = useState([]);
   //const count = 0;
 
+  const { user } = useContext(UserContext);
+
   useEffect(() => {
     getGames({
       ordering: "-released",
@@ -24,23 +27,23 @@ export default function Dashboard() {
     });
   }, []);
 
-//Henter spill fra Sanity og returnerer 3 spill
-//Muligens må denne på et høyere nivå for å sende inn props i MyGames komponentet
+  //Henter spill fra Sanity og returnerer 3 spill
+  //Muligens må denne på et høyere nivå for å sende inn props i MyGames komponentet
   async function getUserGames() {
     const data = await fetchAllGames()
-    const limitData = data.slice(0,3)
+    const limitData = data.slice(0, 3)
     setUserGames(limitData);
-}
+  }
 
-async function getCount() {
-  const data = await countGames()
-  setNumGames(data)
-}
+  async function getCount() {
+    const data = await countGames()
+    setNumGames(data)
+  }
 
-useEffect(() => {
+  useEffect(() => {
     getCount()
     getUserGames()
-}, [])
+  }, [])
 
   return (
     <>
@@ -72,33 +75,35 @@ useEffect(() => {
           ))}
         </article>
       </section>
-      <article>
-        <section className="mygames-box">
-          <h3>
-            My games library (<span>{numGames.total}</span> games)
-          </h3>
-          <article>
-            {userGames.map((game, index) => (
-              <GameCard
-                key={index}
-                title={game.title}
-                genre={game.genres.map((genre, index) => (
-                  <li key={index}>{genre.title}</li>
-                ))}
-                image={game.image}
-                slug={game.slug}
-                playTime={game.playtime}
-                text="Play"
-            />))}
-          </article>
-          {/*Vise noen av spillene fra MyGames */}
-        </section>
-        <section className="favourites-box">
-          <h3>My Favourites</h3>
-          {/*Vise noen av spillene fra MyFavourites */}
-          <MyFavourites />
-        </section>
-      </article>
+      {user ?
+        <article>
+          <section className="mygames-box">
+            <h3>
+              My games library (<span>{numGames.total}</span> games)
+            </h3>
+            <article>
+              {userGames.map((game, index) => (
+                <GameCard
+                  key={index}
+                  title={game.title}
+                  genre={game.genres.map((genre, index) => (
+                    <li key={index}>{genre.title}</li>
+                  ))}
+                  image={game.image}
+                  slug={game.slug}
+                  playTime={game.playtime}
+                  text="Play"
+                />))}
+            </article>
+            {/*Vise noen av spillene fra MyGames */}
+          </section>
+          <section className="favourites-box">
+            <h3>My Favourites</h3>
+            {/*Vise noen av spillene fra MyFavourites */}
+            <MyFavourites />
+          </section>
+        </article>
+        : <></>}
     </>
   );
 }
