@@ -7,7 +7,9 @@ export default function Nav() {
   return (
     <header>
       <nav>
-        <h1>Game Haven</h1>
+        <a href="/" id="headline">
+          <h1>Game Haven</h1>
+        </a>
         <ul>
           <li>
             <a href="/">Home</a>
