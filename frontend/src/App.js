@@ -11,6 +11,7 @@ import MyGames from "./components/MyGames";
 import { getUserByEmail } from "./utils/sanity/userServices";
 import UserContext from "./context/UserContext";
 import Login from "./components/Login";
+import { getUserEmail } from "./helper/userHelper";
 
 function App() {
   const [favourites, setFavourites] = useState([]);
@@ -27,7 +28,7 @@ function App() {
   }
 
   useEffect(() => {
-    const email = localStorage.getItem("email_account")
+    const email = getUserEmail()
     fetchUser(email)
   }, [])
 

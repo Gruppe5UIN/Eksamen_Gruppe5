@@ -6,6 +6,7 @@ import GameTable from "./GameTable";
 import { fetchGameBySlug } from "../../utils/sanity/gameServices";
 import WordCloud from "./WordCloud";
 
+
 /*Komponent for presentasjon av et spill. Henter slug fra url og bruker denne i fetch fra rawg api og sanity.
   Slug er unik og fungerer som id hos rawg - den er lest inn fra rawg api hos Sanity slik at vi er garantert 100% lik
   Men selv om både Sanity og rawg krever helt unike slugs er det en risiko hvis man slugify url i Sanity studio 
@@ -18,7 +19,9 @@ import WordCloud from "./WordCloud";
 //Trenger error håndtering
 //Vil vi ha flere klikkbare bilder? Kan hentes fra liste i Sanity og et kall til 'screenshots' etter slug/id hos rawg api
 //Får et race eller noe lignende når jeg henter med apiId fra Sanity - må fikses hvis vi ikke skal bruke slug
+
 //også usikker WordCloud - faller ut iblant
+
 export default function GamePage({favourites, setFavourites}) {
   const { slug } = useParams();
 
@@ -72,7 +75,7 @@ useEffect(() => {
     getGame()
       // eslint-disable-next-line
   },[])
-  
+
   return (
     <article className="gamepage">
       <figure className="image-frame">
@@ -102,7 +105,9 @@ useEffect(() => {
         <p className="plot">{game?.description_raw}</p>
         <GameTable game={game} userGame={userGame} />
         <section className="tag-group">
+
             <WordCloud gameTags={game?.tags}/>
+
         </section>
 
         <button className="btn btn-outline-primary">Buy</button>
