@@ -26,3 +26,14 @@ export const getGamesByUsername = async (username) => {
         console.error(error);
     }
 };
+
+//Midlertidig forsøk på å hente ut filmer fra bruker med sjangere
+export const fetchGamesWithGenresByUsername = async (username) => {
+    try{
+        const result = await client.fetch(`*[_type == 'user' && username == $username]{games[]->{"title": title, "genres": genres[]->{title}}}`, { username});
+        return result;
+    }
+    catch (error) {
+        console.error(error);
+    }
+}
