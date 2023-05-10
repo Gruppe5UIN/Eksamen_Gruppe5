@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import UserContext from "../context/UserContext";
 import { removeUserEmail } from "../helper/userHelper";
+import { Link } from "react-router-dom";
 
 export default function Nav() {
   const { user } = useContext(UserContext);
@@ -13,26 +14,26 @@ export default function Nav() {
         </a>
         <ul>
           <li>
-            <a href="/">Home</a>
+            <Link to="/">Home</Link>
           </li>
           <li>
-            <a href="/games">Store</a>
+            <Link to="/gameshop">Store</Link>
           </li>
           {user !== null ? (
             <>
               <li>
-                <a href="/my-games">My Games</a>
+                <Link to="/my-games">My Games</Link>
               </li>
               <li>
-                <a href="#">Welcome, {user.username}</a>
+                <Link to="#">Welcome, {user.username}</Link>
               </li>
               <li>
-                <a onClick={removeUserEmail} href="/">Logout</a>
+                <Link onClick={removeUserEmail} to="/">Logout</Link>
               </li>
             </>
           ) : (
             <li>
-              <a href="/login">Login</a>
+              <Link to="/login">Login</Link>
             </li>
           )}
         </ul>
