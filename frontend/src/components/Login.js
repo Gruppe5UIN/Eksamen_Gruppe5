@@ -36,13 +36,15 @@ export default function Login() {
 
   return (
     <>
-      <h1>Login</h1>
-      { error && <p className="alert alert-danger">{error}</p> }
-      <form onSubmit={handleLogin}>
-        <label htmlFor="email">Email</label>
-        <input type="email" name="email" id="email" />
-        <button type="submit">Login</button>
-      </form>
+      <div>
+        <h1>Login</h1>
+        {error && <p className="alert alert-danger">{error}</p>}
+        <form onSubmit={handleLogin}>
+          <label htmlFor="email">Email</label>
+          <input type="email" name="email" id="email" />
+          <button type="submit">Login</button>
+        </form>
+      </div>
     </>
   );
 }
