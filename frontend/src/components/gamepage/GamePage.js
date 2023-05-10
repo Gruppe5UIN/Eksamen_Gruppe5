@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import GameTable from "./GameTable";
 import { fetchGameBySlug } from "../../utils/sanity/gameServices";
 import WordCloud from "./WordCloud";
-
+//import { TagCloud } from 'react-tagcloud'
 
 /*Komponent for presentasjon av et spill. Henter slug fra url og bruker denne i fetch fra rawg api og sanity.
   Slug er unik og fungerer som id hos rawg - den er lest inn fra rawg api hos Sanity slik at vi er garantert 100% lik
@@ -45,8 +45,10 @@ useEffect(() => {
   const getGame = async () => {
     const response = await fetch(url);
     const data = await response.json();
+    console.log(data.tags)
     setGame(data);
   };
+ 
  
   //Håndterer et klikk på favoritt ikon - legger til hvis den ikke er favoritt, fjerner hvis den allerede er favoritt
   //Ligger en midlertidig print til console når man legger til/fjerner favoritt
@@ -104,12 +106,14 @@ useEffect(() => {
 
         <p className="plot">{game?.description_raw}</p>
         <GameTable game={game} userGame={userGame} />
-        <section className="tag-group">
+      
+        {game?.tags !== undefined ? (
+        
+            <section className="tag-group">
+                <WordCloud gameTags={game?.tags}/>
+            </section>
 
-            <WordCloud gameTags={game?.tags}/>
-
-        </section>
-
+        ) : ''}
         <button className="btn btn-outline-primary">Buy</button>
       </section>
     </article>
