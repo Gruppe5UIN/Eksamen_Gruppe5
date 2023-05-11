@@ -3,11 +3,10 @@ import { useState, useEffect } from "react";
 import { GiHeartShield } from "react-icons/gi";
 import { useParams } from "react-router-dom";
 import GameTable from "./GameTable";
-import { fetchGameBySlug } from "../../utils/sanity/gameServices";
 import WordCloud from "./WordCloud";
 //import { TagCloud } from 'react-tagcloud'
 
-/*Komponent for presentasjon av et spill. Henter slug fra url og bruker denne i fetch fra rawg api og sanity.
+/*Komponent for presentasjon av et spill. Henter slug fra url og bruker denne i fetch fra rawg api 
   Slug er unik og fungerer som id hos rawg - den er lest inn fra rawg api hos Sanity slik at vi er garantert 100% lik
   Men selv om både Sanity og rawg krever helt unike slugs er det en risiko hvis man slugify url i Sanity studio 
   med en regex som ikke dekker hele spekteret av muligheter. 
@@ -26,19 +25,6 @@ export default function GamePage({favourites, setFavourites}) {
   const { slug } = useParams();
 
   const [game, setGame] = useState();
-  const [userGame, setUserGame] = useState();
-
-  async function getUserGame() {
-    const data = await fetchGameBySlug(slug)
-    setUserGame(data[0]);
-}
-
-useEffect(() => {
-    
-  getUserGame(slug)
-    // eslint-disable-next-line
-},[slug])
-
 
  const url = `https://api.rawg.io/api/games/${slug}?key=6ccebb406ca942cd8ddc8584b1da9a4f`;
  
@@ -78,6 +64,7 @@ useEffect(() => {
       // eslint-disable-next-line
   },[])
 
+  console.log(game?.tags)
   return (
     <article className="gamepage">
       <figure className="image-frame">
@@ -89,7 +76,7 @@ useEffect(() => {
 
       <section className="textarea">
         <header className="gamepage-header">
-          <h1>{userGame?.title}</h1>
+          <h1>{game?.title}</h1>
           <section className="game-details">
             {game?.rating ? 
             <span className="rating">
@@ -105,8 +92,8 @@ useEffect(() => {
         </header>
 
         <p className="plot">{game?.description_raw}</p>
-        <GameTable game={game} userGame={userGame} />
-      
+
+        <GameTable game={game} />
         {game?.tags !== undefined ? (
         
             <section className="tag-group">
@@ -114,6 +101,7 @@ useEffect(() => {
             </section>
 
         ) : ''}
+      
         <button className="btn btn-outline-primary">Buy</button>
       </section>
     </article>

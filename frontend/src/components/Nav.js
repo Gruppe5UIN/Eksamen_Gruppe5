@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import UserContext from "../context/UserContext";
+import { removeUserEmail } from "../helper/userHelper";
 import { Link } from "react-router-dom";
 
 export default function Nav() {
@@ -25,6 +26,9 @@ export default function Nav() {
               </li>
               <li>
                 <Link to="#">Welcome, {user.username}</Link>
+              </li>
+              <li>
+                <Link onClick={removeUserEmail} to="/">Logout</Link>
               </li>
             </>
           ) : (
