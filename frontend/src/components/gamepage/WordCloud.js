@@ -2,8 +2,8 @@
 import { TagCloud } from 'react-tagcloud'
 
 export default function WordCloud({gameTags}){
-
-  const cloudTags = gameTags?.map((tag, index) => {
+  
+  const cloudTags = gameTags.map((tag, index) => {
     return({
         value: tag.name,
         count: tag.games_count,

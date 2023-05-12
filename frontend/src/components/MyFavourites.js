@@ -14,7 +14,6 @@ export default function MyFavourites() {
 
   useEffect(() => {
     if (user) {
-      console.log(user);
       getFavorites(user.username)
         .then((favorites) => {
           setFavorites(favorites);
