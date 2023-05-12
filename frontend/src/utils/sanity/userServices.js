@@ -27,23 +27,21 @@ export const getGamesByUsername = async (username) => {
     }
 };
 
-//Midlertidig forsøk på å hente ut filmer fra bruker med sjangere
-export const fetchGamesWithGenresByUsername = async (username) => {
-    try{
-        const result = await client.fetch(`*[_type == 'user' && username == $username]{games[]->{..., "genres": genres[]->{title}}}`, { username});
+//Metode som henter spill fra bruker med utvidet projections
+export const fetchGamesByUsername = async (username) => {
+    try {
+        const result = await client.fetch(`*[_type == "user" && username == $username][0]{"Games": userGames[]{playtime, game->{apiId, slug, title, imageUrl[0], "genres": genres[]->{title}}}}`,{ username })
         return result;
-    }
-    catch (error) {
-        console.error(error);
+    } catch (error) {
+        console.log(error)
     }
 }
 
-export const fetchGamesFilter = async (username) => {
-    try{
-        const result = await client.fetch(`*[_type == 'user' && username == $username][0] {games[]->{"sjanger": *[_type == "genre" && references(^._id)].title}}`, { username});
+export const fetchFavouritesByUsername = async (username) => {
+    try {
+        const result = await client.fetch(`*[_type == "user" && username == $username][0]{"Favourites": favorites[]->{"game":{apiId, slug, title, imageUrl[0], "genres": genres[]->{title}}}}`,{username})
         return result;
-    }
-    catch (error) {
-        console.error(error);
+    } catch (error) {
+        console.log(error)
     }
 }
