@@ -53,9 +53,4 @@ export default {
             }
         },
     ],
-
-    //Setter inn en random verdi på playtime
-    /*initialValue: {
-        playtime: Math.floor(Math.random() * 100),
-      }*/
 }

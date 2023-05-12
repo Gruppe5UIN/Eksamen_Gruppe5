@@ -31,6 +31,16 @@ export default {
             ]
         },
         {
+            name: "userGames",
+            title: "User Games",
+            type: "array",
+            of: [
+                {
+                    type: "userGame"
+                }
+            ]
+        },
+        {
             name: "favorites",
             title: "Favorites",
             type: "array",

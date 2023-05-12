@@ -8,7 +8,7 @@ export default {
         {
             name: "game",
             title: "Game",
-            type: "references",
+            type: "reference",
             to: [{type: 'game'}]
            
         },
@@ -18,5 +18,8 @@ export default {
             type: "number",
             title: "Hours played"
         }
-    ]
+    ],
+    initialValue: {
+        playtime: 0
+      }
 }
