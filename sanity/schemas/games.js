@@ -19,9 +19,9 @@ export default {
 
         },
         {
-            name: "playtime",
+            name: "avgPlaytime",
             type: "number",
-            title: "Playtime", 
+            title: "Average playtime", 
         },
         {
             name: "genres",
