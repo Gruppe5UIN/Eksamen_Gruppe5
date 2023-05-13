@@ -18,6 +18,17 @@ main {
   margin-top: 3rem;
 }
 
+#welcome-section{
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+#welcometxt{
+    font-size: 1.5em;
+    letter-spacing: 0.3rem;
+    //font-family: 'Permanent Marker', cursive, 'Roboto', sans-serif;
+}
+
 .page-container {
   display: flex;
   flex-wrap: wrap;
@@ -40,7 +51,7 @@ header{
         padding: 2rem;
         text-transform: uppercase;
         letter-spacing: 0.3rem;
-        font-size: 2em;
+        font-size: 3em;
         color: #ff6100;
     }
     nav{
@@ -56,6 +67,7 @@ header{
                 a{
                     text-decoration: none;
                     color: black;
+                    letter-spacing: 0.1rem;
                     
                 }
             }
@@ -90,8 +102,16 @@ header{
 
 @media only screen and (min-width: 837px) {
 
+#welcome-section{
+    width: 100%;
+    padding: 1rem;
+}
+
+#dash{
+    display: flex;
+}
+
 header{
-    height: 120px;
     nav{
         display: flex;
         flex-wrap: wrap;
@@ -115,7 +135,7 @@ header{
 }
 
 .gs{
-    padding-top: 3rem;
+    padding-top: 1rem;
 }
 
 .gs-box{
