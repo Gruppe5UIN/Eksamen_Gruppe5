@@ -33,7 +33,6 @@ export default function MyGames(){
     }
   }, [user]);
 
-
     return (
       <>
       {userGames !== undefined ? ( 
@@ -47,7 +46,7 @@ export default function MyGames(){
                 <li key={index}>{genre.title}</li>
             ))}
               image={item.game.image}
-              slug={item.slug}
+              slug={item.game.slug.current}
               playTime={item.playtime}
       
               text="Buy"

@@ -32,7 +32,7 @@ export default function GamePage({favourites, setFavourites}) {
  
   //Håndterer et klikk på favoritt ikon - legger til hvis den ikke er favoritt, fjerner hvis den allerede er favoritt
   //Ligger en midlertidig print til console når man legger til/fjerner favoritt
-  //Lagrer apiId og tittel
+  //Lagrer et game object
   const handleFavourite = (event) => {  
       event.preventDefault()
       if(favourites.some(item => item['id'] === game?.id)){
@@ -44,14 +44,13 @@ export default function GamePage({favourites, setFavourites}) {
         setFavourites( 
           [ 
             ...favourites, 
-            { id: game?.id, name: game?.name} 
+            { id: game?.id, name: game?.name,image: game?.background_image, slug: game?.slug} 
           ]
         );
         console.log(`${game?.name} er min favoritt`);
         }
   }
 
-  
   useEffect(() => {
     
     getGame()
