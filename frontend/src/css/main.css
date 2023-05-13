@@ -4,7 +4,7 @@
  * Copyright 2011-2022 The Bootstrap Authors
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
-@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&family=Roboto:wght@300;400;500;700&family=Rubik:wght@400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Roboto+Condensed:wght@300;400;700&family=Roboto:wght@300;400;500;700&family=Rubik:wght@400;600;700&display=swap");
 :root,
 [data-bs-theme=light] {
   --bs-blue: #0d6efd;
@@ -29820,7 +29820,7 @@ progress {
 @media only screen and (min-width: 837px) {
   .gamecard {
     max-height: 400px;
-    width: 90%;
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     margin: 0 auto;
@@ -30008,6 +30008,16 @@ main {
   margin-top: 3rem;
 }
 
+#welcome-section {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+#welcometxt {
+  font-size: 1.5em;
+  letter-spacing: 0.3rem;
+}
+
 .page-container {
   display: flex;
   flex-wrap: wrap;
@@ -30031,7 +30041,7 @@ header h1, header .h1 {
   padding: 2rem;
   text-transform: uppercase;
   letter-spacing: 0.3rem;
-  font-size: 2em;
+  font-size: 3em;
   color: #ff6100;
 }
 header nav ul {
@@ -30047,6 +30057,7 @@ header nav ul li {
 header nav ul li a {
   text-decoration: none;
   color: black;
+  letter-spacing: 0.1rem;
 }
 
 .gs {
@@ -30072,8 +30083,12 @@ header nav ul li a {
 }
 
 @media only screen and (min-width: 837px) {
-  header {
-    height: 120px;
+  #welcome-section {
+    width: 100%;
+    padding: 1rem;
+  }
+  #dash {
+    display: flex;
   }
   header nav {
     display: flex;
@@ -30095,7 +30110,7 @@ header nav ul li a {
     color: black;
   }
   .gs {
-    padding-top: 3rem;
+    padding-top: 1rem;
   }
   .gs-box {
     display: flex;
