@@ -1,10 +1,24 @@
 import GameCard from "../GameCard"
+import { useState, useEffect } from "react";
+import { getGames } from "../../functions/Fetch";
 
-export default function GameShop({games}){
+export default function GameShop(){
+
+  const [games, setGames] = useState([]);
+
+  useEffect(() => {
+    getGames({
+      ordering: "-released",
+      page_size: 3,
+    }).then((results) => {
+      setGames(results);
+    });
+  }, []);
 
     return (
         <>
-        {games.map((game, index) => (
+         <article className="gs-box">
+          {games?.map((game, index) => (
             <GameCard
               key={index}
               image={game.background_image}
@@ -17,6 +31,8 @@ export default function GameShop({games}){
               text="Buy"
             />
           ))}
+        </article>
+       
          </> 
     )
 }
