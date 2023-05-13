@@ -7,9 +7,7 @@ import UserContext from "../context/UserContext";
 import MyGames from "./dashboardComponents/MyGames";
 import GameShop from "./dashboardComponents/GameShop";
 
-
 export default function Dashboard() {
-
   //state for antall spill i MyGames
   const [numGames, setNumGames] = useState(0);
 
@@ -24,14 +22,20 @@ export default function Dashboard() {
 
   useEffect(() => {
     getCount();
-   
   }, []);
 
   return (
     <>
+      <section id="welcome-section">
+        {user ? (
+          <h2 id="welcometxt">Welcome, {user.username}!</h2>
+        ) : (
+          <h2>Welcome, stranger!</h2>
+        )}
+      </section>
       <section className="gs">
         <section className="gs-txt-box">
-          <h2>Game Shop</h2>
+          <h3>Game Shop</h3>
           <Link
             to="/gameshop"
             className="btn btn-outline-secondary"
@@ -41,7 +45,6 @@ export default function Dashboard() {
           </Link>
         </section>
         <GameShop />
-    
       </section>
       {user ? (
         <>
@@ -59,7 +62,6 @@ export default function Dashboard() {
               </Link>
             </section>
             <MyGames />
-
           </section>
           <section className="gs">
             <section className="gs-txt-box">
@@ -73,7 +75,6 @@ export default function Dashboard() {
               </Link>
             </section>
             <MyFavourites />
-              
           </section>
         </>
       ) : (
