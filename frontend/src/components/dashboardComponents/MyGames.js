@@ -33,7 +33,6 @@ export default function MyGames(){
     }
   }, [user]);
 
-
     return (
       <>
       {userGames !== undefined ? ( 
