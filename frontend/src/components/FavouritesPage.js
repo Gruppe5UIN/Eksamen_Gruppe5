@@ -3,7 +3,7 @@ import UserContext from "../context/UserContext";
 import { getFavoritesByUsername } from "../utils/sanity/userServices";
 import GameCard from "./GameCard";
 
-export default function MyFavourites() {
+export default function FavouritesPage() {
   const { user } = useContext(UserContext);
   const [favorites, setFavorites] = useState([]);
 

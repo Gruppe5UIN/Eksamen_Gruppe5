@@ -3,7 +3,7 @@ import GameCard from "./GameCard";
 import { getGamesByUsername } from "../utils/sanity/userServices";
 import UserContext from "../context/UserContext";
 
-export default function MyGames() {
+export default function MyGamesLibrary() {
   const { user } = useContext(UserContext);
   const [games, setGames] = useState([]);
 
