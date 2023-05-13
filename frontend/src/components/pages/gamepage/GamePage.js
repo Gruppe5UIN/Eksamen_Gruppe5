@@ -51,7 +51,6 @@ export default function GamePage({favourites, setFavourites}) {
         }
   }
 
-  console.log(favourites)
   useEffect(() => {
     
     getGame()
