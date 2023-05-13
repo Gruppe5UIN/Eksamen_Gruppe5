@@ -3,9 +3,11 @@ import { useState, useEffect, useContext } from "react";
 import GameCard from "./GameCard";
 import { Link } from "react-router-dom";
 import { getGames } from "../functions/Fetch";
-import { fetchAllGames, countGames } from "../utils/sanity/gameServices";
+import { countGames } from "../utils/sanity/gameServices";
 import MyFavourites from "./MyFavourites";
 import UserContext from "../context/UserContext";
+import { fetchGamesByUsername } from "../utils/sanity/userServices";
+
 
 export default function Dashboard() {
   //state for spill fra Sanity
@@ -27,13 +29,26 @@ export default function Dashboard() {
     });
   }, []);
 
-  //Henter spill fra Sanity og returnerer 3 spill
-  //Muligens må denne på et høyere nivå for å sende inn props i MyGames komponentet
-  async function getUserGames() {
-    const data = await fetchAllGames();
-    const limitData = data.slice(0, 3);
-    setUserGames(limitData);
-  }
+  //Henter spill fra Sanity....
+  async function getUserGames(username) {
+    const data = await fetchGamesByUsername(username);
+    const userGames = data.games
+    return userGames.slice(0,4)
+  } 
+
+   useEffect(() => {
+    if (user) {
+      getUserGames(user.username)
+        .then((userGames) => {
+         
+          setUserGames(userGames);
+        })
+        .catch((error) => {
+          console.error(error);
+          window.location.href = "/login";
+        })
+    }
+  }, [user]);
 
   async function getCount() {
     const data = await countGames();
@@ -42,7 +57,7 @@ export default function Dashboard() {
 
   useEffect(() => {
     getCount();
-    getUserGames();
+   
   }, []);
 
   return (
@@ -89,21 +104,26 @@ export default function Dashboard() {
                 My Games
               </Link>
             </section>
+
+          {userGames !== undefined ? ( 
             <article className="gs-box">
-              {userGames?.map((game, index) => (
-                <GameCard
-                  key={index}
-                  title={game.title}
-                  genre={game.genres.map((genre, index) => (
-                    <li key={index}>{genre.title}</li>
-                  ))}
-                  image={game.image}
-                  slug={game.slug}
-                  playTime={game.playtime}
-                  text="Play"
-                />
+          
+              {userGames?.map((item, index) => (
+                  <GameCard
+                    key={index}
+                    title={item.game.title}
+                    genre={item.game.genres.map((genre, index) => (
+                      <li key={index}>{genre.title}</li>
+                    ))}
+                    image={item.game.image}
+                    slug={item.slug}
+                    playTime={item.playtime}
+                
+                    text="Buy"
+                  />
               ))}
-            </article>
+
+            </article>) : ('')}
           </section>
           <section className="gs">
             <section className="gs-txt-box">
