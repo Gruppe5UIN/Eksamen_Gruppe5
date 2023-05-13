@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import GameCard from "./../GameCard";
-import { getGamesByUsername } from "../../utils/sanity/userServices";
+import { fetchGamesByUsername } from "../../utils/sanity/userServices";
 import UserContext from "../../context/UserContext";
 
 export default function MyGamesLibrary() {
@@ -8,7 +8,8 @@ export default function MyGamesLibrary() {
   const [games, setGames] = useState([]);
 
   const getGames = async (username) => {
-    const games = await getGamesByUsername(username);
+    const data = await fetchGamesByUsername(username);
+    const games = data.games
     return games;
   };
 
@@ -28,14 +29,16 @@ export default function MyGamesLibrary() {
   return (
     <section className="page-container">
       <h3 id="gs-first">My Games Library - {games.length} games</h3>
-      {games.map((game) => (
+      {games.map((item) => (
         <GameCard
-          key={game._id}
-          title={game.title}
-          genre={game.genre}
-          image={game.imageUrl[0]}
-          slug={game.slug}
-          playTime={game.playTime}
+          key={item._id}
+          title={item.game.title}
+          genre={item.game.genres.map((genre, index) => (
+            <li key={index}>{genre.title}</li>
+        ))}
+          image={item.game.image}
+          slug={item.game.slug.current}
+          playTime={item.playtime}
           text={"Text here"}
         />
       ))}
