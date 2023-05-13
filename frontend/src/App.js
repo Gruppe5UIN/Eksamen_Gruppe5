@@ -1,18 +1,18 @@
 //import { useState, useEffect } from "react";
 import "./App.css";
 import "./css/main.css";
-import GamePage from "./components/gamepage/GamePage";
+import GamePage from "./components/pages/gamepage/GamePage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import GameShop from "./components/GameShop";
 import { useEffect, useState } from "react";
 import Layout from "./components/Layout";
 import Dashboard from "./components/Dashboard";
-import MyGames from "./components/MyGames";
 import { getUserByEmail } from "./utils/sanity/userServices";
 import UserContext from "./context/UserContext";
 import Login from "./components/Login";
 import { getUserEmail } from "./helper/userHelper";
-import MyFavourites from "./components/MyFavourites";
+import GameShopPage from "./components/pages/GameShopPage";
+import FavouritesPage from "./components/pages/FavouritesPage";
+import MyGamesLibrary from "./components/pages/MyGamesLibrary";
 
 function App() {
   const [favourites, setFavourites] = useState([]);
@@ -48,9 +48,9 @@ function App() {
                 />
               }
             />
-            <Route path="/gameshop" element={<GameShop />} />
-            <Route path="/my-games" element={<MyGames />} />
-            <Route path="/my-favourites" element={<MyFavourites />} />
+            <Route path="/gameshop" element={<GameShopPage />} />
+            <Route path="/my-games" element={<MyGamesLibrary />} />
+            <Route path="/my-favourites" element={<FavouritesPage />} />
             <Route path="/login" element={<Login />} />
           </Route>
         </Routes>

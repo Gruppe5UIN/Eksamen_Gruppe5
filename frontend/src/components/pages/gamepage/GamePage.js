@@ -4,7 +4,6 @@ import { GiHeartShield } from "react-icons/gi";
 import { useParams } from "react-router-dom";
 import GameTable from "./GameTable";
 import WordCloud from "./WordCloud";
-//import { TagCloud } from 'react-tagcloud'
 
 /*Komponent for presentasjon av et spill. Henter slug fra url og bruker denne i fetch fra rawg api 
   Slug er unik og fungerer som id hos rawg - den er lest inn fra rawg api hos Sanity slik at vi er garantert 100% lik
@@ -16,10 +15,6 @@ import WordCloud from "./WordCloud";
 
 //Button funksjonalitet må lages
 //Trenger error håndtering
-//Vil vi ha flere klikkbare bilder? Kan hentes fra liste i Sanity og et kall til 'screenshots' etter slug/id hos rawg api
-//Får et race eller noe lignende når jeg henter med apiId fra Sanity - må fikses hvis vi ikke skal bruke slug
-
-//også usikker WordCloud - faller ut iblant
 
 export default function GamePage({favourites, setFavourites}) {
   const { slug } = useParams();
