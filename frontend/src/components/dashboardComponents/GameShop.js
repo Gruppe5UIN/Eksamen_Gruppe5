@@ -1,6 +1,6 @@
 import GameCard from "../GameCard"
 
-export default function MyShopSection({games}){
+export default function GameShop({games}){
 
     return (
         <>

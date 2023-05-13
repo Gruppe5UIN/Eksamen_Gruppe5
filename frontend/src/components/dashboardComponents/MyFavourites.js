@@ -1,5 +1,5 @@
 
-export default function MyFavouritesSection(){
+export default function MyFavourites(){
 
     return (
         <article>
