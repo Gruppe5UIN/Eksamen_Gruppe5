@@ -6,10 +6,11 @@ import UserContext from "../../context/UserContext";
 export default function MyGamesLibrary() {
   const { user } = useContext(UserContext);
   const [games, setGames] = useState([]);
+  const [selected, setSelected] = useState("");
 
   const getGames = async (username) => {
     const data = await fetchGamesByUsername(username);
-    const games = data.games
+    const games = data.games;
     return games;
   };
 
@@ -26,16 +27,36 @@ export default function MyGamesLibrary() {
     }
   }, [user]);
 
+  const handleSelect = (e) => {
+    e.preventDefault();
+    setSelected(e.target.value);
+  };
+
   return (
     <section className="page-container">
       <h3 id="gs-first">My Games Library - {games.length} games</h3>
-      {games.map((item) => (
+
+      <select id="genre-filter" onChange={handleSelect}>
+        <option>All genres</option>
+        {games?.map((item, index) => {
+          return (
+            <React.Fragment key={index}>
+              {item?.game.genres.map((genre, index) => (
+                <option value={genre.title} key={index}>
+                  {genre.title}
+                </option>
+              ))}
+            </React.Fragment>
+          );
+        })}
+      </select>
+      {games?.map((item) => (
         <GameCard
           key={item._id}
           title={item.game.title}
           genre={item.game.genres.map((genre, index) => (
             <li key={index}>{genre.title}</li>
-        ))}
+          ))}
           image={item.game.image}
           slug={item.game.slug.current}
           playTime={item.playtime}

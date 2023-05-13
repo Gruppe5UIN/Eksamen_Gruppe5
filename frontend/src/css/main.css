@@ -30090,9 +30090,6 @@ header nav ul li a {
   #dash {
     display: flex;
   }
-  header h1, header .h1 {
-    font-size: 3em;
-  }
   header nav {
     display: flex;
     flex-wrap: wrap;
@@ -30138,6 +30135,11 @@ header nav ul li a {
     flex-direction: row;
   }
 }
+#genre-filter {
+  width: 300px;
+  height: 50px;
+}
+
 .gameshop-container {
   display: flex;
   flex-wrap: wrap;
