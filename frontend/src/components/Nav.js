@@ -25,10 +25,12 @@ export default function Nav() {
                 <Link to="/my-games">My Games</Link>
               </li>
               <li>
-                <Link to="#">Welcome, {user.username}</Link>
+                <Link to="/my-favourites">My Favourites</Link>
               </li>
               <li>
-                <Link onClick={removeUserEmail} to="/">Logout</Link>
+                <Link onClick={removeUserEmail} to="/">
+                  Logout
+                </Link>
               </li>
             </>
           ) : (
