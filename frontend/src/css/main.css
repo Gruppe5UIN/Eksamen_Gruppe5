@@ -29820,7 +29820,7 @@ progress {
 @media only screen and (min-width: 837px) {
   .gamecard {
     max-height: 400px;
-    width: 90%;
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     margin: 0 auto;
@@ -30074,6 +30074,9 @@ header nav ul li a {
 @media only screen and (min-width: 837px) {
   header {
     height: 120px;
+  }
+  header h1, header .h1 {
+    font-size: 3em;
   }
   header nav {
     display: flex;
