@@ -1,73 +1,44 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import GameCard from "./GameCard";
+import { getGamesByUsername } from "../utils/sanity/userServices";
+import UserContext from "../context/UserContext";
 
 export default function MyGames() {
+  const { user } = useContext(UserContext);
   const [games, setGames] = useState([]);
 
-  useEffect(() => {
-    getGames();
-  }, []);
+  const getGames = async (username) => {
+    const games = await getGamesByUsername(username);
+    return games;
+  };
 
-  const getGames = async () => {
-    setGames([
-      {
-        id: 1,
-        name: "Game 1",
-        slug: "game-1",
-        released: "2021-01-01",
-        background_image: "https://via.placeholder.com/300x200",
-        rating: 4.5,
-        ratings_count: 100,
-        favorite: true,
-      },
-      {
-        id: 2,
-        name: "Game 2",
-        slug: "game-2",
-        released: "2021-01-01",
-        background_image: "https://via.placeholder.com/300x200",
-        rating: 4.5,
-        ratings_count: 100,
-        favorite: false,
-      },
-      {
-        id: 3,
-        name: "Game 3",
-        slug: "game-3",
-        released: "2021-01-01",
-        background_image: "https://via.placeholder.com/300x200",
-        rating: 4.5,
-        ratings_count: 100,
-        favorite: false,
-      },
-      {
-        id: 4,
-        name: "Game 4",
-        slug: "game-4",
-        released: "2021-01-01",
-        background_image: "https://via.placeholder.com/300x200",
-        rating: 4.5,
-        ratings_count: 100,
-        favorite: false,
-      }
-    ]);
-  }
+  useEffect(() => {
+    if (user) {
+      getGames(user.username)
+        .then((games) => {
+          setGames(games);
+        })
+        .catch((error) => {
+          console.error(error);
+          window.location.href = "/login";
+        });
+    }
+  }, [user]);
 
   return (
-    <div>
-      <div>
-        <h1>MY GAMES LIBRARY - {games.length} games</h1>
-        {games.map((game) => (
-          <GameCard
-            key={game.id}
-            title={game.name}
-            genre={game.name}
-            image={game.background_image}
-            slug={game.slug}
-            playTime={2}
-            text={"Text here"} />
-        ))}
-      </div>
-    </div>
+    <section className="page-container">
+      <h3 id="gs-first">My Games Library - {games.length} games</h3>
+      {games.map((game) => (
+        <GameCard
+          key={game._id}
+          title={game.title}
+          genre={game.genre}
+          image={game.imageUrl[0]}
+          slug={game.slug}
+          playTime={game.playTime}
+          text={"Text here"}
+        />
+      ))}
+    </section>
   );
 }

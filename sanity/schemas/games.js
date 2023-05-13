@@ -19,9 +19,9 @@ export default {
 
         },
         {
-            name: "playtime",
+            name: "avgPlaytime",
             type: "number",
-            title: "Playtime", 
+            title: "Average playtime", 
         },
         {
             name: "genres",
@@ -53,9 +53,4 @@ export default {
             }
         },
     ],
-
-    //Setter inn en random verdi på playtime
-    /*initialValue: {
-        playtime: Math.floor(Math.random() * 100),
-      }*/
 }

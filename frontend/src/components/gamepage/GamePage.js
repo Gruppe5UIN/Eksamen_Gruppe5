@@ -3,28 +3,41 @@ import { useState, useEffect } from "react";
 import { GiHeartShield } from "react-icons/gi";
 import { useParams } from "react-router-dom";
 import GameTable from "./GameTable";
+import WordCloud from "./WordCloud";
+//import { TagCloud } from 'react-tagcloud'
 
-//Komponent for presentasjon av et spill basert på slug som er unik og fungerer som id hos rawg
-//Henter inn favoritt state fra App.js
+/*Komponent for presentasjon av et spill. Henter slug fra url og bruker denne i fetch fra rawg api 
+  Slug er unik og fungerer som id hos rawg - den er lest inn fra rawg api hos Sanity slik at vi er garantert 100% lik
+  Men selv om både Sanity og rawg krever helt unike slugs er det en risiko hvis man slugify url i Sanity studio 
+  med en regex som ikke dekker hele spekteret av muligheter. 
+  For eksempel er det en del paranteser rundt årstall i rawg api som med en standard slugify fra undervisning ikke ble fjernet.
+  Henter inn favoritt state fra App.js
+*/
+
+//Button funksjonalitet må lages
 //Trenger error håndtering
-//Ligger en midlertidig print til console når man legger til/fjerner favoritt
-//Button funksjonalitet er ikke laget
-//Har tatt ut kun 5 tags da listen med tags var veldig lang
+//Vil vi ha flere klikkbare bilder? Kan hentes fra liste i Sanity og et kall til 'screenshots' etter slug/id hos rawg api
+//Får et race eller noe lignende når jeg henter med apiId fra Sanity - må fikses hvis vi ikke skal bruke slug
+
+//også usikker WordCloud - faller ut iblant
+
 export default function GamePage({favourites, setFavourites}) {
   const { slug } = useParams();
 
   const [game, setGame] = useState();
-  
-  const url = `https://api.rawg.io/api/games/${slug}?key=6ccebb406ca942cd8ddc8584b1da9a4f`;
 
+ const url = `https://api.rawg.io/api/games/${slug}?key=6ccebb406ca942cd8ddc8584b1da9a4f`;
+ 
   const getGame = async () => {
     const response = await fetch(url);
     const data = await response.json();
     setGame(data);
   };
  
+ 
   //Håndterer et klikk på favoritt ikon - legger til hvis den ikke er favoritt, fjerner hvis den allerede er favoritt
-  //Er dette brukervennlig nok?
+  //Ligger en midlertidig print til console når man legger til/fjerner favoritt
+  //Lagrer apiId og tittel
   const handleFavourite = (event) => {  
       event.preventDefault()
       if(favourites.some(item => item['id'] === game?.id)){
@@ -45,10 +58,10 @@ export default function GamePage({favourites, setFavourites}) {
 
   
   useEffect(() => {
+    
     getGame()
       // eslint-disable-next-line
   },[])
-
 
   return (
     <article className="gamepage">
@@ -61,7 +74,7 @@ export default function GamePage({favourites, setFavourites}) {
 
       <section className="textarea">
         <header className="gamepage-header">
-          <h1>{game?.name}</h1>
+          <h1>{game?.title}</h1>
           <section className="game-details">
             {game?.rating ? 
             <span className="rating">
@@ -77,11 +90,16 @@ export default function GamePage({favourites, setFavourites}) {
         </header>
 
         <p className="plot">{game?.description_raw}</p>
+
         <GameTable game={game} />
-        <section className="tag-group">
-          {game?.tags.slice(0,5).map((tag, index)=>(
-            <span className="tags" key={index}>{tag.name}</span>))}
-        </section>
+        {game?.tags !== undefined ? (
+        
+            <section className="tag-group">
+                <WordCloud gameTags={game?.tags}/>
+            </section>
+
+        ) : ''}
+      
         <button className="btn btn-outline-primary">Buy</button>
       </section>
     </article>
