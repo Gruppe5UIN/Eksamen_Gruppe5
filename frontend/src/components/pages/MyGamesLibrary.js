@@ -32,6 +32,10 @@ export default function MyGamesLibrary() {
     setSelected(e.target.value);
   };
 
+  useEffect(() => {
+    console.log(selected);
+  }, [selected]);
+
   return (
     <section className="page-container">
       <h3 id="gs-first">My Games Library - {games.length} games</h3>
@@ -42,7 +46,7 @@ export default function MyGamesLibrary() {
           return (
             <React.Fragment key={index}>
               {item?.game.genres.map((genre, index) => (
-                <option value={genre.title} key={index}>
+                <option value={genre.id} key={index}>
                   {genre.title}
                 </option>
               ))}

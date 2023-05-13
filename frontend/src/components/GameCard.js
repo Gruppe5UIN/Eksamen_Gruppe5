@@ -15,7 +15,7 @@ export default function GameCard({
   playTime,
   text,
 }) {
-  console.log(slug)
+  //console.log(slug)
   return (
     <article className="gamecard">
       <img className="gamecard-image" src={image} alt="game"></img>
