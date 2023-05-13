@@ -1,7 +1,7 @@
 //import { useState, useEffect } from "react";
 import "./App.css";
 import "./css/main.css";
-import GamePage from "./components/gamepage/GamePage";
+import GamePage from "./components/pages/gamepage/GamePage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Layout from "./components/Layout";
@@ -10,9 +10,9 @@ import { getUserByEmail } from "./utils/sanity/userServices";
 import UserContext from "./context/UserContext";
 import Login from "./components/Login";
 import { getUserEmail } from "./helper/userHelper";
-import GameShopPage from "./components/GameShopPage";
-import FavouritesPage from "./components/FavouritesPage";
-import MyGamesLibrary from "./components/MyGamesLibrary";
+import GameShopPage from "./components/pages/GameShopPage";
+import FavouritesPage from "./components/pages/FavouritesPage";
+import MyGamesLibrary from "./components/pages/MyGamesLibrary";
 
 function App() {
   const [favourites, setFavourites] = useState([]);

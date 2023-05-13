@@ -1,7 +1,5 @@
 
 //Eget komponent for info om spill som brukes i GamePage
-//Har skilt ut fordi GamePage ble for stor
-//Jeg tror table er korrekt i forhold til UU, men må styles så den passer listeformatet
 export default function GameTable({game}){
 
 

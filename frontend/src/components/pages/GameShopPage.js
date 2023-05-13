@@ -1,6 +1,6 @@
 import React from "react";
-import { getGames } from "../functions/Fetch";
-import GameCard from "./GameCard";
+import { getGames } from "../../functions/Fetch";
+import GameCard from "./../GameCard";
 import { useState, useEffect } from "react";
 
 export default function GameShopPage() {
