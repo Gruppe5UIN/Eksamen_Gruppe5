@@ -15,6 +15,7 @@ export default function GameCard({
   playTime,
   text,
 }) {
+  console.log(slug)
   return (
     <article className="gamecard">
       <img className="gamecard-image" src={image} alt="game"></img>
@@ -32,6 +33,7 @@ export default function GameCard({
           )}
         </section>
         <section className="button-section">
+          {}
           <Link to={slug} className="btn btn-outline-secondary">
             Read more
           </Link>

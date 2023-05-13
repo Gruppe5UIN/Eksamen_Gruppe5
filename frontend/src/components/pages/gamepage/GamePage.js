@@ -44,14 +44,14 @@ export default function GamePage({favourites, setFavourites}) {
         setFavourites( 
           [ 
             ...favourites, 
-            { id: game?.id, name: game?.name} 
+            { id: game?.id, name: game?.name,image: game?.background_image, slug: game?.slug} 
           ]
         );
         console.log(`${game?.name} er min favoritt`);
         }
   }
 
-  
+  console.log(favourites)
   useEffect(() => {
     
     getGame()
