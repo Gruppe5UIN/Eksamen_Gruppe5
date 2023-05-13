@@ -34,7 +34,6 @@ export default function MyFavourites(){
     }
   }, [user]);
 
-  console.log(userFavourites)
     return (
         <>
         {userFavourites !== undefined ? ( 
@@ -48,7 +47,7 @@ export default function MyFavourites(){
                   <li key={index}>{genre.title}</li>
               ))}
                 image={item.game.image}
-                slug={item.slug}
+                slug={item.game.slug.current}
                 playTime={0}
         
                 text="Buy"
