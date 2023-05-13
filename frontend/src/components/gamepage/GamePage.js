@@ -31,7 +31,6 @@ export default function GamePage({favourites, setFavourites}) {
   const getGame = async () => {
     const response = await fetch(url);
     const data = await response.json();
-    console.log(data.tags)
     setGame(data);
   };
  
@@ -64,7 +63,6 @@ export default function GamePage({favourites, setFavourites}) {
       // eslint-disable-next-line
   },[])
 
-  console.log(game?.tags)
   return (
     <article className="gamepage">
       <figure className="image-frame">
