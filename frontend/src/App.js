@@ -13,11 +13,13 @@ import { getUserEmail } from "./helper/userHelper";
 import GameShopPage from "./components/pages/GameShopPage";
 import FavouritesPage from "./components/pages/FavouritesPage";
 import MyGamesLibrary from "./components/pages/MyGamesLibrary";
+import { fetchGamesByUsername } from "./utils/sanity/userServices";
 
 function App() {
   const [favourites, setFavourites] = useState([]);
 
   const [user, setUser] = useState(null);
+  const [userGames, setUserGames] = useState([]);
 
   const fetchUser = async (email) => {
     const user = await getUserByEmail(email);
@@ -33,12 +35,38 @@ function App() {
     fetchUser(email);
   }, []);
 
+  
+  async function getUserGames(username) {
+    try{
+      const data = await fetchGamesByUsername(username);
+      const userGames = data.games
+  
+      return userGames
+    } catch (error) {
+        console.log(error)
+    }
+  } 
+
+   useEffect(() => {
+    if (user) {
+      getUserGames(user.username)
+        .then((userGames) => {
+         
+          setUserGames(userGames);
+        })
+        .catch((error) => {
+          console.error(error);
+          window.location.href = "/login";
+        })
+    }
+  }, [user]);
+
   return (
     <UserContext.Provider value={{ user, setUser }}>
       <Router>
         <Routes>
           <Route path="/" element={<Layout />}>
-            <Route index element={<Dashboard />} />
+            <Route index element={<Dashboard userGames={userGames}/>} />
             <Route
               path=":slug"
               element={
