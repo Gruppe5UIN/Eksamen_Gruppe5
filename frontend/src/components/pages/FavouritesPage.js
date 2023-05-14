@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import UserContext from "../../context/UserContext";
-import { getFavoritesByUsername } from "../../utils/sanity/userServices";
+import { fetchFavouritesByUsername } from "../../utils/sanity/userServices";
 import GameCard from "./../GameCard";
 
 export default function FavouritesPage() {
@@ -8,15 +8,20 @@ export default function FavouritesPage() {
   const [favorites, setFavorites] = useState([]);
 
   const getFavorites = async (username) => {
-    const favorites = await getFavoritesByUsername(username);
-    return favorites;
+    try{
+      const data = await fetchFavouritesByUsername(username);
+      const favourites = data.favourites
+      return favourites;
+    } catch (error){
+      console.log(error)
+    }
   };
 
   useEffect(() => {
     if (user) {
       getFavorites(user.username)
-        .then((favorites) => {
-          setFavorites(favorites);
+        .then((favourites) => {
+          setFavorites(favourites);
         })
         .catch((error) => {
           console.error(error);
@@ -26,13 +31,16 @@ export default function FavouritesPage() {
 
   return (
     <article className="gs-box">
-      {favorites.map((favorite) => (
+      {favorites.map((item, index) => (
         <GameCard
-          key={favorite._id}
-          title={favorite.title}
-          image={favorite.imageUrl[0]}
-          slug={favorite.slug}
-          playTime={favorite.playTime}
+          key={index}
+          title={item.game.title}
+          image={item.game.image}
+          genre={item.game.genres.map((genre, index) => (
+            <li key={index}>{genre.title}</li>
+        ))}
+          slug={`/${item.game.slug.current}`}
+          playTime={0}
           text={"Test"}
         />
       ))}
