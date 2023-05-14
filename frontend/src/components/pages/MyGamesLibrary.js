@@ -39,7 +39,7 @@ export default function MyGamesLibrary({ userGames }) {
 
   return (
     <section className="page-container">
-      <h3 id="gs-first">My Games Library {numGames} - games</h3>
+      <h3 className="head">My Games Library {numGames} - games</h3>
       {games !== undefined ? (
         <>
           <div id="selectbox">

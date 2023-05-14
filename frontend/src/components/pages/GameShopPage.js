@@ -16,6 +16,7 @@ export default function GameShopPage() {
   }, []);
   return (
     <section className="gameshop-container">
+      <h2 className="head">Game Shop</h2>
       {games?.map((game, index) => (
         <GameCard
           key={index}

@@ -29995,6 +29995,10 @@ body {
   margin: 0 auto;
 }
 
+main {
+  margin-top: 3rem;
+}
+
 footer {
   border-top: 1px solid gray;
   padding: 3rem;
@@ -30083,6 +30087,14 @@ header nav ul li a {
 
 #headline {
   text-decoration: none;
+}
+
+.head {
+  width: 100%;
+  text-align: center;
+  padding: 2rem;
+  font-size: 1.5em;
+  letter-spacing: 0.3rem;
 }
 
 #visitshop-btn {
