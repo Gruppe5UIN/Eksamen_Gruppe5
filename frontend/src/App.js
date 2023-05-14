@@ -77,7 +77,7 @@ function App() {
               }
             />
             <Route path="/gameshop" element={<GameShopPage />} />
-            <Route path="/my-games" element={<MyGamesLibrary />} />
+            <Route path="/my-games" element={<MyGamesLibrary games={userGames} />} />
             <Route path="/my-favourites" element={<FavouritesPage />} />
             <Route path="/login" element={<Login />} />
           </Route>

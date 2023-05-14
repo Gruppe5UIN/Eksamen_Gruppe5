@@ -1,6 +1,6 @@
 import GameCard from "../GameCard"
 
-//Komponent som henter 
+//Komponent for forhåndsvisning av bruker spill
 export default function MyGames({userGames}){
   const games = userGames.slice(0,4)
 
