@@ -30085,7 +30085,7 @@ header nav ul li a {
 @media only screen and (min-width: 837px) {
   #welcome-section {
     width: 100%;
-    padding: 1rem;
+    padding-bottom: 4rem;
   }
   #dash {
     display: flex;
@@ -30111,6 +30111,10 @@ header nav ul li a {
   }
   .gs {
     padding-top: 1rem;
+    padding-bottom: 4rem;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    margin-bottom: 5rem;
   }
   .gs-box {
     display: flex;
