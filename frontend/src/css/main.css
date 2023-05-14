@@ -30136,12 +30136,15 @@ header nav ul li a {
   }
 }
 #genre-filter {
-  width: 300px;
+  width: 250px;
   height: 50px;
+  padding-right: 1rem;
+  padding-left: 1rem;
 }
 
 #selectbox {
   width: 100%;
+  padding: 2rem;
 }
 
 .gameshop-container {
