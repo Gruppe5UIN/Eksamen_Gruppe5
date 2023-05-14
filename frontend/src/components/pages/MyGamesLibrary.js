@@ -23,9 +23,7 @@ export default function MyGamesLibrary() {
         .then((games) => {
           setGames(games);
           setFilteredGames(games);
-          setTimeout(() => {
-            setIsLoading(false);
-          }, 700);
+          setIsLoading(false);
         })
         .catch((error) => {
           console.error(error);

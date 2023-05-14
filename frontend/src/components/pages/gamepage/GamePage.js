@@ -55,9 +55,7 @@ export default function GamePage({ favourites, setFavourites }) {
   useEffect(() => {
     setIsLoading(true);
     getGame();
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 700);
+    setIsLoading(false);
     // eslint-disable-next-line
   }, []);
 

@@ -14,9 +14,7 @@ export default function GameShopPage() {
       page_size: 10,
     }).then((results) => {
       setGames(results);
-      setTimeout(() => {
-        setIsLoading(false);
-      }, 700);
+      setIsLoading(false);
     });
   }, []);
   return (

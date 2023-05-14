@@ -23,9 +23,7 @@ export default function Dashboard() {
 
   useEffect(() => {
     getCount();
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 700);
+    setIsLoading(false);
   }, []);
 
   return (

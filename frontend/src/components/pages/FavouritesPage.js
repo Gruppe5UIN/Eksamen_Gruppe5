@@ -19,9 +19,7 @@ export default function FavouritesPage() {
       getFavorites(user.username)
         .then((favorites) => {
           setFavorites(favorites);
-          setTimeout(() => {
-            setIsLoading(false);
-          }, 700);
+          setIsLoading(false);
         })
         .catch((error) => {
           console.error(error);
