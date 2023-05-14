@@ -30121,7 +30121,9 @@ header nav ul li a {
     color: black;
   }
   .gs {
-    padding-top: 1rem;
+    padding-top: 2rem;
+    padding-bottom: 5rem;
+    margin-bottom: 5rem;
   }
   .gs-box {
     display: flex;
