@@ -8,11 +8,14 @@ export default function MyGamesLibrary({ userGames }) {
 
   const [filteredGames, setFilteredGames] = useState([]);
   const [selected, setSelected] = useState("all");
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     if (games) {
+      setIsLoading(true);
       const filtered = getFilteredGames();
       setFilteredGames(filtered);
+      setIsLoading(false);
     }
     // eslint-disable-next-line
   }, [selected]);
@@ -38,7 +41,11 @@ export default function MyGamesLibrary({ userGames }) {
   const uniqueGenres = new Set();
 
   return (
-    <section className="page-container">
+    <>
+    {isLoading ? (<div className="loader-wrapper">
+          <div className="loader"></div>
+        </div>
+) : (<><section className="page-container">
       <h3 className="head">My Games Library {numGames} - games</h3>
       {games !== undefined ? (
         <>
@@ -84,6 +91,6 @@ export default function MyGamesLibrary({ userGames }) {
       ) : (
         ""
       )}
-    </section>
-  );
+    </section></>)}
+  </>);
 }

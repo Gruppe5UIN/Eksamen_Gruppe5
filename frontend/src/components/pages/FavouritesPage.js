@@ -1,12 +1,24 @@
 import GameCard from "./../GameCard";
+import { useState, useEffect } from "react";
 
 export default function FavouritesPage({ userFavourites }) {
   const favourites = userFavourites?.favourites;
   const numFavourites = userFavourites?.numFavourites;
 
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    setIsLoading(false);
+  }, []);
+
   return (
     <>
-      <h2 className="head">My Favourites</h2>
+    <h2 className="head">My Favourites</h2>
+      {isLoading && (
+        <div className="loader-wrapper">
+          <div className="loader"></div>
+        </div>
+      )}
       <article className="gs-box">
         {favourites !== undefined ? (
           <>
