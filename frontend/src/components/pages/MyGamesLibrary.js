@@ -27,7 +27,6 @@ export default function MyGamesLibrary() {
           window.location.href = "/login";
         });
     }
-    console.log(games);
     // eslint-disable-next-line
   }, [user]);
 
