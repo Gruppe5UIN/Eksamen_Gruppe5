@@ -7,7 +7,7 @@ import UserContext from "../context/UserContext";
 import MyGames from "./dashboardComponents/MyGames";
 import GameShop from "./dashboardComponents/GameShop";
 
-export default function Dashboard({userGames}) {
+export default function Dashboard({userGames, favourites}) {
   //state for antall spill i MyGames
   const [numGames, setNumGames] = useState(0);
 
@@ -74,7 +74,7 @@ export default function Dashboard({userGames}) {
                 My Favourites
               </Link>
             </section>
-            <MyFavourites />
+            <MyFavourites favourites={favourites}/>
           </section>
         </>
       ) : (

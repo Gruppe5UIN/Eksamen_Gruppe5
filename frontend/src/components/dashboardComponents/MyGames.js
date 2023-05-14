@@ -1,8 +1,16 @@
 import GameCard from "../GameCard"
 
-//Komponent for forhåndsvisning av bruker spill
 export default function MyGames({userGames}){
-  const games = userGames.slice(0,4)
+
+    function checkGames() {
+      if(userGames.length > 4){
+        return userGames.slice(0,4)
+      }
+      else{
+        return userGames
+      }
+    }
+    const games = checkGames(userGames)
 
     return (
       <>

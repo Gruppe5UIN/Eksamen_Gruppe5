@@ -13,10 +13,14 @@ import { getUserEmail } from "./helper/userHelper";
 import GameShopPage from "./components/pages/GameShopPage";
 import FavouritesPage from "./components/pages/FavouritesPage";
 import MyGamesLibrary from "./components/pages/MyGamesLibrary";
-import { fetchGamesByUsername } from "./utils/sanity/userServices";
+import { fetchGamesByUsername, fetchFavouritesByUsername } from "./utils/sanity/userServices";
 
 function App() {
   const [favourites, setFavourites] = useState([]);
+
+  //har satt favourites i komponenter midlertidig på denne for å ikke kræsje favourites som er i GamePage
+  //Endres av den som jobber med favourites
+  const [userFavourites, setUserFavourites] = useState([])
 
   const [user, setUser] = useState(null);
   const [userGames, setUserGames] = useState([]);
@@ -61,12 +65,36 @@ function App() {
     }
   }, [user]);
 
+  async function getUserFavourites(username) {
+    try{
+      const data = await fetchFavouritesByUsername(username);
+      const userFavourites = data.favourites
+      return userFavourites
+  } catch (error) {
+    console.log(error)
+  }
+} 
+
+useEffect(() => {
+if (user) {
+  getUserFavourites(user.username)
+    .then((userFavourites) => {
+     
+      setUserFavourites(userFavourites);
+    })
+    .catch((error) => {
+      console.error(error);
+      window.location.href = "/login";
+    })
+}
+}, [user]);
+
   return (
     <UserContext.Provider value={{ user, setUser }}>
       <Router>
         <Routes>
           <Route path="/" element={<Layout />}>
-            <Route index element={<Dashboard userGames={userGames}/>} />
+            <Route index element={<Dashboard userGames={userGames} favourites={userFavourites}/>} />
             <Route
               path=":slug"
               element={
@@ -78,7 +106,7 @@ function App() {
             />
             <Route path="/gameshop" element={<GameShopPage />} />
             <Route path="/my-games" element={<MyGamesLibrary games={userGames} />} />
-            <Route path="/my-favourites" element={<FavouritesPage />} />
+            <Route path="/my-favourites" element={<FavouritesPage favourites={userFavourites}/>} />
             <Route path="/login" element={<Login />} />
           </Route>
         </Routes>
