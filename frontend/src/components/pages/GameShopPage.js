@@ -23,6 +23,7 @@ export default function GameShopPage() {
           genre={game?.genres.map((genre, i) => (
             <li key={i}>{genre?.name}</li>
           ))}
+          slug={`/${game?.slug}`}
           text="Buy"
           image={game?.background_image}
         />
