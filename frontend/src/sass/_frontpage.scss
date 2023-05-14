@@ -7,26 +7,21 @@ body{
 
 footer {
   border-top: 1px solid gray;
-  padding: 1rem;
+  padding: 3rem;
   margin-top: 3rem;
   display: flex;
   justify-content: space-between;
   align-content: center;
 }
 
-main {
-  margin-top: 3rem;
-}
-
 #welcome-section{
     text-align: center;
-    margin-bottom: 1rem;
+    margin-bottom: 3rem;
 }
 
 #welcometxt{
     font-size: 1.5em;
     letter-spacing: 0.3rem;
-    //font-family: 'Permanent Marker', cursive, 'Roboto', sans-serif;
 }
 
 .page-container {
@@ -143,6 +138,10 @@ header{
 
         }
     }
+}
+
+li:hover{
+    background-color: #c7c7c7;
 }
 
 .gs{

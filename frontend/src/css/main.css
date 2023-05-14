@@ -29997,20 +29997,16 @@ body {
 
 footer {
   border-top: 1px solid gray;
-  padding: 1rem;
+  padding: 3rem;
   margin-top: 3rem;
   display: flex;
   justify-content: space-between;
   align-content: center;
 }
 
-main {
-  margin-top: 3rem;
-}
-
 #welcome-section {
   text-align: center;
-  margin-bottom: 1rem;
+  margin-bottom: 3rem;
 }
 
 #welcometxt {
@@ -30119,6 +30115,9 @@ header nav ul li a {
   }
   header nav ul li a {
     color: black;
+  }
+  li:hover {
+    background-color: #c7c7c7;
   }
   .gs {
     padding-top: 2rem;
