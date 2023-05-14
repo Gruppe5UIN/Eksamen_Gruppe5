@@ -37,6 +37,7 @@ export const fetchGamesByUsername = async (username) => {
     }
 }
 
+//henter bruker sine favoritter
 export const fetchFavouritesByUsername = async (username) => {
     try {
         const result = await client.fetch(`*[_type == "user" && username == $username][0]{"favourites": favorites[]->{"game":{apiId, slug, title,"image": imageUrl[0], "genres": genres[]->{title}}}}`,{username})

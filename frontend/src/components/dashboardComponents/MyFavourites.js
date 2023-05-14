@@ -1,38 +1,17 @@
-import { useState, useEffect, useContext } from "react";
-import UserContext from "../../context/UserContext";
-
 import GameCard from "../GameCard";
 
-import { fetchFavouritesByUsername } from "../../utils/sanity/userServices";
+export default function MyFavourites({favourites}){
 
-export default function MyFavourites(){
-
-    const [userFavourites, setUserFavourites] = useState([]);
-    const { user } = useContext(UserContext);
-   
-
-    async function getUserFavourites(username) {
-        const data = await fetchFavouritesByUsername(username);
-        const userFavourites = data.favourites
-        if(userFavourites.length > 4){
-            return userFavourites.slice(0,4)
-        }
-        return userFavourites
-  } 
-
-  useEffect(() => {
-    if (user) {
-      getUserFavourites(user.username)
-        .then((userFavourites) => {
-         
-          setUserFavourites(userFavourites);
-        })
-        .catch((error) => {
-          console.error(error);
-          window.location.href = "/login";
-        })
+    function checkFavourites() {
+      if(favourites.length > 4){
+        return favourites.slice(0,4)
+      }
+      else{
+        return favourites
+      }
     }
-  }, [user]);
+
+    const userFavourites = checkFavourites(favourites)
 
     return (
         <>

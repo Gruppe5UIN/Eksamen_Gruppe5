@@ -1,44 +1,23 @@
 import GameCard from "../GameCard"
-import UserContext from '../../context/UserContext';
-import { useState, useEffect, useContext } from "react";
-import { fetchGamesByUsername} from "../../utils/sanity/userServices";
 
-//Komponent som henter 
-export default function MyGames(){
+export default function MyGames({userGames}){
 
-  const [userGames, setUserGames] = useState([]);
-  const { user } = useContext(UserContext);
-
-
-   async function getUserGames(username) {
-    const data = await fetchGamesByUsername(username);
-    const userGames = data.games
-    if(userGames.length > 4){
-      return userGames.slice(0,4)
+    function checkGames() {
+      if(userGames.length > 4){
+        return userGames.slice(0,4)
+      }
+      else{
+        return userGames
+      }
     }
-    return userGames
-  } 
-
-   useEffect(() => {
-    if (user) {
-      getUserGames(user.username)
-        .then((userGames) => {
-         
-          setUserGames(userGames);
-        })
-        .catch((error) => {
-          console.error(error);
-          window.location.href = "/login";
-        })
-    }
-  }, [user]);
+    const games = checkGames(userGames)
 
     return (
       <>
-      {userGames !== undefined ? ( 
+      {games !== undefined ? ( 
         <article className="gs-box">
       
-          {userGames?.map((item, index) => (
+          {games?.map((item, index) => (
             <GameCard
               key={index}
               title={item.game.title}
