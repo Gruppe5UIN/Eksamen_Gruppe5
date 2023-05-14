@@ -30,7 +30,7 @@ export const getGamesByUsername = async (username) => {
 //Metode som henter spill fra bruker med utvidet projections
 export const fetchGamesByUsername = async (username) => {
     try {
-        const result = await client.fetch(`*[_type == "user" && username == $username][0]{"games": userGames[]{playtime, game->{apiId, slug, title, "image": imageUrl[0], "genres": genres[]->{"id": apiId, title}}}}`,{ username })
+        const result = await client.fetch(`*[_type == "user" && username == $username][0]{"numGames": count(userGames),"games": userGames[]{playtime, game->{apiId, slug, title, "image": imageUrl[0], "genres": genres[]->{"id": apiId, title}}}}`,{ username })
         return result;
     } catch (error) {
         console.log(error)
@@ -40,7 +40,7 @@ export const fetchGamesByUsername = async (username) => {
 //henter bruker sine favoritter
 export const fetchFavouritesByUsername = async (username) => {
     try {
-        const result = await client.fetch(`*[_type == "user" && username == $username][0]{"favourites": favorites[]->{"game":{apiId, slug, title,"image": imageUrl[0], "genres": genres[]->{title}}}}`,{username})
+        const result = await client.fetch(`*[_type == "user" && username == $username][0]{"numFavourites": count(favorites), "favourites": favorites[]->{"game":{apiId, slug, title,"image": imageUrl[0], "genres": genres[]->{title}}}}`,{username})
         return result;
     } catch (error) {
         console.log(error)

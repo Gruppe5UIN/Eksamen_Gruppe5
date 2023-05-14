@@ -1,28 +1,23 @@
 import React from "react";
-import { useState, useEffect, useContext } from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
-import { countGames } from "../utils/sanity/gameServices";
 import MyFavourites from "./dashboardComponents/MyFavourites";
 import UserContext from "../context/UserContext";
 import MyGames from "./dashboardComponents/MyGames";
 import GameShop from "./dashboardComponents/GameShop";
 
 export default function Dashboard({userGames, favourites}) {
-  //state for antall spill i MyGames
-  const [numGames, setNumGames] = useState(0);
 
-  //const count = 0;
+  //antall spill og favoritter
+  const numGames = userGames.numGames;
+  const numFavourites = favourites.numFavourites;
+  
+  //kun lister med spill fra data objektet
+  const myGames = userGames?.games
+  const myFavourites = favourites?.favourites
+
 
   const { user } = useContext(UserContext);
-
-  async function getCount() {
-    const data = await countGames();
-    setNumGames(data);
-  }
-
-  useEffect(() => {
-    getCount();
-  }, []);
 
   return (
     <>
@@ -51,7 +46,7 @@ export default function Dashboard({userGames, favourites}) {
           <section className="gs">
             <section className="gs-txt-box">
               <h3>
-                My games library (<span>{numGames.total}</span> games)
+                My games library (<span>{numGames}</span> games)
               </h3>
               <Link
                 to="/my-games"
@@ -61,7 +56,8 @@ export default function Dashboard({userGames, favourites}) {
                 My Games
               </Link>
             </section>
-            <MyGames userGames={userGames}/>
+            
+            <MyGames userGames={myGames}/>
           </section>
           <section className="gs">
             <section className="gs-txt-box">
@@ -74,7 +70,7 @@ export default function Dashboard({userGames, favourites}) {
                 My Favourites
               </Link>
             </section>
-            <MyFavourites favourites={favourites}/>
+            <MyFavourites favourites={myFavourites}/>
           </section>
         </>
       ) : (

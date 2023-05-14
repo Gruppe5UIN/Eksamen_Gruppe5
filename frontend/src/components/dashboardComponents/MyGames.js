@@ -1,9 +1,9 @@
 import GameCard from "../GameCard"
 
 export default function MyGames({userGames}){
-
-    function checkGames() {
-      if(userGames.length > 4){
+  
+   const checkGames = () => {
+      if(userGames?.length > 4){
         return userGames.slice(0,4)
       }
       else{
@@ -31,7 +31,7 @@ export default function MyGames({userGames}){
               text="Buy"
             />
           ))}
-        </article>) : ('')}
+              </article>) : ('')}
     </>    
     )
 }

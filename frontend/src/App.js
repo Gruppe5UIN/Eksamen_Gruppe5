@@ -25,6 +25,7 @@ function App() {
   const [user, setUser] = useState(null);
   const [userGames, setUserGames] = useState([]);
 
+
   const fetchUser = async (email) => {
     const user = await getUserByEmail(email);
     if (user == null) {
@@ -42,9 +43,8 @@ function App() {
   
   async function getUserGames(username) {
     try{
-      const data = await fetchGamesByUsername(username);
-      const userGames = data.games
-  
+      const data = await fetchGamesByUsername(username);      
+      const userGames = data
       return userGames
     } catch (error) {
         console.log(error)
@@ -68,7 +68,7 @@ function App() {
   async function getUserFavourites(username) {
     try{
       const data = await fetchFavouritesByUsername(username);
-      const userFavourites = data.favourites
+      const userFavourites = data
       return userFavourites
   } catch (error) {
     console.log(error)
@@ -105,8 +105,8 @@ if (user) {
               }
             />
             <Route path="/gameshop" element={<GameShopPage />} />
-            <Route path="/my-games" element={<MyGamesLibrary games={userGames} />} />
-            <Route path="/my-favourites" element={<FavouritesPage favourites={userFavourites}/>} />
+            <Route path="/my-games" element={<MyGamesLibrary userGames={userGames} />} />
+            <Route path="/my-favourites" element={<FavouritesPage userFavourites={userFavourites}/>} />
             <Route path="/login" element={<Login />} />
           </Route>
         </Routes>
