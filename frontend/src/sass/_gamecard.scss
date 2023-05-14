@@ -82,7 +82,7 @@
   @media only screen and (min-width: 900px) {
 
   .gamecard{
-    max-width: 500px;
+    max-width: 400px;
     max-height: none;
   }
 
@@ -91,5 +91,13 @@
     height: auto;
   }
 
+
+  }
+
+  @media only screen and (min-width: 1100px) {
+
+  .gamecard{
+    max-width: 500px;
+  }
 
   }

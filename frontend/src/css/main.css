@@ -29858,12 +29858,17 @@ progress {
 }
 @media only screen and (min-width: 900px) {
   .gamecard {
-    max-width: 500px;
+    max-width: 400px;
     max-height: none;
   }
   .gamecard-image {
     max-width: 100%;
     height: auto;
+  }
+}
+@media only screen and (min-width: 1100px) {
+  .gamecard {
+    max-width: 500px;
   }
 }
 .gamepage {
@@ -30020,7 +30025,7 @@ main {
 .page-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 2rem;
   background-color: #ececec;
   padding-top: 3rem;
   padding-bottom: 2rem;
