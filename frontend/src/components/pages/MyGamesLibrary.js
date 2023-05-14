@@ -37,7 +37,7 @@ export default function MyGamesLibrary() {
             <li key={index}>{genre.title}</li>
         ))}
           image={item.game.image}
-          slug={item.game.slug.current}
+          slug={`/${item.game.slug.current}`}
           playTime={item.playtime}
           text={"Text here"}
         />
