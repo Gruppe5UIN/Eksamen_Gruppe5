@@ -62,11 +62,14 @@ export default function MyGamesLibrary() {
           {games?.map((item, index) => {
             return (
               <React.Fragment key={index}>
-                {item?.game.genres.map((genre) => {
+                {item?.game.genres.map((genre, index) => {
                   if (!uniqueGenres.has(genre.title)) {
                     uniqueGenres.add(genre.title);
                     return (
-                      <option value={genre.title} key={genre.title}>
+                      <option
+                        value={genre.title}
+                        key={`${genre.title}-${index}`}
+                      >
                         {genre.title}
                       </option>
                     );
@@ -78,12 +81,12 @@ export default function MyGamesLibrary() {
           })}
         </select>
       </div>
-      {filteredGames?.map((item) => (
+      {filteredGames?.map((item, index) => (
         <GameCard
-          key={item._id}
+          key={item.id}
           title={item.game.title}
-          genre={item.game.genres.map((genre, index) => (
-            <li key={`${index}${genre.id}`}>{genre.title}</li>
+          genre={item.game.genres.map((genre) => (
+            <li key={`${genre.id}-${index}`}>{genre.title}</li>
           ))}
           image={item.game.image}
           slug={`/${item.game.slug.current}`}
