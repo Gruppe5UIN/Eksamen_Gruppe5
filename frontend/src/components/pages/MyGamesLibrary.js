@@ -66,10 +66,7 @@ export default function MyGamesLibrary() {
                   if (!uniqueGenres.has(genre.title)) {
                     uniqueGenres.add(genre.title);
                     return (
-                      <option
-                        value={genre.title}
-                        key={`${genre.title}${index}`}
-                      >
+                      <option value={genre.title} key={genre.title}>
                         {genre.title}
                       </option>
                     );
@@ -85,8 +82,8 @@ export default function MyGamesLibrary() {
         <GameCard
           key={item._id}
           title={item.game.title}
-          genre={item.game.genres.map((genre) => (
-            <li key={genre.title}>{genre.title}</li>
+          genre={item.game.genres.map((genre, index) => (
+            <li key={`${index}${genre.id}`}>{genre.title}</li>
           ))}
           image={item.game.image}
           slug={`/${item.game.slug.current}`}
