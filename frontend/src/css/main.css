@@ -29995,22 +29995,22 @@ body {
   margin: 0 auto;
 }
 
+main {
+  margin-top: 3rem;
+}
+
 footer {
   border-top: 1px solid gray;
-  padding: 1rem;
+  padding: 3rem;
   margin-top: 3rem;
   display: flex;
   justify-content: space-between;
   align-content: center;
 }
 
-main {
-  margin-top: 3rem;
-}
-
 #welcome-section {
   text-align: center;
-  margin-bottom: 1rem;
+  margin-bottom: 3rem;
 }
 
 #welcometxt {
@@ -30025,6 +30025,17 @@ main {
   background-color: #ececec;
   padding-top: 3rem;
   padding-bottom: 2rem;
+}
+
+#selectbox {
+  width: 100%;
+  padding: 2rem;
+  text-align: center;
+}
+
+#genre-filter {
+  width: 300px;
+  padding: 0.5rem;
 }
 
 #gs-first {
@@ -30079,6 +30090,14 @@ header nav ul li a {
 
 #headline {
   text-decoration: none;
+}
+
+.head {
+  width: 100%;
+  text-align: center;
+  padding: 2rem;
+  font-size: 1.5em;
+  letter-spacing: 0.3rem;
 }
 
 #visitshop-btn {
@@ -30141,13 +30160,11 @@ header nav ul li a {
     color: black;
   }
   li:hover {
-    background-color: rgb(199, 197, 197);
+    background-color: #c7c7c7;
   }
   .gs {
-    padding-top: 1rem;
+    padding-top: 2rem;
     padding-bottom: 5rem;
-    padding-right: 1rem;
-    padding-left: 1rem;
     margin-bottom: 5rem;
   }
   .gs-box {

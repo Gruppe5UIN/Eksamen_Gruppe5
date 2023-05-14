@@ -13,6 +13,7 @@ export default function FavouritesPage({ userFavourites }) {
 
   return (
     <>
+    <h2 className="head">My Favourites</h2>
       {isLoading && (
         <div className="loader-wrapper">
           <div className="loader"></div>
