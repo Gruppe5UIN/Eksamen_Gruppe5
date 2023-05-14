@@ -30,7 +30,7 @@ export const getGamesByUsername = async (username) => {
 //Metode som henter spill fra bruker med utvidet projections
 export const fetchGamesByUsername = async (username) => {
     try {
-        const result = await client.fetch(`*[_type == "user" && username == $username][0]{"games": userGames[]{playtime, game->{apiId, slug, title, "image": imageUrl[0], "genres": genres[]->{title}}}}`,{ username })
+        const result = await client.fetch(`*[_type == "user" && username == $username][0]{"games": userGames[]{playtime, game->{apiId, slug, title, "image": imageUrl[0], "genres": genres[]->{"id": apiId, title}}}}`,{ username })
         return result;
     } catch (error) {
         console.log(error)
