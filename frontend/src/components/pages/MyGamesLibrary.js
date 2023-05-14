@@ -57,26 +57,31 @@ export default function MyGamesLibrary() {
   return (
     <section className="page-container">
       <h3 id="gs-first">My Games Library - {games.length} games</h3>
-      <select id="genre-filter" onChange={handleSelect}>
-        <option value="all">All genres</option>
-        {games?.map((item, index) => {
-          return (
-            <React.Fragment key={index}>
-              {item?.game.genres.map((genre) => {
-                if (!uniqueGenres.has(genre.title)) {
-                  uniqueGenres.add(genre.title);
-                  return (
-                    <option value={genre.title} key={genre.title}>
-                      {genre.title}
-                    </option>
-                  );
-                }
-                return null;
-              })}
-            </React.Fragment>
-          );
-        })}
-      </select>
+      <div id="selectbox">
+        <select id="genre-filter" onChange={handleSelect}>
+          <option value="all">All genres</option>
+          {games?.map((item, index) => {
+            return (
+              <React.Fragment key={index}>
+                {item?.game.genres.map((genre) => {
+                  if (!uniqueGenres.has(genre.title)) {
+                    uniqueGenres.add(genre.title);
+                    return (
+                      <option
+                        value={genre.title}
+                        key={`${genre.title}${index}`}
+                      >
+                        {genre.title}
+                      </option>
+                    );
+                  }
+                  return null;
+                })}
+              </React.Fragment>
+            );
+          })}
+        </select>
+      </div>
       {filteredGames?.map((item) => (
         <GameCard
           key={item._id}

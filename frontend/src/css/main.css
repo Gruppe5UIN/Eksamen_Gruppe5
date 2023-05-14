@@ -30140,6 +30140,10 @@ header nav ul li a {
   height: 50px;
 }
 
+#selectbox {
+  width: 100%;
+}
+
 .gameshop-container {
   display: flex;
   flex-wrap: wrap;
