@@ -2,8 +2,8 @@ import GameCard from "../GameCard";
 
 export default function MyFavourites({favourites}){
 
-    function checkFavourites() {
-      if(favourites.length > 4){
+   const checkFavourites = () => {
+      if(favourites?.length > 4){
         return favourites.slice(0,4)
       }
       else{
@@ -12,7 +12,7 @@ export default function MyFavourites({favourites}){
     }
 
     const userFavourites = checkFavourites(favourites)
-
+    
     return (
         <>
         {userFavourites !== undefined ? ( 
