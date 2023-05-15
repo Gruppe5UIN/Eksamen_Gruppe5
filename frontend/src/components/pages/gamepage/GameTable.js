@@ -1,9 +1,8 @@
 
 //Eget komponent for info om spill som brukes i GamePage
 export default function GameTable({game}){
-
-
-const publishers = game?.publishers?.map((pub, index)=>{
+ 
+  const publishers = game?.publishers?.map((pub, index)=>{
     return (
       <td key={index}>
         {pub.name}
@@ -14,7 +13,7 @@ const publishers = game?.publishers?.map((pub, index)=>{
   const genres = game?.genres?.map((genre, index)=>{
     return (
       <td key={index}>
-        {genre.title}
+        {genre.name}
       </td>
     )
   })
@@ -37,6 +36,7 @@ const publishers = game?.publishers?.map((pub, index)=>{
       <td key={index}>{store.store.name}</td>
     )
   })
+
     return (
         <table className="game-info">
           <tbody>
