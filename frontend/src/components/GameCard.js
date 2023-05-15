@@ -21,7 +21,7 @@ export default function GameCard({
 
       <section className="gamecard-text">
         <h3>{title}</h3>
-        <h5>Genres:</h5>
+        <h4>Genres:</h4>
         <ul>{genre}</ul>
         <section className="playtime">
           {playTime === 0 ? null : (
@@ -33,10 +33,10 @@ export default function GameCard({
         </section>
         <section className="button-section">
           {}
-          <Link to={slug} className="btn btn-outline-secondary">
-            Read more
+          <Link to={slug} className="btn btn-outline-dark">
+            Show Game Details
           </Link>
-          <button className="btn btn-outline-secondary">{text}</button>
+          <button className="btn btn-outline-dark">{text}</button>
         </section>
       </section>
     </article>

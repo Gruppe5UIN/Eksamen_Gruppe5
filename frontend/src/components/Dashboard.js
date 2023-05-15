@@ -43,10 +43,9 @@ export default function Dashboard({ userGames, favourites }) {
               <h3>Game Shop</h3>
               <Link
                 to="/gameshop"
-                className="btn btn-outline-secondary"
-                id="visitshop-btn"
+                className="btn btn-outline-dark visitshop-btn"
               >
-                Visit shop
+                All Shop Items
               </Link>
             </section>
             <GameShop />
@@ -60,10 +59,9 @@ export default function Dashboard({ userGames, favourites }) {
                   </h3>
                   <Link
                     to="/my-games"
-                    className="btn btn-outline-secondary"
-                    id="visitshop-btn"
+                    className="btn btn-outline-dark visitshop-btn"
                   >
-                    My Games
+                    My Full Games Library
                   </Link>
                 </section>
 
@@ -74,10 +72,9 @@ export default function Dashboard({ userGames, favourites }) {
                   <h3>My Favourites</h3>
                   <Link
                     to="/my-favourites"
-                    className="btn btn-outline-secondary"
-                    id="visitshop-btn"
+                    className="btn btn-outline-dark visitshop-btn"
                   >
-                    My Favourites
+                    Full List of Favourites
                   </Link>
                 </section>
                 <MyFavourites favourites={myFavourites} />
