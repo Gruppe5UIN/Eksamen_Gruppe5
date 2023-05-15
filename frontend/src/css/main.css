@@ -30188,6 +30188,35 @@ header nav ul li a {
     font-size: 1rem;
   }
 }
+.login-section {
+  margin-bottom: 10rem;
+}
+
+.login-items-sec {
+  max-width: 40%;
+  border: 1px solid gray;
+  padding-top: 10rem;
+  padding-bottom: 10rem;
+  margin: 0 auto;
+}
+
+.login-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: baseline;
+  justify-content: center;
+  margin: 1rem;
+}
+.login-form label {
+  font-size: 1.2em;
+}
+
+#email {
+  height: 40px;
+  max-width: 60%;
+}
+
 @media only screen and (min-width: 900px) {
   .gs-box {
     flex-direction: row;
@@ -30209,6 +30238,8 @@ header nav ul li a {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
+  background-color: #ececec;
+  padding-bottom: 3rem;
 }
 
 body {

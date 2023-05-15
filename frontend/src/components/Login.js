@@ -36,15 +36,21 @@ export default function Login() {
 
   return (
     <>
-      <div>
-        <h1>Login</h1>
-        {error && <p className="alert alert-danger">{error}</p>}
-        <form onSubmit={handleLogin}>
-          <label htmlFor="email">Email</label>
-          <input type="email" name="email" id="email" />
-          <button type="submit">Login</button>
-        </form>
-      </div>
+      <section className="login-section">
+        <section className="head">
+          <h2>Login</h2>
+        </section>
+        <section className="login-items-sec">
+          {error && <p className="alert alert-danger">{error}</p>}
+          <form onSubmit={handleLogin} className="login-form">
+            <label htmlFor="email">Email:</label>
+            <input type="email" name="email" id="email" />
+            <button type="submit" className="btn btn-outline-dark">
+              Log in
+            </button>
+          </form>
+        </section>
+      </section>
     </>
   );
 }
