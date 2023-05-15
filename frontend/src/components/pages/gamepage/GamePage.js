@@ -31,17 +31,23 @@ export default function GamePage({ favourites, setFavourites }) {
     setGame(data);
   };
 
-  //Håndterer et klikk på favoritt ikon - legger til hvis den ikke er favoritt, fjerner hvis den allerede er favoritt
-  //Ligger en midlertidig print til console når man legger til/fjerner favoritt
-  //Lagrer et game object
+  // Håndterer et klikk på favoritt ikon - legger til hvis den ikke er favoritt, fjerner hvis den allerede er favoritt
+  // Ligger en midlertidig print til console når man legger til/fjerner favoritt
+  // Lagrer et game object
   const handleFavourite = (event) => {
+    // Stopper reload av siden
     event.preventDefault();
+    // Setter icon til true
     setIcon(true);
+    // Sjekker om game er i favourites arrayet
     if (favourites.some((item) => item["id"] === game?.id)) {
+      // Fjerner game fra favourites arrayet
       setFavourites(favourites.filter((item) => item.id !== game?.id));
       console.log(`${game?.name} er fjernet fra favoritter`);
+      // Setter icon til false
       setIcon(false);
     } else {
+      // Legger til game i favourites arrayet
       setFavourites([
         ...favourites,
         {
@@ -51,14 +57,18 @@ export default function GamePage({ favourites, setFavourites }) {
           slug: game?.slug,
         },
       ]);
+      // Setter icon til true
       setIcon(true);
       console.log(`${game?.name} er min favoritt`);
     }
   };
 
   useEffect(() => {
+    // Setter loading effekt til true
     setIsLoading(true);
+    // Kaller på getGame funksjonen
     getGame();
+    // Setter loading effekt til false
     setIsLoading(false);
     // eslint-disable-next-line
   }, []);

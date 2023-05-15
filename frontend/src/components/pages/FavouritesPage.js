@@ -9,6 +9,7 @@ export default function FavouritesPage({ userFavourites }) {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    // Setter loading effekt til false
     setIsLoading(false);
   }, []);
 

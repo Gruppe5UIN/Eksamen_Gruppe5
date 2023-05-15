@@ -12,33 +12,51 @@ export default function MyGamesLibrary({ userGames }) {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    // Sjekker om games og selected er definert
     if (games && selected) {
+      // Setter loading effekt til true
       setIsLoading(true);
+      // Kaller på getFilteredGames funksjonen
       const filtered = getFilteredGames();
+      // Setter filteredGames til å være lik resultatet fra getFilteredGames funksjonen.
       setFilteredGames(filtered);
+      // Setter loading effekt til false
       setIsLoading(false);
     }
     // eslint-disable-next-line
+    // Kjører useEffect når games eller selected endrer seg
   }, [games, selected]);
 
+  // Funksjon som håndterer valg av sjanger
   const handleSelect = (e) => {
+    // Forhindrer at siden lastes på nytt
     e.preventDefault();
+    // Setter selected til å være lik verdien som er valgt i select boksen
     setSelected(e.target.value);
+    // Sjekker om verdien som er valgt i select boksen er "all"
     if (e.target.value === "all") {
+      // Henter spill basert på all sjanger
       setFilteredGames(games);
     }
   };
 
+  // Funksjon som henter spill basert på valgt sjanger
   const getFilteredGames = () => {
+    // Sjekker om valgt sjanger er "all"
     if (selected === "all") {
+      // Returnerer alle spill
       return games;
+      // Sjekker om valgt sjanger er noe annet enn "all"
     } else {
+      // Returnerer spill basert på valgt sjanger
       return games?.filter((game) =>
+      // Sjekker om spill har sjangeren som er valgt
         game.game.genres.some((genre) => genre.title === selected)
       );
     }
   };
 
+  // Lager en ny Set
   const uniqueGenres = new Set();
 
   return (

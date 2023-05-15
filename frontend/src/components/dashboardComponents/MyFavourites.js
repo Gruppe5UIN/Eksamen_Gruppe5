@@ -1,10 +1,13 @@
 import GameCard from "../GameCard";
 
 export default function MyFavourites({ favourites }) {
+  // Denne funksjonen sjekker favorittene til en bruker
   const checkFavourites = () => {
+    // Hvis brukeren har mer enn 4 favoritter, returner de 4 første favorittene.
     if (favourites?.length > 4) {
       return favourites.slice(0, 4);
     } else {
+      // Hvis brukeren har mindre enn 4 favoritter, returner alle favorittene.
       return favourites;
     }
   };

@@ -20,6 +20,7 @@ export default function Dashboard({ userGames, favourites }) {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    // Setter loading effekt til false
     setIsLoading(false);
   });
 

@@ -9,15 +9,20 @@ export default function GameShopPage() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    // Kaller på getGames funksjonen fra Fetch.js, som sorterer spillene etter released dato, og setter en maksimumsgrense på 10 spill.
     getGames({
       ordering: "-released",
       page_size: 10,
     }).then((results) => {
+      // Setter loading effekt til true
       setIsLoading(true);
+      // Setter games til å være lik resultatet fra getGames funksjonen.
       setGames(results);
+      // Setter loading effekt til false
       setIsLoading(false);
     });
   }, []);
+  
   return (
     <>
       <section className="breadcrumb">
