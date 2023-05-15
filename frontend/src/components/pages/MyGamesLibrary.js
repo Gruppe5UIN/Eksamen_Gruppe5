@@ -12,14 +12,14 @@ export default function MyGamesLibrary({ userGames }) {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    if (games) {
+    if (games && selected) {
       setIsLoading(true);
       const filtered = getFilteredGames();
       setFilteredGames(filtered);
       setIsLoading(false);
     }
     // eslint-disable-next-line
-  }, [selected]);
+  }, [games, selected]);
 
   const handleSelect = (e) => {
     e.preventDefault();
@@ -53,7 +53,11 @@ export default function MyGamesLibrary({ userGames }) {
       ) : (
         <>
           <section className="page-container">
-            <h3 className="head">My Games Library {numGames} - games</h3>
+            <h3 className="head head1">My Games Library</h3>{" "}
+            <div className="numofgames">
+              <span>{numGames}</span>
+              <span>Games</span>
+            </div>
             {games !== undefined ? (
               <>
                 <div id="selectbox">
