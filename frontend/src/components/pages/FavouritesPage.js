@@ -38,7 +38,7 @@ export default function FavouritesPage({ userFavourites }) {
                   ))}
                   slug={`/${item.game.slug.current}`}
                   playTime={0}
-                  text={"Test"}
+                  text={"Remove from favourites"}
                 />
               ))}
             </section>

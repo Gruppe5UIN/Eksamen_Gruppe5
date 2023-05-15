@@ -95,7 +95,7 @@ export default function MyGamesLibrary({ userGames }) {
                     image={item.game.image}
                     slug={`/${item.game.slug.current}`}
                     playTime={item.playtime}
-                    text={"Text here"}
+                    text={"Play this game"}
                   />
                 ))}{" "}
               </>
