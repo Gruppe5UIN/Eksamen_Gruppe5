@@ -4,7 +4,8 @@ const GAME_API_URL =
 
 const LEGO_API_URL = 'https://api.rawg.io/api/games?key=6ccebb406ca942cd8ddc8584b1da9a4f&search=lego*&page_size=5'
 const CAT_API_URL = 'https://api.rawg.io/api/games?key=6ccebb406ca942cd8ddc8584b1da9a4f&search=cat*&page_size=10' 
-
+const DOG_API_URL = 'https://api.rawg.io/api/games?key=6ccebb406ca942cd8ddc8584b1da9a4f&search=dog*&page_size=10'
+const TINTIN_API_URL = 'https://api.rawg.io/api/games?key=6ccebb406ca942cd8ddc8584b1da9a4f&search=tintin'
 //gjøre om til ndjson
 const toNdJson = (s) => {
   if (s.startsWith('[{') && s.endsWith('}]')) {
@@ -16,7 +17,7 @@ const toNdJson = (s) => {
 //async get function
 const getGame = async () => {
   //const url = GAME_API_URL
-  const url = CAT_API_URL
+  const url = TINTIN_API_URL
   const response = await fetch(url)
 
   const data = await response.json()
@@ -31,7 +32,7 @@ const selectedData = res.map((item) => {
     _type: 'game',
     apiId: item.id,
     title: item.name,
-    playtime: item.playtime,
+    avgPlaytime: item.playtime,
     slug: {
       _type: 'slug',
       current: item.slug,
@@ -39,7 +40,7 @@ const selectedData = res.map((item) => {
 
     //leser inn string liste kun for hjelp til å registrere ref til sjanger
     genresArr: item.genres.map((genre) => {
-      return genre
+      return genre.name
     }),
 
     imageUrl: item.short_screenshots.map((image) => {

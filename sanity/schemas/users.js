@@ -23,7 +23,8 @@ export default {
                 {
                     type: "userGame"
                 }
-            ]
+            ],
+            validation: Rule => Rule.unique()
         },
         {
             name: "favorites",
