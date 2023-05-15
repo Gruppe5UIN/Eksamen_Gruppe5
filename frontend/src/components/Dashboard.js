@@ -43,7 +43,7 @@ export default function Dashboard({ userGames, favourites }) {
               <h3>Game Shop</h3>
               <Link
                 to="/gameshop"
-                className="btn btn-outline-secondary visitshop-btn"
+                className="btn btn-outline-dark visitshop-btn"
               >
                 Visit shop
               </Link>
@@ -59,7 +59,7 @@ export default function Dashboard({ userGames, favourites }) {
                   </h3>
                   <Link
                     to="/my-games"
-                    className="btn btn-outline-secondary visitshop-btn"
+                    className="btn btn-outline-dark visitshop-btn"
                   >
                     My Games
                   </Link>
@@ -72,7 +72,7 @@ export default function Dashboard({ userGames, favourites }) {
                   <h3>My Favourites</h3>
                   <Link
                     to="/my-favourites"
-                    className="btn btn-outline-secondary visitshop-btn"
+                    className="btn btn-outline-dark visitshop-btn"
                   >
                     My Favourites
                   </Link>

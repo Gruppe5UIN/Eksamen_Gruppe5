@@ -33,10 +33,10 @@ export default function GameCard({
         </section>
         <section className="button-section">
           {}
-          <Link to={slug} className="btn btn-outline-secondary">
+          <Link to={slug} className="btn btn-outline-dark">
             Read more
           </Link>
-          <button className="btn btn-outline-secondary">{text}</button>
+          <button className="btn btn-outline-dark">{text}</button>
         </section>
       </section>
     </article>
