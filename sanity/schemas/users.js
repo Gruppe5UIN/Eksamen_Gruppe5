@@ -16,21 +16,6 @@ export default {
             validation: Rule => Rule.required().email()
         },
         {
-            name: "games",
-            title: "Games",
-            type: "array",
-            of: [
-                {
-                    type: "reference",
-                    to: [
-                        {
-                            type: "game"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
             name: "userGames",
             title: "User Games",
             type: "array",
