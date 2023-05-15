@@ -2,6 +2,7 @@ import React from "react";
 import { getGames } from "../../functions/Fetch";
 import GameCard from "./../GameCard";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 export default function GameShopPage() {
   const [games, setGames] = useState([]);
@@ -19,6 +20,10 @@ export default function GameShopPage() {
   }, []);
   return (
     <>
+      <section className="breadcrumb">
+        <Link to="/">Home</Link> / <p>Game Shop</p>
+      </section>
+
       {isLoading ? (
         <div className="loader-wrapper">
           <div className="loader"></div>
@@ -26,7 +31,7 @@ export default function GameShopPage() {
       ) : (
         <>
           <section className="gameshop-container">
-          <h2 className="head">Game Shop</h2>
+            <h2 className="head">Game Shop</h2>
             {games?.map((game, index) => (
               <GameCard
                 key={index}
@@ -35,7 +40,7 @@ export default function GameShopPage() {
                   <li key={i}>{genre?.name}</li>
                 ))}
                 slug={`/${game?.slug}`}
-                text="Buy"
+                text="Buy This Game"
                 image={game?.background_image}
               />
             ))}

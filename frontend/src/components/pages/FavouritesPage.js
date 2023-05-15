@@ -1,5 +1,6 @@
 import GameCard from "./../GameCard";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 export default function FavouritesPage({ userFavourites }) {
   const favourites = userFavourites?.favourites;
@@ -13,7 +14,10 @@ export default function FavouritesPage({ userFavourites }) {
 
   return (
     <>
-    <h2 className="head">My Favourites</h2>
+      <section className="breadcrumb">
+        <Link to="/">Home</Link> / <p>My Favourites</p>
+      </section>
+      <h2 className="head">My Favourites</h2>
       {isLoading && (
         <div className="loader-wrapper">
           <div className="loader"></div>

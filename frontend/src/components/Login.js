@@ -3,6 +3,7 @@ import UserContext from "../context/UserContext";
 import { getUserByEmail } from "../utils/sanity/userServices";
 import { useNavigate } from "react-router-dom";
 import { getUserEmail } from "../helper/userHelper";
+import { Link } from "react-router-dom";
 
 export default function Login() {
   const { setUser } = useContext(UserContext);
@@ -36,6 +37,9 @@ export default function Login() {
 
   return (
     <>
+      <section className="breadcrumb">
+        <Link to="/">Home</Link> / <p>Login</p>
+      </section>
       <section className="login-section">
         <section className="head">
           <h2>Login</h2>
