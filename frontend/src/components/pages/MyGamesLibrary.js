@@ -12,14 +12,14 @@ export default function MyGamesLibrary({ userGames }) {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    if (games) {
+    if (games && selected) {
       setIsLoading(true);
       const filtered = getFilteredGames();
       setFilteredGames(filtered);
       setIsLoading(false);
     }
     // eslint-disable-next-line
-  }, [selected]);
+  }, [games, selected]);
 
   const handleSelect = (e) => {
     e.preventDefault();
