@@ -24,13 +24,14 @@ export default function FavouritesPage({ userFavourites }) {
         </div>
       ) : (
         <>
-          {" "}
           {favourites !== undefined ? (
             <section className="page-container">
-              <h2 className="head">My Favourites</h2>
-              <div className="numofgames">
-                <span>{numFavourites}</span>
-                <span>Games</span>
+              <h2 className="head head1">My Favourites</h2>
+              <div id="favdiv">
+                <div className="numofgames">
+                  <span>{numFavourites}</span>
+                  <span>Games</span>
+                </div>
               </div>
               {favourites.map((item, index) => (
                 <GameCard
