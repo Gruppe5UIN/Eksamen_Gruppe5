@@ -30184,6 +30184,9 @@ header nav ul li a {
   #visitshop-btn {
     width: auto;
   }
+  h4, .h4 {
+    font-size: 1rem;
+  }
 }
 @media only screen and (min-width: 900px) {
   .gs-box {
