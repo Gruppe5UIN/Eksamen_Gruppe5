@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 
 export default function FavouritesPage({ userFavourites }) {
   const favourites = userFavourites?.favourites;
-  const numFavourites = userFavourites?.numFavourites;
 
   const [isLoading, setIsLoading] = useState(true);
 

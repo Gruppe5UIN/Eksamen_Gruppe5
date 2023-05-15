@@ -69,12 +69,12 @@ export default function Dashboard({ userGames, favourites }) {
               </section>
               <section className="gs">
                 <section className="gs-txt-box">
-                  <h3>My Favourites</h3>
+                  <h3>My Favourites (<span>{numFavourites}</span> games)</h3>
                   <Link
                     to="/my-favourites"
                     className="btn btn-outline-dark visitshop-btn"
                   >
-                    Full List of Favourites
+                    Full List of Favourites 
                   </Link>
                 </section>
                 <MyFavourites favourites={myFavourites} />
