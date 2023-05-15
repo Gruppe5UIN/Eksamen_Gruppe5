@@ -1,6 +1,5 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { GiHeartShield } from "react-icons/gi";
 import { useParams } from "react-router-dom";
 import GameTable from "./GameTable";
 import WordCloud from "./WordCloud";
