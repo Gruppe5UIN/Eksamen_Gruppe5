@@ -30177,7 +30177,7 @@ footer {
   header nav ul li a {
     color: rgb(0, 0, 0);
   }
-  li:hover {
+  nav li:hover {
     background-color: #c7c7c7;
   }
   .gs {
