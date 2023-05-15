@@ -2,6 +2,9 @@
 const GAME_API_URL =
   'https://api.rawg.io/api/games?key=d2d5f79e22a6464d852e6cd6b671c8d7&page_size=20'
 
+const LEGO_API_URL = 'https://api.rawg.io/api/games?key=6ccebb406ca942cd8ddc8584b1da9a4f&search=lego*&page_size=5'
+const CAT_API_URL = 'https://api.rawg.io/api/games?key=6ccebb406ca942cd8ddc8584b1da9a4f&search=cat*&page_size=10' 
+
 //gjøre om til ndjson
 const toNdJson = (s) => {
   if (s.startsWith('[{') && s.endsWith('}]')) {
@@ -12,7 +15,8 @@ const toNdJson = (s) => {
 
 //async get function
 const getGame = async () => {
-  const url = GAME_API_URL
+  //const url = GAME_API_URL
+  const url = CAT_API_URL
   const response = await fetch(url)
 
   const data = await response.json()
@@ -34,8 +38,8 @@ const selectedData = res.map((item) => {
     },
 
     //leser inn string liste kun for hjelp til å registrere ref til sjanger
-    genres: item.genres.map((genre) => {
-      return genre.name.toLowerCase()
+    genresArr: item.genres.map((genre) => {
+      return genre
     }),
 
     imageUrl: item.short_screenshots.map((image) => {
@@ -44,4 +48,4 @@ const selectedData = res.map((item) => {
   }
 })
 
-//console.log(toNdJson(JSON.stringify(selectedData)))
+console.log(toNdJson(JSON.stringify(selectedData)))
