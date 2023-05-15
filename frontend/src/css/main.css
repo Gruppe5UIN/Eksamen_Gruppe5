@@ -29831,6 +29831,7 @@ progress {
     display: flex;
     align-items: flex-start;
     flex-wrap: wrap;
+    margin-bottom: 1rem;
   }
   .playtime p {
     margin: 0;
@@ -30236,7 +30237,7 @@ header nav ul li a {
   padding: 2rem;
 }
 
-.gameshop-container {
+.container {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;

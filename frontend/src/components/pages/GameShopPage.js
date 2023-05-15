@@ -30,7 +30,7 @@ export default function GameShopPage() {
         </div>
       ) : (
         <>
-          <section className="gameshop-container">
+          <section className="page-container">
             <h2 className="head">Game Shop</h2>
             {games?.map((game, index) => (
               <GameCard
