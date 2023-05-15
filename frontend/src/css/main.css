@@ -30100,7 +30100,7 @@ header nav ul li a {
   letter-spacing: 0.3rem;
 }
 
-#visitshop-btn {
+.visitshop-btn {
   width: 50%;
 }
 
@@ -30181,7 +30181,7 @@ header nav ul li a {
   .gs-txt-box h2, .gs-txt-box .h2 {
     font-size: 1.5em;
   }
-  #visitshop-btn {
+  .visitshop-btn {
     width: auto;
   }
   h4, .h4 {
