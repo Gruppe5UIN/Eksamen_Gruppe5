@@ -151,7 +151,7 @@ export default function GamePage({ favourites, setFavourites }) {
                 ""
               )}
 
-              <button className="btn btn-outline-primary buy-btn">
+              <button className="btn btn-outline-dark buy-btn">
                 Buy This Game
               </button>
             </section>

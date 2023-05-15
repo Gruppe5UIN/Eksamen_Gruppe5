@@ -22,7 +22,7 @@ export default function Dashboard({ userGames, favourites }) {
   useEffect(() => {
     // Setter loading effekt til false
     setIsLoading(false);
-  });
+  }, []);
 
   return (
     <>
@@ -70,7 +70,9 @@ export default function Dashboard({ userGames, favourites }) {
               </section>
               <section className="gs">
                 <section className="gs-txt-box">
-                  <h3>My Favourites (<span>{numFavourites}</span> games)</h3>
+                  <h3>
+                    My Favourites (<span>{numFavourites}</span> games)
+                  </h3>
                   <Link
                     to="/my-favourites"
                     className="btn btn-outline-dark visitshop-btn"
