@@ -29957,6 +29957,19 @@ progress {
   margin: 2rem;
 }
 
+tbody {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+tr {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
 @media only screen and (max-width: 992px) {
   .gamepage {
     flex-direction: row;
