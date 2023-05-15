@@ -11,12 +11,18 @@ export default function WordCloud({gameTags}){
     }
     )
   })
+
+  const options = {
+    luminosity: 'dark',
+    hue: 'blue',
+  }
   
     return (
         <TagCloud
-            minSize={12}
-            maxSize={35}
+            minSize={18}
+            maxSize={42}
             tags={cloudTags}
-            onClick={tag => alert(`'${tag.value}' was selected!`)}/>
+            colorOptions={options}
+        />
     )
 }
