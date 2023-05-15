@@ -22,7 +22,7 @@ export default function GameShopPage() {
       setIsLoading(false);
     });
   }, []);
-  
+
   return (
     <>
       <section className="breadcrumb">

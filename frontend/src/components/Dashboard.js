@@ -75,7 +75,7 @@ export default function Dashboard({ userGames, favourites }) {
                     to="/my-favourites"
                     className="btn btn-outline-dark visitshop-btn"
                   >
-                    Full List of Favourites 
+                    Full List of Favourites
                   </Link>
                 </section>
                 <MyFavourites favourites={myFavourites} />

@@ -24,12 +24,12 @@ export default function Login() {
       console.log("Not logged in");
       // Setter error til å være lik "Invalid email"
       setError("Invalid email");
-    // Hvis bruker ikke er null
+      // Hvis bruker ikke er null
     } else {
       // prøver å sette email i localStorage
       try {
         localStorage.setItem("email_account", email);
-      // Hvis det ikke går
+        // Hvis det ikke går
       } catch (error) {
         // Skriver ut feilmelding
         console.error("localStorage error:", error);

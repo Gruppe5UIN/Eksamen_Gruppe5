@@ -1,10 +1,13 @@
 import GameCard from "../GameCard";
 
 export default function MyGames({ userGames }) {
+  // Denne funksjonen sjekker spillene til en bruker
   const checkGames = () => {
     if (userGames?.length > 4) {
+      // Hvis brukeren har mer enn 4 spill, returner de 4 første spillene.
       return userGames.slice(0, 4);
     } else {
+      // Hvis brukeren har mindre enn 4 spill, returner alle spillene.
       return userGames;
     }
   };

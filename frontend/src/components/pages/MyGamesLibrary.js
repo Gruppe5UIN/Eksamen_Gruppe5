@@ -50,7 +50,7 @@ export default function MyGamesLibrary({ userGames }) {
     } else {
       // Returnerer spill basert på valgt sjanger
       return games?.filter((game) =>
-      // Sjekker om spill har sjangeren som er valgt
+        // Sjekker om spill har sjangeren som er valgt
         game.game.genres.some((genre) => genre.title === selected)
       );
     }
