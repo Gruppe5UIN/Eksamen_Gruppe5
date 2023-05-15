@@ -23,6 +23,6 @@ export default function WordCloud({gameTags}){
             maxSize={42}
             tags={cloudTags}
             colorOptions={options}
-            onClick={tag => alert(`'${tag.value}' was selected!`)}/>
+        />
     )
 }
