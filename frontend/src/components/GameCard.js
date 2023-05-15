@@ -21,8 +21,13 @@ export default function GameCard({
 
       <section className="gamecard-text">
         <h3>{title}</h3>
-        <h4>Genres:</h4>
-        <ul>{genre}</ul>
+
+        {genre.length > 0 ?
+          <>
+            <h4>Genres:</h4>
+            <ul>{genre}</ul>
+          </> : ''}
+
         <section className="playtime">
           {playTime === 0 ? null : (
             <>
