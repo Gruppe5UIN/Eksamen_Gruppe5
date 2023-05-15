@@ -30135,6 +30135,10 @@ header nav ul li a {
   text-transform: uppercase;
 }
 
+#favdiv {
+  width: 100%;
+}
+
 @media only screen and (min-width: 837px) {
   #welcome-section {
     width: 100%;
