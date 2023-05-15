@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import GameTable from "./GameTable";
 import WordCloud from "./WordCloud";
+import { Link } from "react-router-dom";
 
 /*Komponent for presentasjon av et spill. Henter slug fra url og bruker denne i fetch fra rawg api 
   Slug er unik og fungerer som id hos rawg - den er lest inn fra rawg api hos Sanity slik at vi er garantert 100% lik
@@ -64,6 +65,9 @@ export default function GamePage({ favourites, setFavourites }) {
 
   return (
     <>
+      <section className="breadcrumb">
+        <Link to="/">Home</Link> / <p>{game?.name}</p>
+      </section>
       {isLoading ? (
         <div className="loader-wrapper">
           <div className="loader"></div>
