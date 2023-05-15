@@ -53,7 +53,7 @@ export default function MyGamesLibrary({ userGames }) {
       ) : (
         <>
           <section className="page-container">
-            <h3 className="head head1">My Games Library</h3>{" "}
+            <h2 className="head head1">My Games Library</h2>{" "}
             <div className="numofgames">
               <span>{numGames}</span>
               <span>Games</span>
