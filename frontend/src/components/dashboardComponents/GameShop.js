@@ -4,7 +4,6 @@ import { getGames } from "../../functions/Fetch";
 
 export default function GameShop() {
   const [games, setGames] = useState([]);
-  const [buttonText, setButtonText] = useState("Buy This Game");
 
   useEffect(() => {
     // Kaller på getGames funksjonen fra Fetch.js, som sorterer spillene etter released dato, og setter en maksimumsgrense på 3 spill.
@@ -30,7 +29,7 @@ export default function GameShop() {
             genre={game.genres.map((genre, index) => (
               <li key={index}>{genre.name}</li>
             ))}
-            text={buttonText}
+            text={"Buy This Game"}
           />
         ))}
       </article>
