@@ -25,7 +25,7 @@ export default function MyFavourites({ favourites }) {
               image={item.game.image}
               slug={item.game.slug.current}
               playTime={0}
-              text="Buy This Game"
+              text="Play this game"
             />
           ))}
         </article>

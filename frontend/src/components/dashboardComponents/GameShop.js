@@ -23,7 +23,7 @@ export default function GameShop() {
             image={game.background_image}
             slug={game.slug}
             title={game.name}
-            playTime={game.playtime}
+            playTime={0}
             genre={game.genres.map((genre, index) => (
               <li key={index}>{genre.name}</li>
             ))}

@@ -24,7 +24,7 @@ export default function MyGames({ userGames }) {
               image={item.game.image}
               slug={item.game.slug.current}
               playTime={item.playtime}
-              text="Buy This Game"
+              text="Play this game"
             />
           ))}
         </article>

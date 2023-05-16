@@ -3,18 +3,18 @@
     width: 100%;
     margin: 0 auto;
     display: flex;
-    background-color: white;
+    background-color: $myWhite;
   
-  }
+}
 
-  .gamepage-header{
+.gamepage-header{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-  }
+}
 
-  .image-frame{
+.image-frame{
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -22,84 +22,99 @@
     gap: 1rem;
     margin: 0;
     padding: 0;
-  }
+}
 
-  .main-image{
+.main-image{
     width: 100%;
     object-fit:cover;
-  }
+}
 
-  .miniatures {
+.miniatures {
     display: flex;
     gap: 1.5rem;
     width: 100%;
-  }
+}
 
-  .miniature {
+.miniature {
     object-fit: cover;
     max-width: 250px;
     width: 100%;
-  }
+}
 
-  .textarea{
+.textarea{
     max-width: 700px;
     width: 100%;
     margin: 1rem 1rem 0 2rem;
     padding: 1rem;
     overflow: hidden;
-  }
+}
   
-  .game-details {
+.game-details {
     display: flex;
     gap: 2rem;
-  }
+}
 
-  .rating{
-    border: 2px solid #008080;
-    background-color: #d5f0f0;
+.rating{
+    border: 2px solid $myBlack;
+    background-color: $myLightTeal;
     padding: 0.3rem 0.5rem;
     border-radius: 10%;
-  }
+}
 
-  .rating p{
-    color: #005C5C;
+.rating p{
+    color: $myBlack;
     margin-bottom: 0;
     font-weight: 500;
-  }
+}
 
-  .plot{
+.plot{
     margin: 2rem 0;
-  }
+}
 
- .tag-group{
+.tag-group{
     margin-top: 3rem;
- }
+}
   
- .tags{
-    border: 2px solid teal;
+.tags{
+    border: 2px solid $myTeal;
     border-radius: 10%;
     padding: 0.3rem 0.5rem;
     margin: 0.5rem;
- }
+}
 
- .buy-btn{
+.buy-btn{
     max-width: 40%;
     margin: 2rem;
- }
+}
+
+tbody{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+tr{
+  display: flex;
+  flex-wrap: wrap;
+  gap: .6rem;
+}
 
   
 @media only screen and (max-width: 992px) {
-    .gamepage{
-        flex-direction: row;
-        flex-wrap: wrap;
-    }
+  .gamepage{
+      flex-direction: row;
+      flex-wrap: wrap;
+  }
 
-    .miniatures{
-        justify-content: space-between;
-    }
-    .miniature{
-        max-width: 100%;
-    }
+  .miniatures{
+      justify-content: space-between;
+  }
+  
+  .miniature{
+      max-width: 100%;
+  }
+
 }
  
   
