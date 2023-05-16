@@ -12,7 +12,6 @@ export default function Login() {
 
   // Funksjon som håndterer innlogging
   const handleLogin = async (e) => {
-    // Forhindrer at siden lastes på nytt
     e.preventDefault();
     // Henter email fra input feltet
     const email = e.target.email.value;
@@ -20,11 +19,9 @@ export default function Login() {
     const loggedInUser = await getUserByEmail(email);
     // Sjekker om bruker er null
     if (loggedInUser === null) {
-      // Skriver ut feilmelding
       console.log("Not logged in");
-      // Setter error til å være lik "Invalid email"
+      // Skriver ut "Invalid email"
       setError("Invalid email");
-      // Hvis bruker ikke er null
     } else {
       // prøver å sette email i localStorage
       try {
