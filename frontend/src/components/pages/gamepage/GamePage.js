@@ -6,6 +6,7 @@ import WordCloud from "./WordCloud";
 import { Link } from "react-router-dom";
 import { fetchFavouritesByUsername, fetchGamesByUsername } from "../../../utils/sanity/userServices";
 import UserContext from "../../../context/UserContext";
+import { addFavouriteSlugToLocalStorage, getFavouriteSlugsFromLocalStorage, removeFavouriteSlugFromLocalStorage } from "../../../helper/userHelper";
 
 //Komponent for presentasjon av et spill. Henter slug fra url og bruker denne i fetch fra rawg api 
 
@@ -38,6 +39,7 @@ export default function GamePage({ favourites, setFavourites }) {
       // Fjerner game fra favourites arrayet
       setFavourites(favourites.filter((item) => item.id !== game?.id));
       console.log(`${game?.name} er fjernet fra favoritter`);
+      removeFavouriteSlugFromLocalStorage(slug);
       // Setter icon til false
       setIcon(false);
     } else {
@@ -52,6 +54,7 @@ export default function GamePage({ favourites, setFavourites }) {
         },
       ]);
       // Setter icon til true
+      addFavouriteSlugToLocalStorage(slug);
       setIcon(true);
       console.log(`${game?.name} er min favoritt`);
     }
@@ -82,11 +85,14 @@ export default function GamePage({ favourites, setFavourites }) {
           setFavouriteVisible(true);
         }
       })
-
+        
       // Sjekker om bruker allerede har spillet i sin favorittliste
       userHasFavorite(slug, user.username).then((result) => {
         if (result) {
           // Hvis resultatet er true, setter vi icon til true
+          setIcon(true);
+        }
+        else if (userFavouriteLocal(slug)) {
           setIcon(true);
         }
       });
@@ -100,6 +106,16 @@ export default function GamePage({ favourites, setFavourites }) {
       const response = await fetchFavouritesByUsername(username);
       // Returnerer true hvis spillet finnes i favorittlisten
       return response.favourites.some((item) => item.game.slug.current === slug);
+    } catch (error) {
+      console.error("Error fetching favorites:", error);
+      throw error;
+    }
+  };
+
+  const userFavouriteLocal = (slug) => {
+    try {
+      const favorites = getFavouriteSlugsFromLocalStorage();
+      return favorites.some((item) => item === slug);
     } catch (error) {
       console.error("Error fetching favorites:", error);
       throw error;
