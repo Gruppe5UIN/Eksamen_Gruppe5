@@ -11,52 +11,42 @@ export default function MyGamesLibrary({ userGames }) {
   const [selected, setSelected] = useState("all");
   const [isLoading, setIsLoading] = useState(true);
 
+  /*IsLoading settes til true før henting av data og viser dermed en loading spinner mens brukeren venter. 
+Denne settes så til false når dataen er hentet, slik at dataen erstatter spinneren. */
+
   useEffect(() => {
-    // Sjekker om games og selected er definert
     if (games && selected) {
-      // Setter loading effekt til true
       setIsLoading(true);
-      // Kaller på getFilteredGames funksjonen
       const filtered = getFilteredGames();
-      // Setter filteredGames til å være lik resultatet fra getFilteredGames funksjonen.
       setFilteredGames(filtered);
-      // Setter loading effekt til false
       setIsLoading(false);
     }
     // eslint-disable-next-line
-    // Kjører useEffect når games eller selected endrer seg
   }, [games, selected]);
 
-  // Funksjon som håndterer valg av sjanger
+  /*handleSelect håndterer henting av spill basert på sjanger. Den setter verdien man velger i select-boksen inn i selected-staten.
+Hvis bruker har valgt "all genres" som har value "all", så skal den spytte ut alle spill.
+Ellers skal den kalle på getFilteredGames som returnerer spill hvor tittelen på spillet matcher valget i selectboksen*/
+
   const handleSelect = (e) => {
-    // Forhindrer at siden lastes på nytt
     e.preventDefault();
-    // Setter selected til å være lik verdien som er valgt i select boksen
     setSelected(e.target.value);
-    // Sjekker om verdien som er valgt i select boksen er "all"
     if (e.target.value === "all") {
-      // Henter spill basert på all sjanger
       setFilteredGames(games);
     }
   };
 
-  // Funksjon som henter spill basert på valgt sjanger
   const getFilteredGames = () => {
-    // Sjekker om valgt sjanger er "all"
     if (selected === "all") {
-      // Returnerer alle spill
       return games;
-      // Sjekker om valgt sjanger er noe annet enn "all"
     } else {
-      // Returnerer spill basert på valgt sjanger
       return games?.filter((game) =>
-        // Sjekker om spill har sjangeren som er valgt
         game.game.genres.some((genre) => genre.title === selected)
       );
     }
   };
 
-  // Lager en ny Set
+  // Lager en ny liste til unike spill, slik at man kan sile ut duplikater fra nedtrekksmenyen i filteret
   const uniqueGenres = new Set();
 
   return (
@@ -85,6 +75,10 @@ export default function MyGamesLibrary({ userGames }) {
                       return (
                         <React.Fragment key={index}>
                           {item?.game.genres.map((genre, index) => {
+                            {
+                              /*Mapper gjennom alle sjangre, men fordi sjanger dukker opp flere ganger så legger vi kun unike sjangre
+                            inn i en ny liste, som vi kan benytte for å unngå duplikater i filteret */
+                            }
                             if (!uniqueGenres.has(genre.title)) {
                               uniqueGenres.add(genre.title);
                               return (
@@ -103,6 +97,7 @@ export default function MyGamesLibrary({ userGames }) {
                     })}
                   </select>
                 </div>
+                {/*Mapper gjennom filteredGames for å se hvilke spillsammensetningen den skal vise på GameCard*/}
                 {filteredGames?.map((item, index) => (
                   <GameCard
                     key={index}
