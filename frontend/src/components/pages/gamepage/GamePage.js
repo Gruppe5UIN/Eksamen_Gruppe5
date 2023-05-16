@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import GameTable from "./GameTable";
 import WordCloud from "./WordCloud";
 import { Link } from "react-router-dom";
+import { fetchFavouritesByUsername, fetchGamesByUsername } from "../../../utils/sanity/userServices";
 
 /*Komponent for presentasjon av et spill. Henter slug fra url og bruker denne i fetch fra rawg api 
   Slug er unik og fungerer som id hos rawg - den er lest inn fra rawg api hos Sanity slik at vi er garantert 100% lik
@@ -22,6 +23,7 @@ export default function GamePage({ favourites, setFavourites }) {
   const [game, setGame] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [Icon, setIcon] = useState(false);
+  const [buttonText, setButtonText] = useState("Kjøp spillet");
 
   const url = `https://api.rawg.io/api/games/${slug}?key=6ccebb406ca942cd8ddc8584b1da9a4f`;
 
@@ -61,7 +63,40 @@ export default function GamePage({ favourites, setFavourites }) {
     getGame();
     setIsLoading(false);
     // eslint-disable-next-line
+    userHasGame(slug).then((result) => {
+      if (result) {
+        setButtonText("Spillet er i din liste");
+      }
+    })
+
+    userHasFavorite(slug).then((result) => {
+      if (result) {
+        setIcon(true);
+      }
+    });
+    
   }, []);
+
+  const userHasFavorite = async (slug) => {
+    try {
+      const response = await fetchFavouritesByUsername("Julian");
+      return response.favourites.some((item) => item.game.slug.current === slug);
+    } catch (error) {
+      console.error("Error fetching favorites:", error);
+      throw error;
+    }
+  };
+
+  const userHasGame = async (slug) => {
+    try {
+      const response = await fetchGamesByUsername("Julian");
+      return response.games.some((item) => item.game.slug.current === slug);
+    } catch (error) {
+      console.error("Error fetching games:", error);
+      throw error;
+    }
+  };
+
 
   return (
     <>
@@ -142,7 +177,7 @@ export default function GamePage({ favourites, setFavourites }) {
               )}
 
               <button className="btn btn-outline-dark buy-btn">
-                Buy This Game
+                {buttonText}
               </button>
             </section>
           </article>
