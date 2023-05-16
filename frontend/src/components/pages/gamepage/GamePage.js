@@ -73,23 +73,29 @@ export default function GamePage({ favourites, setFavourites }) {
     // Setter loading effekt til false
     setIsLoading(false);
     // eslint-disable-next-line
+    // Sjekker om bruker allerede har spillet i sin liste
     userHasGame(slug).then((result) => {
       if (result) {
+        // Hvis resultatet er true, setter vi buttonText til "Spillet er i din liste"
         setButtonText("Spillet er i din liste");
       }
     })
 
+    // Sjekker om bruker allerede har spillet i sin favorittliste
     userHasFavorite(slug).then((result) => {
       if (result) {
+        // Hvis resultatet er true, setter vi icon til true
         setIcon(true);
       }
     });
     
   }, []);
 
+  // Funksjon for å sjekke om bruker har spillet i sin favorittliste
   const userHasFavorite = async (slug) => {
     try {
       const response = await fetchFavouritesByUsername("Julian");
+      // Returnerer true hvis spillet finnes i favorittlisten
       return response.favourites.some((item) => item.game.slug.current === slug);
     } catch (error) {
       console.error("Error fetching favorites:", error);
@@ -97,9 +103,11 @@ export default function GamePage({ favourites, setFavourites }) {
     }
   };
 
+  // Funksjon for å sjekke om bruker har spillet i sin liste
   const userHasGame = async (slug) => {
     try {
       const response = await fetchGamesByUsername("Julian");
+      // Returnerer true hvis spillet finnes i spillisten
       return response.games.some((item) => item.game.slug.current === slug);
     } catch (error) {
       console.error("Error fetching games:", error);
