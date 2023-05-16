@@ -89,7 +89,7 @@ export default function GamePage({ favourites, setFavourites }) {
         }
       });
     }
-
+    // eslint-disable-next-line
   }, []);
 
   // Funksjon for å sjekke om bruker har spillet i sin favorittliste
