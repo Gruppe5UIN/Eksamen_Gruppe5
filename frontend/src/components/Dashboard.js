@@ -7,11 +7,9 @@ import MyGames from "./dashboardComponents/MyGames";
 import GameShop from "./dashboardComponents/GameShop";
 
 export default function Dashboard({ userGames, favourites }) {
-  //antall spill og favoritter
   const numGames = userGames.numGames;
   const numFavourites = favourites.numFavourites;
 
-  //kun lister med spill fra data objektet
   const myGames = userGames?.games;
   const myFavourites = favourites?.favourites;
 
@@ -19,8 +17,10 @@ export default function Dashboard({ userGames, favourites }) {
 
   const [isLoading, setIsLoading] = useState(true);
 
+  /*isLoading/setIsLoading setter state til true før lasting av data og false når data er lastet inn. Denne er koblet til en loader spinner
+  som gjør at vi kan laste en gif mens vi venter på at data skal komme inn, for bedre brukervennlighet*/
+
   useEffect(() => {
-    // Setter loading effekt til false
     setIsLoading(false);
   }, []);
 
