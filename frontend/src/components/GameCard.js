@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { GiDuration } from "react-icons/gi";
 import { Link } from "react-router-dom";
 
@@ -12,6 +12,16 @@ export default function GameCard({
   playTime,
   text,
 }) {
+
+  const [buttonText, setButtonText] = useState(text);
+
+  const handleBuy = (e) => {
+    e.preventDefault();
+    console.log(text)
+    if (buttonText === "Buy This Game") {
+      setButtonText("Added to cart")
+    }
+  };
   return (
     <article className="gamecard">
       <img className="gamecard-image" src={image} alt="game"></img>
@@ -38,7 +48,7 @@ export default function GameCard({
           <Link to={slug} className="btn btn-outline-dark">
             Show Game Details
           </Link>
-          <button className="btn btn-outline-dark">{text}</button>
+          <button onClick={handleBuy} className="btn btn-outline-dark">{buttonText}</button>
         </section>
       </section>
     </article>
