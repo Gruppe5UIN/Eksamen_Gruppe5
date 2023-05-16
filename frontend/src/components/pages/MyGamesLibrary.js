@@ -75,10 +75,8 @@ Ellers skal den kalle p책 getFilteredGames som returnerer spill hvor tittelen p�
                       return (
                         <React.Fragment key={index}>
                           {item?.game.genres.map((genre, index) => {
-                            {
-                              /*Mapper gjennom alle sjangre, men fordi sjanger dukker opp flere ganger s책 legger vi kun unike sjangre
+                            /*Mapper gjennom alle sjangre, men fordi sjanger dukker opp flere ganger s책 legger vi kun unike sjangre
                             inn i en ny liste, som vi kan benytte for 책 unng책 duplikater i filteret */
-                            }
                             if (!uniqueGenres.has(genre.title)) {
                               uniqueGenres.add(genre.title);
                               return (
