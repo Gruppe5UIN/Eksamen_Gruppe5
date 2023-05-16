@@ -1,10 +1,11 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import GameTable from "./GameTable";
 import WordCloud from "./WordCloud";
 import { Link } from "react-router-dom";
 import { fetchFavouritesByUsername, fetchGamesByUsername } from "../../../utils/sanity/userServices";
+import UserContext from "../../../context/UserContext";
 
 /*Komponent for presentasjon av et spill. Henter slug fra url og bruker denne i fetch fra rawg api 
   Slug er unik og fungerer som id hos rawg - den er lest inn fra rawg api hos Sanity slik at vi er garantert 100% lik
@@ -24,6 +25,7 @@ export default function GamePage({ favourites, setFavourites }) {
   const [isLoading, setIsLoading] = useState(true);
   const [Icon, setIcon] = useState(false);
   const [buttonText, setButtonText] = useState("Kjøp spillet");
+  const { user } = useContext(UserContext);
 
   const url = `https://api.rawg.io/api/games/${slug}?key=6ccebb406ca942cd8ddc8584b1da9a4f`;
 
@@ -94,9 +96,11 @@ export default function GamePage({ favourites, setFavourites }) {
   // Funksjon for å sjekke om bruker har spillet i sin favorittliste
   const userHasFavorite = async (slug) => {
     try {
-      const response = await fetchFavouritesByUsername("Julian");
-      // Returnerer true hvis spillet finnes i favorittlisten
-      return response.favourites.some((item) => item.game.slug.current === slug);
+      if (user) {
+        const response = await fetchFavouritesByUsername(user.username);
+        // Returnerer true hvis spillet finnes i favorittlisten
+        return response.favourites.some((item) => item.game.slug.current === slug);
+      }
     } catch (error) {
       console.error("Error fetching favorites:", error);
       throw error;
@@ -106,9 +110,11 @@ export default function GamePage({ favourites, setFavourites }) {
   // Funksjon for å sjekke om bruker har spillet i sin liste
   const userHasGame = async (slug) => {
     try {
-      const response = await fetchGamesByUsername("Julian");
-      // Returnerer true hvis spillet finnes i spillisten
-      return response.games.some((item) => item.game.slug.current === slug);
+      if (user) {
+        const response = await fetchGamesByUsername("Julian");
+        // Returnerer true hvis spillet finnes i spillisten
+        return response.games.some((item) => item.game.slug.current === slug);
+      }
     } catch (error) {
       console.error("Error fetching games:", error);
       throw error;
