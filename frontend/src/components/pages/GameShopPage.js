@@ -8,17 +8,16 @@ export default function GameShopPage() {
   const [games, setGames] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
+  /*Kaller på getGames-funksjonen som vi importerer fra eget komponent, som henter data fra RAWG. I den er det dynamiske parameter, så når vi kaller funksjonen
+legger vi inn ønskede parameter, som her er sortert på reversert releasedato og 10 resultater. */
+
   useEffect(() => {
-    // Kaller på getGames funksjonen fra Fetch.js, som sorterer spillene etter released dato, og setter en maksimumsgrense på 10 spill.
     getGames({
       ordering: "-released",
       page_size: 10,
     }).then((results) => {
-      // Setter loading effekt til true
       setIsLoading(true);
-      // Setter games til å være lik resultatet fra getGames funksjonen.
       setGames(results);
-      // Setter loading effekt til false
       setIsLoading(false);
     });
   }, []);
