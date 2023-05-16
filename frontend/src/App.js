@@ -1,4 +1,3 @@
-//import { useState, useEffect } from "react";
 import "./App.css";
 import "./css/main.css";
 import GamePage from "./components/pages/gamepage/GamePage";
@@ -13,27 +12,23 @@ import { getUserEmail } from "./helper/userHelper";
 import GameShopPage from "./components/pages/GameShopPage";
 import FavouritesPage from "./components/pages/FavouritesPage";
 import MyGamesLibrary from "./components/pages/MyGamesLibrary";
-import { fetchGamesByUsername, fetchFavouritesByUsername } from "./utils/sanity/userServices";
+import {
+  fetchGamesByUsername,
+  fetchFavouritesByUsername,
+} from "./utils/sanity/userServices";
 
 function App() {
   const [favourites, setFavourites] = useState([]);
-
-  //har satt favourites i komponenter midlertidig på denne for å ikke kræsje favourites som er i GamePage
-  //Endres av den som jobber med favourites
-  const [userFavourites, setUserFavourites] = useState([])
-
+  const [userFavourites, setUserFavourites] = useState([]);
   const [user, setUser] = useState(null);
   const [userGames, setUserGames] = useState([]);
-
 
   const fetchUser = async (email) => {
     // Hjelpemetode som henter bruker e-post fra localStorage
     const user = await getUserByEmail(email);
-    // Sjekker om bruker er null
     if (user == null) {
       // Skriver ut feilmelding
       console.log("Not logged in");
-      // Hvis bruker ikke er null
     } else {
       // Setter bruker til å være lik loggedInUser
       setUser(user);
@@ -49,18 +44,17 @@ function App() {
 
   // Henter spill basert på brukernavn
   async function getUserGames(username) {
-    // Prøver å hente spill basert på brukernavn
     try {
       // Henter spill basert på brukernavn
       const data = await fetchGamesByUsername(username);
-      // Setter userGames til å være lik data      
-      const userGames = data
+      // Setter userGames til å være lik data
+      const userGames = data;
       // Returnerer userGames
-      return userGames
+      return userGames;
       // Hvis det ikke går
     } catch (error) {
       // Skriver ut feilmelding
-      console.log(error)
+      console.log(error);
     }
   }
 
@@ -79,7 +73,7 @@ function App() {
           console.error(error);
           // Sender bruker til "/login"
           window.location.href = "/login";
-        })
+        });
 
       // Henter brukerens favoritter basert på brukernavn
       getUserFavourites(user.username)
@@ -93,7 +87,7 @@ function App() {
           console.error(error);
           // Sender bruker til "/login"
           window.location.href = "/login";
-        })
+        });
     }
     // useEffect kjører når user endrer seg
   }, [user]);
@@ -105,13 +99,13 @@ function App() {
       // Henter brukerens favoritter basert på brukernavn
       const data = await fetchFavouritesByUsername(username);
       // Setter userFavourites til å være lik data
-      const userFavourites = data
+      const userFavourites = data;
       // Returnerer userFavourites
-      return userFavourites
+      return userFavourites;
       // Hvis det ikke går
     } catch (error) {
       // Skriver ut feilmelding
-      console.log(error)
+      console.log(error);
     }
   }
 
@@ -120,7 +114,12 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Layout />}>
-            <Route index element={<Dashboard userGames={userGames} favourites={userFavourites} />} />
+            <Route
+              index
+              element={
+                <Dashboard userGames={userGames} favourites={userFavourites} />
+              }
+            />
             <Route
               path=":slug"
               element={
@@ -131,8 +130,14 @@ function App() {
               }
             />
             <Route path="/gameshop" element={<GameShopPage />} />
-            <Route path="/my-games" element={<MyGamesLibrary userGames={userGames} />} />
-            <Route path="/my-favourites" element={<FavouritesPage userFavourites={userFavourites} />} />
+            <Route
+              path="/my-games"
+              element={<MyGamesLibrary userGames={userGames} />}
+            />
+            <Route
+              path="/my-favourites"
+              element={<FavouritesPage userFavourites={userFavourites} />}
+            />
             <Route path="/login" element={<Login />} />
           </Route>
         </Routes>
