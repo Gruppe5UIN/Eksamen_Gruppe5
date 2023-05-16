@@ -9,9 +9,9 @@ export default function Nav() {
   return (
     <header>
       <nav>
-        <a href="/" id="headline">
+        <Link to="/" id="headline">
           <h1>Game Haven</h1>
-        </a>
+        </Link>
         <ul>
           <li>
             <Link to="/">Home</Link>

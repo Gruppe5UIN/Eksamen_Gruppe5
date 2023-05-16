@@ -3,10 +3,7 @@ import { GiDuration } from "react-icons/gi";
 import { Link } from "react-router-dom";
 
 //Komponent for forhåndsvisning av spill som kan brukes på forsiden av dashboard og på spillsidene
-//Skal ha en lenke basert på apiId videre til GamePage
-//Henter inn et spillobjekt som props
-//Sjanger må senere basereres på filtrering? På objektet er det en liste med sjangere
-//Se på hvordan vi velger bilde. Bruker foreløpig kun første der det er en liste med flere
+
 export default function GameCard({
   title,
   genre,

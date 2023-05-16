@@ -40,6 +40,7 @@ legger vi inn ønskede parameter, som her er sortert på reversert releasedato o
               <GameCard
                 key={index}
                 title={game?.name}
+                playTime={0}
                 genre={game?.genres.map((genre, i) => (
                   <li key={i}>{genre?.name}</li>
                 ))}
