@@ -7,16 +7,7 @@ import { Link } from "react-router-dom";
 import { fetchFavouritesByUsername, fetchGamesByUsername } from "../../../utils/sanity/userServices";
 import UserContext from "../../../context/UserContext";
 
-/*Komponent for presentasjon av et spill. Henter slug fra url og bruker denne i fetch fra rawg api 
-  Slug er unik og fungerer som id hos rawg - den er lest inn fra rawg api hos Sanity slik at vi er garantert 100% lik
-  Men selv om både Sanity og rawg krever helt unike slugs er det en risiko hvis man slugify url i Sanity studio 
-  med en regex som ikke dekker hele spekteret av muligheter. 
-  For eksempel er det en del paranteser rundt årstall i rawg api som med en standard slugify fra undervisning ikke ble fjernet.
-  Henter inn favoritt state fra App.js
-*/
-
-//Button funksjonalitet må lages
-//Trenger error håndtering
+//Komponent for presentasjon av et spill. Henter slug fra url og bruker denne i fetch fra rawg api 
 
 export default function GamePage({ favourites, setFavourites }) {
   const { slug } = useParams();
@@ -36,8 +27,6 @@ export default function GamePage({ favourites, setFavourites }) {
   };
 
   // Håndterer et klikk på favoritt ikon - legger til hvis den ikke er favoritt, fjerner hvis den allerede er favoritt
-  // Ligger en midlertidig print til console når man legger til/fjerner favoritt
-  // Lagrer et game object
   const handleFavourite = (event) => {
     // Stopper reload av siden
     event.preventDefault();
@@ -83,6 +72,7 @@ export default function GamePage({ favourites, setFavourites }) {
     setIsLoading(false);
     // eslint-disable-next-line
     // Sjekker om bruker allerede har spillet i sin liste
+
     if (user) {
       userHasGame(slug, user.username).then((result) => {
         if (result) {
