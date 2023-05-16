@@ -1,4 +1,6 @@
-//Dynamic queryParams to use in other components
+//Dynamisk fetch som kan benyttes i de komponentene man måtte ønske ved å kalle funksjonen med ulike parameter
+//Dates må med som fast parameter, fordi RAWG har publisert mange testspill med datoer i fremtiden som vi aldri vil ha med
+
 export const getGames = async (params) => {
   const queryParams = new URLSearchParams(params).toString();
   const response = await fetch(

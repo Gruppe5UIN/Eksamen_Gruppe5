@@ -8,6 +8,9 @@ export default function GameShopPage() {
   const [games, setGames] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
+  /*Kaller på getGames-funksjonen som vi importerer fra eget komponent, som henter data fra RAWG. I den er det dynamiske parameter, så når vi kaller funksjonen
+legger vi inn ønskede parameter, som her er sortert på reversert releasedato og 10 resultater. */
+
   useEffect(() => {
     getGames({
       ordering: "-released",
@@ -18,6 +21,7 @@ export default function GameShopPage() {
       setIsLoading(false);
     });
   }, []);
+
   return (
     <>
       <section className="breadcrumb">

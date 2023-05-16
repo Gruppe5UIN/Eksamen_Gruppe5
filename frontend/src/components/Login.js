@@ -10,27 +10,40 @@ export default function Login() {
   const [error, setError] = React.useState(null);
   const navigate = useNavigate();
 
+  // Funksjon som håndterer innlogging
   const handleLogin = async (e) => {
     e.preventDefault();
+    // Henter email fra input feltet
     const email = e.target.email.value;
+    // Hjelpemetode som henter bruker e-post fra localStorage
     const loggedInUser = await getUserByEmail(email);
+    // Sjekker om bruker er null
     if (loggedInUser === null) {
       console.log("Not logged in");
+      // Skriver ut "Invalid email"
       setError("Invalid email");
     } else {
+      // prøver å sette email i localStorage
       try {
         localStorage.setItem("email_account", email);
+        // Hvis det ikke går
       } catch (error) {
+        // Skriver ut feilmelding
         console.error("localStorage error:", error);
       }
+      // Setter bruker til å være lik loggedInUser
       setUser(loggedInUser);
+      // Navigerer til "/"
       navigate("/");
     }
   };
 
   useEffect(() => {
+    // Hjelpemetode som henter bruker e-post fra localStorage
     const email = getUserEmail();
+    // Sjekker om email er definert
     if (email) {
+      // Sender bruker til "/"
       window.location.href = "/";
     }
   }, []);

@@ -6,10 +6,12 @@ export default function GameShop() {
   const [games, setGames] = useState([]);
 
   useEffect(() => {
+    // Kaller på getGames funksjonen fra Fetch.js, som sorterer spillene etter released dato, og setter en maksimumsgrense på 3 spill.
     getGames({
       ordering: "-released",
       page_size: 3,
     }).then((results) => {
+      // Setter games til å være lik resultatet fra getGames funksjonen.
       setGames(results);
     });
   }, []);

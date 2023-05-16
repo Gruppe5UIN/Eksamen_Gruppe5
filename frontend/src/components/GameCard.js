@@ -34,7 +34,7 @@ export default function GameCard({
           )}
         </section>
         <section className="button-section">
-          {}
+          { }
           <Link to={slug} className="btn btn-outline-dark">
             Show Game Details
           </Link>
