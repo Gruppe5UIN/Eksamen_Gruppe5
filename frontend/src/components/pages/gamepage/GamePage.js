@@ -15,7 +15,7 @@ export default function GamePage({ favourites, setFavourites }) {
   const [game, setGame] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [Icon, setIcon] = useState(false);
-  const [buttonText, setButtonText] = useState("Kjøp spillet");
+  const [buttonText, setButtonText] = useState("Buy this game");
   const { user } = useContext(UserContext);
 
   const url = `https://api.rawg.io/api/games/${slug}?key=6ccebb406ca942cd8ddc8584b1da9a4f`;
@@ -56,6 +56,13 @@ export default function GamePage({ favourites, setFavourites }) {
     }
   };
 
+  const handleBuy = (event) => {
+    event.preventDefault();
+    if (buttonText === "Buy this game") {
+      setButtonText("Added to cart!");
+    }
+  };
+
   useEffect(() => {
     // Setter loading effekt til true
     setIsLoading(true);
@@ -65,31 +72,32 @@ export default function GamePage({ favourites, setFavourites }) {
     setIsLoading(false);
     // eslint-disable-next-line
     // Sjekker om bruker allerede har spillet i sin liste
-    userHasGame(slug).then((result) => {
-      if (result) {
-        // Hvis resultatet er true, setter vi buttonText til "Spillet er i din liste"
-        setButtonText("Spillet er i din liste");
-      }
-    })
 
-    // Sjekker om bruker allerede har spillet i sin favorittliste
-    userHasFavorite(slug).then((result) => {
-      if (result) {
-        // Hvis resultatet er true, setter vi icon til true
-        setIcon(true);
-      }
-    });
-     // eslint-disable-next-line
+    if (user) {
+      userHasGame(slug, user.username).then((result) => {
+        if (result) {
+          // Hvis resultatet er true, setter vi buttonText til "Spillet er i din liste"
+          setButtonText("Spillet er i din liste");
+        }
+      })
+
+      // Sjekker om bruker allerede har spillet i sin favorittliste
+      userHasFavorite(slug, user.username).then((result) => {
+        if (result) {
+          // Hvis resultatet er true, setter vi icon til true
+          setIcon(true);
+        }
+      });
+    }
+
   }, []);
 
   // Funksjon for å sjekke om bruker har spillet i sin favorittliste
-  const userHasFavorite = async (slug) => {
+  const userHasFavorite = async (slug, username) => {
     try {
-      if (user) {
-        const response = await fetchFavouritesByUsername(user.username);
-        // Returnerer true hvis spillet finnes i favorittlisten
-        return response.favourites.some((item) => item.game.slug.current === slug);
-      }
+      const response = await fetchFavouritesByUsername(username);
+      // Returnerer true hvis spillet finnes i favorittlisten
+      return response.favourites.some((item) => item.game.slug.current === slug);
     } catch (error) {
       console.error("Error fetching favorites:", error);
       throw error;
@@ -97,13 +105,11 @@ export default function GamePage({ favourites, setFavourites }) {
   };
 
   // Funksjon for å sjekke om bruker har spillet i sin liste
-  const userHasGame = async (slug) => {
+  const userHasGame = async (slug, username) => {
     try {
-      if (user) {
-        const response = await fetchGamesByUsername("Julian");
-        // Returnerer true hvis spillet finnes i spillisten
-        return response.games.some((item) => item.game.slug.current === slug);
-      }
+      const response = await fetchGamesByUsername(username);
+      // Returnerer true hvis spillet finnes i spillisten
+      return response.games.some((item) => item.game.slug.current === slug);
     } catch (error) {
       console.error("Error fetching games:", error);
       throw error;
@@ -188,10 +194,19 @@ export default function GamePage({ favourites, setFavourites }) {
               ) : (
                 ""
               )}
-
-              <button className="btn btn-outline-dark buy-btn">
-                {buttonText}
-              </button>
+              {user ? (
+                <Link to={(buttonText === 'Buy this game') ? "#" : "/my-games"}>
+                  <button onClick={handleBuy} className="btn btn-outline-dark buy-btn">
+                    {buttonText}
+                  </button>
+                </Link>
+              ) : (
+                <Link to={(buttonText === 'Buy this game' && !user) ? "/login" : ""}>
+                  <button className="btn btn-outline-dark buy-btn">
+                    {buttonText}
+                  </button>
+                </Link>
+              )}
             </section>
           </article>
         </>
