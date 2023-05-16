@@ -1,9 +1,9 @@
 import { client } from "./client"
 
-//Komponent med metoder som henter data fra Sanity
-//Bør det legges inn errorhåndtering?
+//Komponent med metoder som henter genrelle data fra Sanity
+//Alle metodene er ikke lenger i bruk, men de kunne potensielt blitt brukt i systemet
 
-//Henter alle sjangere - returnerer apiId og sjangernavn
+//Henter alle sjangere
 export const fetchAllGenres = async () => {
     try {
         const data = await client.fetch(`*[_type == "genre"]{apiId, title}`)
@@ -13,7 +13,7 @@ export const fetchAllGenres = async () => {
     }
 }
 
-//Hente en sjanger basert på id - usikker om vi trenger denne
+//Hente en sjanger basert på id 
 export const fetchGenreById = async (id) => { 
     try {
         const data = await client.fetch(`*[_type == "genre" && apiId == $id]`, {id})
@@ -23,7 +23,7 @@ export const fetchGenreById = async (id) => {
     }
 }
 
-//Henter alle spill - returnerer et fullt objekt
+//Henter alle spill 
 export const fetchAllGames = async () => {
     try {
         const data = await client.fetch(`*[_type == 'game']{apiId,"slug": slug.current,title,playtime,"image": imageUrl[0], genres[]->{title}}`)
@@ -33,9 +33,8 @@ export const fetchAllGames = async () => {
     }
 
 }
-//*[_type == 'game']{apiId,"slug": slug.current,title,playtime,imageUrl[0], genres[]->{title}}
 
-//Henter et spill basert på id - endre til slug?
+//Henter et spill basert på id 
 export const fetchGame = async (id) => {
     try {
         const data = await client.fetch(`*[_type == 'game' && apiId == $id]`,{id})
@@ -57,21 +56,9 @@ export const fetchGameBySlug = async (slug) => {
 
 
 //Henter spill som tilhører en sjanger 
-
 export const fetchGamesByGenre = async (genre) => {
     try {
         const data = await client.fetch(`*[_type=="game" && references(*[_type == "genre" && title == $genre]._id)]`,{genre})
-        return data;
-    } catch (error) {
-        console.error(error)
-    }
-}
-
-//Teller antall spill 
-export const countGames = async () => {
-    try {
-        const data = await client.fetch(`{"total": count(*[_type == 'game'])}`)
-        //const data = await client.fetch(`count(*[_type == 'game'])`)
         return data;
     } catch (error) {
         console.error(error)
