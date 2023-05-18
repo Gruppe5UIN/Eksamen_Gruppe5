@@ -55,7 +55,7 @@ export default function FavouritesPage({ userFavourites }) {
   
           // Sjekker om spillet ikke er i favourites arrayet
           if (!existingGame) {
-            // Lager et objekt med spillet
+            // Lager et objekt med spillet, likt objektet som kommer fra sanity
             const gameObj = {
               game: {
                 apiId: game.apiId,
@@ -72,7 +72,7 @@ export default function FavouritesPage({ userFavourites }) {
             current.push(gameObj);
           }
         }
-        // Returnerer current
+        // Returnerer current arrayet
         return current;
       }, []);
   
