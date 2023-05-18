@@ -81,7 +81,7 @@ export default function GamePage({ favourites, setFavourites }) {
       userHasGame(slug, user.username).then((result) => {
         if (result) {
           // Hvis resultatet er true, setter vi buttonText til "Spillet er i din liste"
-          setButtonText("Spillet er i din liste");
+          setButtonText("The game is in your list");
           setFavouriteVisible(true);
         }
       })
